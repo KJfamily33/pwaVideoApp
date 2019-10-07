@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
+    <defs>
+        <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#FB709B"/>
+            <stop offset="100%" stop-color="#F37F6F"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <circle cx="7.5" cy="7.5" r="7.5" fill="url(#a)"/>
+        <text fill="#FFF" font-family="STHeitiTC-Medium, Heiti TC" font-size="11.25" font-weight="bold">
+            <tspan x="3.75" y="13">V</tspan>
+        </text>
+    </g>
+</svg>
