@@ -1,9 +1,11 @@
 /* tslint:disable */
+
 import './ic-aboutv-2'
 import './ic-acount'
 import './ic-add-h'
 import './ic-add'
 import './ic-app'
+import './ic-applogo'
 import './ic-appmenu'
 import './ic-back'
 import './ic-card'
