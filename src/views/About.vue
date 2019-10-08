@@ -13,6 +13,8 @@
   </div>
 </template>
 
+
+
 <style scoped lang="scss">
 .background {
   height: 100%;
@@ -32,14 +34,14 @@
   align-items: center;
 }
 .applogo {
-  margin-top: 130px;
+  margin-top: 8.125rem;
 
 
 }
 
 .text {
   font-family: STHeitiTC;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -50,7 +52,7 @@
 .bottomtext {
   color: #ffffff;
   position: absolute;
-  bottom: 30px;
+  bottom: 1.875rem;
   left: 50%;
   transform: translate(-50%, -50%);
 }
