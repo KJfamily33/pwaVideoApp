@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+import Profile from './views/Profile.vue'
 
 Vue.use(Router)
 
@@ -17,6 +18,15 @@ export default new Router({
       name: 'home',
       components: {
         default: Home,
+        header: HeaderBar,
+        footer: FooterBar,
+      },
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      components: {
+        default: Profile,
         header: HeaderBar,
         footer: FooterBar,
       },
