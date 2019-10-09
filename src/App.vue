@@ -9,6 +9,7 @@
     <router-view class="flex" name="header"/>
     <router-view class="flex" />
     <router-view class="flex" name="footer"/>
+
   </div>
 </template>
 

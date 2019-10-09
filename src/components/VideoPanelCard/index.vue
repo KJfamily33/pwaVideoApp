@@ -48,6 +48,7 @@ export default class VideoPanelCard extends Vue {
     }
   }) private videoInfoObj!: IVideoInfoObj
 
+
   mounted() {
     const img = document.querySelectorAll('.preview-card-panel img') as unknown as HTMLElement
     if (!this.videoInfoObj.preImg || this.videoInfoObj.preImg === '') {

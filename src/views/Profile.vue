@@ -1,37 +1,47 @@
 <template>
-  <div class="infobackground">
-    <div class="cover-panel">
-      <div class="column" style="margin-left: 2.5rem;">
-        <div class="picture"></div>
-        <div class="text" style="font-size:0.8125rem; color:#ffffff;">9487</div>
-        <div
-          class="column"
-          style="align-items: flex-start;    margin-top: 1.25rem;
-             margin-bottom: 0.8125rem;"
-        >
-          <div class="row">
-            <svg-icon name="ic-vcoin" width="15" height="15"></svg-icon>
-              <span class="text" style="color: #f3806f;margin-left:0.3125rem;">999,999,999</span>
-
+  <div class="body">
+    <div class="info">
+      <div class="cover-panel colum">
+        <div style="margin-left:40px;">
+          <div class="picture"></div>
+          <div class="text white-color">9487</div>
+        </div>
+        <div class="debug">
+          <div class="colum colum-align-star">
+            <div class="row">
+              <svg-icon name="ic-vcoin" width="15" height="15"></svg-icon>
+            <span class="text margin-left-5">999,999,999</span>
+            </div>
           </div>
-
-          <div class="row">
-            <svg-icon name="ic-vip" width="15" height="15" style="object-fit: contain;"></svg-icon>
-            <span class="text" style="color: #f3806f;margin-left:0.3125rem;">普通会员</span>
-          </div>
-          <span class="text">
-            <span style="color: #ffffff">会员到期时间</span>
-            <span style="color: #f3806f;">2099年12年25日</span>
-          </span>
         </div>
       </div>
     </div>
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Vue, Prop } from "vue-property-decorator";
+import ProfileRow from "@/components/ProfileRow/index.vue";
+import HeaderBar from "../components/HeaderBar/index.vue";
+import { IProfileInfoObj } from "@/types/profile";
 
-     <style scoped lang="scss">
-.infobackground {
+@Component({
+  components: {
+    ProfileRow
+  }
+})
+export default class Profile extends Vue {}
+</script>
+
+<style scoped lang="scss">
+.body {
+  height: 100%;
+  background-color: #f9f9f9;
+}
+
+.info {
+  height: 6.125rem;
+  width: 100%;
   max-height: 6.125rem;
   background-image: url("../assets/bg-profile.jpg");
   background-size: 100% 6.125rem;
@@ -44,14 +54,25 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.column {
+.colum {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 100%;
-  width: 100%;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.colum-align-star{
+  align-items: flex-start;
+}
+
+.debug {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+.refresh {
+  height: 100%;
 }
 
 .picture {
@@ -59,6 +80,10 @@
   height: 3.75rem;
   background-color: red;
   border-radius: 50%;
+}
+
+.margin-left-5 {
+  margin-left: 5px;
 }
 
 .row {
@@ -70,6 +95,9 @@
   margin-left: 0.3125rem;
   margin-right: 0.3125rem;
 }
+.white-color {
+  color: #ffffff;
+}
 
 .text {
   font-family: STHeitiTC;
@@ -80,5 +108,6 @@
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
+  color: #f3806f;
 }
 </style>
