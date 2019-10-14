@@ -5,6 +5,7 @@
       <router-link to="/videoList">Video</router-link> |
       <router-link to="/loginAndRegistered">LoginAndRegistered</router-link> |
       <router-link to="/about">About</router-link> |
+      <router-link to="/newaddress">NewAddress</router-link> |
     </div>
     <router-view class="flex" name="header"/>
     <router-view class="flex" />
