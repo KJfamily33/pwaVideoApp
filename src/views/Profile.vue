@@ -13,27 +13,25 @@
           </div>
           <div class="column" style="flex-grow:2">
             <div class="text" style="text-align: left;">
-               <svg-icon name="ic-vcoin" width="15" height="15"></svg-icon>
-              999,999,999
-                <div class="icon">
-                    <svg-icon name="ic-refresh" width="15" height="15"></svg-icon>
-                </div>
+              <svg-icon name="ic-vcoin" width="15" height="15"></svg-icon>999,999,999
+              <div class="icon">
+                <svg-icon name="ic-refresh" width="15" height="15"></svg-icon>
               </div>
+            </div>
             <div class="text" style="text-align: left;">
-              <svg-icon name="ic-vvip" width="15" height="15"></svg-icon>
-              999,999,999
-              </div>
+              <svg-icon name="ic-vvip" width="15" height="15"></svg-icon>999,999,999
+            </div>
             <div class="text" style="text-align: left;">
-              <span style="color:#ffffff;">会员到期时间 </span>
+              <span style="color:#ffffff;">会员到期时间</span>
               2099年12年25日
-              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <!-- 列表 -->
-    <div v-for="(e, i) in 6" :key="i">
-      <ProfileRow></ProfileRow>
+    <div v-for="(e, i) in 9" :key="i">
+      <ProfileRow :ProfileInfoObj="objs[i]"></ProfileRow>
     </div>
   </div>
 </template>
@@ -49,7 +47,66 @@ import { IProfileInfoObj } from "@/types/profile";
     ProfileRow
   }
 })
-export default class Profile extends Vue {}
+export default class Profile extends Vue {
+
+  private objs : Array<IProfileInfoObj> = [
+    {
+      preImg: "ic-acount",
+      title: "帐户",
+      subtitle: "9487@gmail.com",
+      icon: false
+    },
+    {
+      preImg: "ic-exchang",
+      title: "兑换码",
+      subtitle: "",
+      icon: true
+    },
+    {
+      preImg: "ic-card",
+      title: "充值",
+      subtitle: "",
+      icon: true
+    },
+    {
+      preImg: "ic-ropaganda",
+      title: "推广",
+      subtitle: "",
+      icon: true
+    },
+    {
+      preImg: "ic-vcoinqa",
+      title: "V币说明",
+      subtitle: "",
+      icon: true
+    },
+    {
+      preImg: "ic-vipqa",
+      title: "VIP说明",
+      subtitle: "",
+      icon: true
+    },
+    {
+      preImg: "ic-website",
+      title: "最新地址",
+      subtitle: "",
+      icon: true
+    },
+    {
+      preImg: "ic-aboutv-2",
+      title: "关于V2",
+      subtitle: "",
+      icon: true
+    },
+    {
+      preImg: "ic-logout",
+      title: "退出",
+      subtitle: "",
+      icon: true
+    },
+
+  ];
+}
 </script>
 
 <style scoped lang="scss">
@@ -91,7 +148,6 @@ export default class Profile extends Vue {}
 }
 
 .icon {
-
   float: right;
   margin-right: 12px;
 }

@@ -1,25 +1,22 @@
 <template>
   <div class="size">
     <div class="column">
-      <svg-icon name="ic-acount" width="22" height="22" style=""></svg-icon>
-        <div class="text" style="margin-left:15px">
-          Test
-        </div>
-        <div class="text" style="margin-left:5px">
-          9487@google.com
-        </div>
-        <svg-icon name="ic-forward" width="6" height="10" class="rightarrow" ></svg-icon>
+      <svg-icon name="ic-acount" width="22" height="22" class="icon"></svg-icon>
+      <div class="text" style="margin-left:15px">{{ ProfileInfoObj.title }}</div>
+      <div class="text" style="margin-left:5px">{{ ProfileInfoObj.subtitle }}</div>
+      <a href v-if="ProfileInfoObj.icon == true">
+        <svg-icon name="ic-forward" width="6" height="10" class="ic_forward"></svg-icon>
+      </a>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { IProfileInfoObj } from '@/types/profile'
+import { Component, Prop, Vue } from "vue-property-decorator";
+import { IProfileInfoObj } from "@/types/profile";
 
 @Component
 export default class ProfileRow extends Vue {
-  @Prop() private ProfileInfoObj!: IProfileInfoObj
-
+  @Prop() private ProfileInfoObj!: IProfileInfoObj;
 }
 </script>
 <style scoped lang="scss">
@@ -29,7 +26,6 @@ export default class ProfileRow extends Vue {
   background-color: #ffffff;
   margin-top: 5px;
   margin-bottom: 5px;
-
 }
 
 .column {
@@ -40,7 +36,6 @@ export default class ProfileRow extends Vue {
   align-items: center;
   margin-left: 15px;
   margin-right: 15px;
-
 }
 
 .text {
@@ -53,8 +48,14 @@ export default class ProfileRow extends Vue {
   letter-spacing: normal;
   color: #f3806f;
 }
-.rightarrow {
+
+.icon {
+   color: linear-gradient(to bottom, #fa709b, #f38070);
+}
+
+.ic_forward {
   position: absolute;
   right: 15px;
+  color: #f3806f;
 }
 </style>
