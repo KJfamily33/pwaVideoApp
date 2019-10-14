@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+import Profile from './views/Profile.vue'
 
 import About from './views/About.vue'
 
@@ -33,7 +34,17 @@ export default new Router({
         default: NewAddress,
         header: HeaderBar,
 
+
       },
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      components: {
+        default: Profile,
+        header: HeaderBar,
+        footer: FooterBar,
+      }
     },
     {
       path: '/about',

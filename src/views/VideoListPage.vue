@@ -28,7 +28,7 @@ export default class VideoListPage extends Vue {
 
   private obj: IVideoInfoObj = {
     preImg: '',
-    time: '99:99:99',
+    time: '99::99',
     title: '无标题',
     uploadDate: '1小时前',
     count: 0,

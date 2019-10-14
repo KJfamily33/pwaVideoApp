@@ -6,10 +6,13 @@
       <router-link to="/loginAndRegistered">LoginAndRegistered</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/newaddress">NewAddress</router-link> |
+      <router-link to="/profile">profile</router-link>
+
     </div>
     <router-view class="flex" name="header"/>
     <router-view class="flex" />
     <router-view class="flex" name="footer"/>
+
   </div>
 </template>
 
