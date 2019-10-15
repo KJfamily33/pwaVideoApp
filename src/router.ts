@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+import ChangeCode from './views/ChangeCode.vue'
 
 Vue.use(Router)
 
@@ -53,5 +54,14 @@ export default new Router({
         header: HeaderBar
       },
     },
+    {
+      path: '/ChangeCode',
+      name: 'changecode',
+      components: {
+        default: ChangeCode,
+        header: HeaderBar
+      },
+    },
+
   ],
 })
