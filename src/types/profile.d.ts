@@ -3,4 +3,5 @@ export interface IProfileInfoObj {
   title: string
   subtitle: string
   icon: boolean
+  link: string
 }

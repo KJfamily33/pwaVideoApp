@@ -50,7 +50,7 @@ export default class ProfileRow extends Vue {
 }
 
 .icon {
-   color: linear-gradient(to bottom, #fa709b, #f38070);
+  color: linear-gradient(to bottom, #fa709b, #f38070);
 }
 
 .ic_forward {
