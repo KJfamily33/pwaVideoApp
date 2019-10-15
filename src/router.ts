@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+import Recharge from './views/Recharge.vue'
 
 Vue.use(Router)
 
@@ -53,5 +54,14 @@ export default new Router({
         header: HeaderBar
       },
     },
+    {
+      path: '/Recharge',
+      name: 'recharge',
+      components: {
+        default: Recharge,
+        header: HeaderBar
+      },
+    },
+
   ],
 })
