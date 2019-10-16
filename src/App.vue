@@ -1,20 +1,21 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/videoList">Video</router-link> |
-      <router-link to="/loginAndRegistered">LoginAndRegistered</router-link> |
-       <router-link to="/vip-description">vip-Description</router-link> |
+      <router-link to="/">Home</router-link>|
+      <router-link to="/videoList">Video</router-link>|
+      <router-link to="/loginAndRegistered">LoginAndRegistered</router-link>|
+      <router-link to="/vip-description">vip-Description</router-link>|
+      <router-link to="/v-coin-description">v-coin-Description</router-link>
     </div>
-    <router-view class="flex" name="header"/>
+    <router-view class="flex" name="header" />
     <router-view class="flex" />
-    <router-view class="flex" name="footer"/>
+    <router-view class="flex" name="footer" />
   </div>
 </template>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

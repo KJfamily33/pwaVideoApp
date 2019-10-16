@@ -8,7 +8,7 @@
         <svg-icon name="ic-like" width="22" height="22"></svg-icon>
       </div>
       <div class="column column-flex-4 flex-align-start">
-        <div class="text">什么是VIP</div>
+        <div class="text">什么是V币</div>
       </div>
       <div class="column">
         <svg-icon id="oneDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
@@ -19,11 +19,12 @@
       id="one"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
     >
-      VIP的有效期内，可无限观看，无限下载包括AV影院在内的
-      全部视频！
+      V币是V2 APP 率先使用的奖励性虚拟货币。
+      暂时只适用于V2 APP，后续将扩大至其他平台（后续将再行
+      公布）。
       <br />
-      <br />适用于V2视频相关平台，后续将扩大至其他平台
-      <br />（后续将再行公布）。
+      <br />V币不能直接兑换现金，但却在使用上可以针对平台上推出的
+      活动兑换部份有价产品。
     </div>
     <!--第二列-->
     <div id="twotitle" class="title margin-bottom-5" @click="show('two')">
@@ -31,7 +32,7 @@
         <svg-icon name="ic-like" width="22" height="22"></svg-icon>
       </div>
       <div class="column column-flex-4 flex-align-start">
-        <div class="text">如何获得VIP</div>
+        <div class="text">如何获得V币</div>
       </div>
       <div class="column">
         <svg-icon id="twoDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
@@ -41,18 +42,14 @@
     <div
       id="two"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
-    >
-      登入后至『个人』-> 『充值』。
-      <br />
-      <button class="gotobuy margin-top-5">前往购买</button>
-    </div>
+    >登入后至『任务中心』, 完成任务。根据不同任务类型获得。</div>
     <!--第三列-->
     <div id="thirdtitle" class="title margin-bottom-5" @click="show('third')">
       <div class="column">
         <svg-icon name="ic-like" width="22" height="22"></svg-icon>
       </div>
       <div class="column column-flex-4 flex-align-start">
-        <div class="text">如何查询VIP</div>
+        <div class="text">如何查询V币</div>
       </div>
       <div class="column">
         <svg-icon id="thirdDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
@@ -62,14 +59,14 @@
     <div
       id="third"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
-    >登入后至『个人』, 即可得知VIP到期日期。</div>
+    >登入后至『任务中心』-> 『V币纪录』中查询V币数量。</div>
     <!--第四列-->
     <div id="fourtitle" class="title margin-bottom-5" @click="show('four')">
       <div class="column">
         <svg-icon name="ic-like" width="22" height="22"></svg-icon>
       </div>
       <div class="column column-flex-4 flex-align-start">
-        <div class="text">VIP使用期限</div>
+        <div class="text">V币如何使用</div>
       </div>
       <div class="column">
         <svg-icon id="fourDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
@@ -80,9 +77,67 @@
       id="four"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
     >
-      VIP分为月度、季度、半年度以及年度VIP四种类别。
-      <br />VIP到期后，再次续费，将有折扣哦！
+      1. 观看视频(10V币/视频)。注：AV仅适用于VIP会员专属
+      <br />
+      <br />2. VIP兑换(3500V币=7天VIP，兑换后立即生效)。
+      <br />
+      <br />获得VIP后,该帐号可在所有客户端（PC，手机网页，平板）
+      享受特权。
+      <br />
+      <button class="gotobuy margin-top-5">前往兑换</button>
     </div>
+    <!--第五列-->
+    <div id="fivetitle" class="title margin-bottom-5" @click="show('five')">
+      <div class="column">
+        <svg-icon name="ic-like" width="22" height="22"></svg-icon>
+      </div>
+      <div class="column column-flex-4 flex-align-start">
+        <div class="text">V币使用期限</div>
+      </div>
+      <div class="column">
+        <svg-icon id="fiveDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
+        <svg-icon id="fiveUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+      </div>
+    </div>
+    <div
+      id="five"
+      class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
+    >V币无使用期限，用完为止。</div>
+    <!--第六列-->
+    <div id="sixtitle" class="title margin-bottom-5" @click="show('six')">
+      <div class="column">
+        <svg-icon name="ic-like" width="22" height="22"></svg-icon>
+      </div>
+      <div class="column column-flex-4 flex-align-start">
+        <div class="text">V币攻略</div>
+      </div>
+      <div class="column">
+        <svg-icon id="sixDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
+        <svg-icon id="sixUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+      </div>
+    </div>
+    <div
+      id="six"
+      class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
+    >1. 登入后至『任务中心』->『当前任务』, 完成『今日登入』
+任务, 领取10V币。
+<br>
+<br>
+2. 使用10V币观看一部视频。
+<br>
+<br>
+3. 至『任务中心』->『当前任务』, 完成『观看广告』任务,
+领取10V币。
+<br>
+<br>
+4. 再观看一部视频, 并重复2.与3.步骤。
+<br>
+<br>
+5. 观看第四部视频前, 至『任务中心』->『当前任务』, 完成
+『观看3部视频』任务, 领取30V币。
+<br>
+<br>
+<span class="color-f3806f">＊一天最多可免费看14部视频</span></div>
   </div>
 </template>
 
@@ -249,6 +304,10 @@ export default class Description extends Vue {
   letter-spacing: normal;
   color: #a5a5a5;
   text-align: left;
+}
+
+.color-f3806f {
+  color: #f3806f;
 }
 
 // 按鈕

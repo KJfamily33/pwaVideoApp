@@ -5,6 +5,7 @@ import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
 import Description from './views/Description.vue'
+import VcoinDescription from './views/VcoinDescription.vue'
 
 
 Vue.use(Router)
@@ -60,6 +61,14 @@ export default new Router({
       name: 'vip-description',
       components: {
         default: Description,
+        header: HeaderBar
+      },
+    },
+    {
+      path: '/v-coin-description',
+      name: 'v-coin-description',
+      components: {
+        default: VcoinDescription,
         header: HeaderBar
       },
     },
