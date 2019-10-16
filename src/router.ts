@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+import Share from './views/Share.vue'
 
 Vue.use(Router)
 
@@ -50,6 +51,14 @@ export default new Router({
       name: 'login',
       components: {
         default: LoginAndRegistered,
+        header: HeaderBar
+      },
+    },
+    {
+      path: '/share',
+      name: 'share',
+      components: {
+        default: Share,
         header: HeaderBar
       },
     },
