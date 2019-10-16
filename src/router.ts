@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+import Description from './views/Description.vue'
+
 
 Vue.use(Router)
 
@@ -50,6 +52,14 @@ export default new Router({
       name: 'login',
       components: {
         default: LoginAndRegistered,
+        header: HeaderBar
+      },
+    },
+    {
+      path: '/vip-description',
+      name: 'vip-description',
+      components: {
+        default: Description,
         header: HeaderBar
       },
     },

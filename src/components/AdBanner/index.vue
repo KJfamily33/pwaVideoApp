@@ -44,6 +44,7 @@ export default class AdBanner extends Vue {
     img {
       height: 100%;
       width: 100%;
+
     }
   }
 }
