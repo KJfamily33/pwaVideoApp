@@ -8,8 +8,7 @@ import Profile from './views/Profile.vue'
 import About from './views/About.vue'
 import NewAddress from './views/NewAddress.vue'
 import Recharge from './views/Recharge.vue'
-
-
+import Share from './views/Share.vue'
 Vue.use(Router)
 
 // @ts-ignore
@@ -88,6 +87,14 @@ export default new Router({
         header: HeaderBar
       },
     },
+    {
+      path: '/share',
+      name: 'share',
+      components: {
+        default: Share,
+        header: HeaderBar
+      },
+    }
 
   ],
 })
