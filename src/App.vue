@@ -6,7 +6,7 @@
       <router-link to="/loginAndRegistered">LoginAndRegistered</router-link>
       <router-link to="/about">About</router-link>|
       <router-link to="/newaddress">NewAddress</router-link>|
-      <router-link to="/profile">profile</router-link>
+      <router-link to="/profile">profile</router-link>|
       <router-link to="/Recharge">Recharge</router-link>|
     </div>
     <router-view class="flex" name="header" />
