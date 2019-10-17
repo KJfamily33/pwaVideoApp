@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+
 import Profile from './views/Profile.vue'
 import About from './views/About.vue'
 import NewAddress from './views/NewAddress.vue'
@@ -11,6 +12,8 @@ import Recharge from './views/Recharge.vue'
 import Share from './views/Share.vue'
 import Description from './views/Description.vue'
 import VcoinDescription from './views/VcoinDescription.vue'
+import ChangeCode from './views/ChangeCode.vue'
+
 Vue.use(Router)
 
 // @ts-ignore
@@ -82,6 +85,7 @@ export default new Router({
       },
     },
     {
+
       path: '/Recharge',
       name: 'recharge',
       components: {
@@ -114,10 +118,17 @@ export default new Router({
         default: VcoinDescription,
         header: HeaderBar
       },
-    }
+    },
+    {
 
 
-
+      path: '/ChangeCode',
+      name: 'changecode',
+      components: {
+        default: ChangeCode,
+        header: HeaderBar
+      },
+    },
 
 
   ],

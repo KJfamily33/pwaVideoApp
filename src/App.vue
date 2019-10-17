@@ -10,7 +10,9 @@
       <router-link to="/Recharge">Recharge</router-link>|
       <router-link to="/share">Share</router-link> |
       <router-link to="/vip-description">vip-Description</router-link>|
-      <router-link to="/v-coin-description">v-coin-Description</router-link>
+      <router-link to="/v-coin-description">v-coin-Description</router-link>|
+      <router-link to="/ChangeCode">ChangeCode</router-link> |
+
     </div>
     <router-view class="flex" name="header" />
     <router-view class="flex" />
