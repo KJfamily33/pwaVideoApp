@@ -83,7 +83,9 @@
       <!--支付方式text-->
       <div class="text text-color-f3806f text-15-500 margin-bottom10">支付方式</div>
       <div class="row-wap overflow">
-        <div class="box"></div>
+        <div class="isbox">
+          <div class="checkbox"></div>
+        </div>
         <div class="box"></div>
         <div class="box"></div>
         <div class="box"></div>
@@ -324,6 +326,31 @@ button {
 }
 
 // 充值選單項目
+.isbox {
+  width: 9.375rem;
+  height: 3.75rem;
+  border-radius: 1.875rem;
+  background-color: #dfdfdf;
+  margin: 10px 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-image-source: linear-gradient(to bottom, #fa7098, #f37f71);
+  border-image-slice: 1;
+  background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, #fa7098, #f37f71);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  background-image: linear-gradient(to bottom, #fb6f9d, #f3806f);
+  border-radius: 50%;
+  margin-left: 8px
+}
+
 .box {
   width: 9.375rem;
   height: 3.75rem;
