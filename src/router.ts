@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+import Store from './views/Store.vue'
 
 Vue.use(Router)
 
@@ -50,6 +51,14 @@ export default new Router({
       name: 'login',
       components: {
         default: LoginAndRegistered,
+        header: HeaderBar
+      },
+    },
+    {
+      path: '/store',
+      name: 'store',
+      components: {
+        default: Store,
         header: HeaderBar
       },
     },
