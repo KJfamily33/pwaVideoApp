@@ -5,10 +5,9 @@ import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
 import Profile from './views/Profile.vue'
-
 import About from './views/About.vue'
-
 import NewAddress from './views/NewAddress.vue'
+import Recharge from './views/Recharge.vue'
 
 
 Vue.use(Router)
@@ -81,5 +80,14 @@ export default new Router({
         header: HeaderBar
       },
     },
+    {
+      path: '/Recharge',
+      name: 'recharge',
+      components: {
+        default: Recharge,
+        header: HeaderBar
+      },
+    },
+
   ],
 })
