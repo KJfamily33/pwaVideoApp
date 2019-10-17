@@ -12,6 +12,8 @@
       <router-link to="/vip-description">vip-Description</router-link>|
       <router-link to="/v-coin-description">v-coin-Description</router-link>|
       <router-link to="/ChangeCode">ChangeCode</router-link> |
+      <router-link to="/store">Store</router-link> |
+
 
     </div>
     <router-view class="flex" name="header" />
