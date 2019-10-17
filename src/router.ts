@@ -9,6 +9,8 @@ import About from './views/About.vue'
 import NewAddress from './views/NewAddress.vue'
 import Recharge from './views/Recharge.vue'
 import Share from './views/Share.vue'
+import Description from './views/Description.vue'
+import VcoinDescription from './views/VcoinDescription.vue'
 Vue.use(Router)
 
 // @ts-ignore
@@ -85,16 +87,38 @@ export default new Router({
       components: {
         default: Recharge,
         header: HeaderBar
+      }
+    },
+    {
+      path: '/vip-description',
+      name: 'vip-description',
+      components: {
+        default: Description,
+
+        header: HeaderBar
       },
     },
     {
+
       path: '/share',
       name: 'share',
       components: {
         default: Share,
         header: HeaderBar
       },
+    },
+    {
+      path: '/v-coin-description',
+      name: 'v-coin-description',
+      components: {
+        default: VcoinDescription,
+        header: HeaderBar
+      },
     }
+
+
+
+
 
   ],
 })
