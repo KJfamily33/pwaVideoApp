@@ -13,7 +13,7 @@
       <!--輸入匡- 密碼-->
       <input
         class="width-80pa color-f3806f text-14-300"
-        type="text"
+        type="password"
         name="password"
         id="password"
         placeholder="输入会员密码"
