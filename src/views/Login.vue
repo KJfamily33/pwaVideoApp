@@ -29,6 +29,19 @@
       <!--按鈕 登入-->
       <button id="login" class="login" @click="buttomAction(1)" disabled="disabled">登入</button>
       <button id="register" class="register width-80pa" @click="buttomAction(2)">没有帐号？前往注册</button>
+
+      <!--提示窗-->
+      <div class="cover coverbg"></div>
+      <div class="cover coverContent">
+        <div class="covertypesetting">
+          <div class="flex-center text text-25 text-500 color-f3806f" style="flex:3">帐号或密码错误</div>
+          <div class="line"></div>
+          <div
+            class="coverbutton flex-center text text-20 text-500 color-f3806f"
+            @click="alertAct"
+          >确定</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -42,10 +55,22 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Login extends Vue {
   buttomAction(index: number) {
     // 1: 登入 2: 註冊
-    let acInput = document.getElementById("account") as HTMLInputElement;
-    alert(acInput.value);
-    if (acInput.value.length > 0) {
-      alert("over 0");
+    let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
+      HTMLDivElement
+    >;
+    for (let i = 0; i < cover.length; i++) {
+      cover[i].style.display = "block";
+    }
+  }
+
+  // 提示窗確認
+  alertAct() {
+    let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
+      HTMLDivElement
+    >;
+    // 隱藏提示窗
+    for (let i = 0; i < cover.length; i++) {
+      cover[i].style.display = "none";
     }
   }
 
@@ -90,6 +115,13 @@ export default class Login extends Vue {
 }
 
 // 排版
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .margin-bottom-30 {
   margin-bottom: 30px;
 }
@@ -142,6 +174,14 @@ input {
 
 .text-500 {
   font-weight: 500;
+}
+
+.text-25 {
+  font-size: 1.5625rem;
+}
+
+.text-20 {
+  font-size: 1.25rem;
 }
 
 .text {
@@ -209,5 +249,50 @@ button {
   text-align: center;
   background-color: transparent;
   color: #f3806f;
+}
+
+.coverbg {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.coverContent {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 21.25rem;
+  height: 10.5625rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.covertypesetting {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.coverbutton {
+  height: 3.125rem;
+  width: 100%;
+}
+
+.line {
+  height: 0.0625rem;
+  width: 100%;
+  background-color: #f3806f;
+}
+
+.cover {
+  display: none;
 }
 </style>
