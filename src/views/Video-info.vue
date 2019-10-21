@@ -123,7 +123,7 @@
     <!--V币不足-->
     <div class="coverNoMoneyAlert costAlert column flex-center">
       <div class="margin-top-26 margin-bottom-20 text text-color-f3806f text-25-500">V币不足</div>
-      <div class="margin-bottom-27 text text-color-a5a5a5 text-20-300"> VIP或完成任务即可观看</div>
+      <div class="margin-bottom-27 text text-color-a5a5a5 text-20-300">VIP或完成任务即可观看</div>
       <div class="line width-100pa"></div>
       <div
         class="margin-top-bottim-0 padding-top-bottom-15 width-100pa text text-color-f3806f text-20-500"
@@ -137,16 +137,32 @@
         class="margin-top-bottim-0 padding-top-bottom-15 width-100pa text text-color-f3806f text-20-300"
       >取消</div>
     </div>
+    <!--我要分享-->
+    <div class="coverBottom column flex-center">
+      <div class="text text-color-f3806f text-20-500 margin-top-bottom-20">我要分享</div>
+      <div class="line width-100pa"></div>
+      <div class="width-100pa" style="height:260px; overflow-y:scroll">
+        <div class="row flex-start-center flex-wrap margin-top-30 margin-bottom-10">
+            <div class="loop" v-for="(e, i) in 6" :key="i">
+              <ShareItem></ShareItem>
+            </div>
+        </div>
+      </div>
+      <div
+        class="padding-top-bottom-15 width-100pa coverCancelBG text text-color-f3806f text-20-300"
+      >取消</div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import VideoInfoCell from "@/components/VideoInfoCell/index.vue";
-
+import ShareItem from "@/components/ShareItem/index.vue";
 @Component({
   components: {
-    VideoInfoCell
+    VideoInfoCell,
+    ShareItem
   }
 })
 export default class VideoInfo extends Vue {
@@ -196,6 +212,13 @@ export default class VideoInfo extends Vue {
 </script>
 
 <style lang="scss" scoped>
+
+.loop {
+  width:  33.3%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 .body {
   display: flex;
   flex-direction: column;
@@ -243,6 +266,15 @@ export default class VideoInfo extends Vue {
   justify-content: center;
 }
 
+.flex-start-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .flex-center-end {
   display: flex;
   justify-content: center;
@@ -263,13 +295,36 @@ export default class VideoInfo extends Vue {
   margin-right: 5px;
 }
 
+.margin-left-right-25 {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
 .margin-left-5 {
   margin-left: 5px;
+}
+
+.margin-top-30 {
+  margin-top: 30px;
+}
+
+.margin-bottom-30 {
+  margin-bottom: 30px;
 }
 
 .margin-left-right-3 {
   margin-left: 3px;
   margin-right: 3px;
+}
+
+.margin-left-right-30 {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.margin-top-bottom-30 {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .margin-left-right-22 {
@@ -282,8 +337,8 @@ export default class VideoInfo extends Vue {
 }
 
 .margin-top-bottom-15 {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .margin-top-26 {
@@ -301,6 +356,18 @@ export default class VideoInfo extends Vue {
 .margin-top-bottom-47 {
   margin-top: 47px;
   margin-bottom: 47px;
+}
+
+.margin-top-bottom-20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+.margin-bottom-10 {
+  margin-bottom: 10px;
 }
 
 .margin-top-bottom-0 {
@@ -383,6 +450,11 @@ export default class VideoInfo extends Vue {
   font-weight: 300;
 }
 
+.text-16-300 {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
 .text-20-500 {
   font-size: 1.25rem;
   font-weight: 500;
@@ -390,6 +462,10 @@ export default class VideoInfo extends Vue {
 
 .text-color-f3806f {
   color: #f3806f;
+}
+
+.text-color-6a6a6a {
+  color: #6a6a6a;
 }
 
 .text-color-000000 {
@@ -525,7 +601,8 @@ export default class VideoInfo extends Vue {
 .coverCostAlert,
 .coverVIPAlert,
 .coverMemberAlert,
-.coverNoMoneyAlert {
+.coverNoMoneyAlert,
+.coverBottom {
   display: none;
 }
 
@@ -538,5 +615,19 @@ export default class VideoInfo extends Vue {
   height: auto;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.95);
+}
+
+.coverBottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 0.3125rem;
+  background-color: #ffffff;
+}
+
+.coverCancelBG {
+  background-color: #f9f9f9;
 }
 </style>
