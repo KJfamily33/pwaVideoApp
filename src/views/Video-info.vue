@@ -45,11 +45,14 @@
     <!--線-->
     <div class="line width-95pa margin-bottom-10"></div>
     <!--影片-->
-    <div class="flex-center" v-for="(e, i) in 6" :key="i">
-      <VideoInfoCell></VideoInfoCell>
+    <div style="overflow-y:scroll">
+      <div class="flex-center" v-for="(e, i) in 6" :key="i">
+        <VideoInfoCell></VideoInfoCell>
+      </div>
     </div>
-    <!--放大縮圖-->
+    <!--遮罩背景-->
     <div class="cover coverBG" @click="closeCover"></div>
+    <!--縮圖放大-->
     <div class="cover coverContent column flex-center">
       <div class="coverPicture">
         <div class="coverLeftButtom">
@@ -64,6 +67,75 @@
         <div class="coverPictrueSelect margin-top-10 margin-left-right-2point5"></div>
         <div class="coverPictrueSelect margin-top-10 margin-left-right-2point5"></div>
       </div>
+    </div>
+    <!--扣除10V币，观看这部视频-->
+    <div class="coverCostAlert costAlert column flex-center">
+      <div
+        class="margin-top-bottom-47 text text-color-f3806f text-25-500 margin-left-right-22"
+      >扣除10V币，观看这部视频</div>
+      <div class="line width-100pa"></div>
+      <div class="margin-top-bottom-15" style="width:100%;">
+        <div class="row">
+          <div
+            class="flex-1 margin-top-bottom-0 padding-top-bottom-15 text text-color-f3806f text-20-300"
+          >取消</div>
+          <div class="vLine"></div>
+          <div
+            class="flex-1 margin-top-bottom-0 padding-top-bottom-15 text text-color-f3806f text-20-500"
+          >确定</div>
+        </div>
+      </div>
+    </div>
+    <!--VIP会员专属-->
+    <div class="coverVIPAlert costAlert column flex-center">
+      <div class="margin-top-26 margin-bottom-20 text text-color-f3806f text-25-500">VIP会员专属</div>
+      <div class="margin-bottom-27 text text-color-a5a5a5 text-20-300">亲要成为VIP即可观看</div>
+      <div class="line width-100pa"></div>
+      <div
+        class="margin-top-bottim-0 padding-top-bottom-15 width-100pa text text-color-f3806f text-20-500"
+      >充值</div>
+      <div class="line width-100pa"></div>
+      <div
+        class="margin-top-bottim-0 padding-top-bottom-15 width-100pa text text-color-f3806f text-20-500"
+      >兑换VIP</div>
+      <div class="line width-100pa" style="width:100%"></div>
+      <div
+        class="margin-top-bottim-0 padding-top-bottom-15 width-100pa text text-color-f3806f text-20-300"
+      >取消</div>
+    </div>
+    <!--会员专属功能-->
+    <div class="coverMemberAlert costAlert column flex-center">
+      <div class="text text-color-f3806f text-25-500 margin-top-26 margin-bottom-20">会员专属功能</div>
+      <div class="text text-color-a5a5a5 text-20-300 margin-bottom-20">请先登入即可免费使用</div>
+      <div class="line width-100pa"></div>
+      <div class="margin-top-bottom-15" style="width:100%;">
+        <div class="row">
+          <div
+            class="flex-1 margin-top-bottom-0 padding-top-bottom-15 text text-color-f3806f text-20-300"
+          >取消</div>
+          <div class="vLine"></div>
+          <div
+            class="flex-1 margin-top-bottom-0 padding-top-bottom-15 text text-color-f3806f text-20-500"
+          >确定</div>
+        </div>
+      </div>
+    </div>
+    <!--V币不足-->
+    <div class="coverNoMoneyAlert costAlert column flex-center">
+      <div class="margin-top-26 margin-bottom-20 text text-color-f3806f text-25-500">V币不足</div>
+      <div class="margin-bottom-27 text text-color-a5a5a5 text-20-300"> VIP或完成任务即可观看</div>
+      <div class="line width-100pa"></div>
+      <div
+        class="margin-top-bottim-0 padding-top-bottom-15 width-100pa text text-color-f3806f text-20-500"
+      >充值</div>
+      <div class="line width-100pa"></div>
+      <div
+        class="margin-top-bottim-0 padding-top-bottom-15 width-100pa text text-color-f3806f text-20-500"
+      >任务中心</div>
+      <div class="line width-100pa" style="width:100%"></div>
+      <div
+        class="margin-top-bottim-0 padding-top-bottom-15 width-100pa text text-color-f3806f text-20-300"
+      >取消</div>
     </div>
   </div>
 </template>
@@ -128,6 +200,7 @@ export default class VideoInfo extends Vue {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 
 .video {
@@ -158,6 +231,10 @@ export default class VideoInfo extends Vue {
 
 .width-95pa {
   width: 95%;
+}
+
+.width-100pa {
+  width: 100%;
 }
 
 .flex-center {
@@ -194,9 +271,41 @@ export default class VideoInfo extends Vue {
   margin-left: 3px;
   margin-right: 3px;
 }
+
+.margin-left-right-22 {
+  margin-left: 22px;
+  margin-right: 22px;
+}
 .margin-left-right-2point5 {
   margin-left: 2.5px;
   margin-right: 2.5px;
+}
+
+.margin-top-bottom-15 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.margin-top-26 {
+  margin-top: 26px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.margin-bottom-27 {
+  margin-bottom: 20px;
+}
+
+.margin-top-bottom-47 {
+  margin-top: 47px;
+  margin-bottom: 47px;
+}
+
+.margin-top-bottom-0 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .margin-top-10 {
@@ -219,6 +328,11 @@ export default class VideoInfo extends Vue {
 .padding-left-right-4 {
   padding-left: 4px;
   padding-right: 4px;
+}
+
+.padding-top-bottom-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .padding-right-4 {
@@ -249,6 +363,11 @@ export default class VideoInfo extends Vue {
   font-weight: 300;
 }
 
+.text-25-500 {
+  font-size: 1.5625rem;
+  font-weight: 500;
+}
+
 .text-12-500 {
   font-size: 0.75rem;
   font-weight: 500;
@@ -256,6 +375,16 @@ export default class VideoInfo extends Vue {
 
 .text-16-500 {
   font-size: 1rem;
+  font-weight: 500;
+}
+
+.text-20-300 {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.text-20-500 {
+  font-size: 1.25rem;
   font-weight: 500;
 }
 
@@ -334,6 +463,12 @@ export default class VideoInfo extends Vue {
   background-color: #f3806f;
 }
 
+.vLine {
+  width: 0.0625rem;
+  height: auto;
+  background-color: #f3806f;
+}
+
 .coverBG {
   position: fixed;
   left: 0px;
@@ -386,7 +521,22 @@ export default class VideoInfo extends Vue {
   border-radius: 50%;
 }
 
-.cover {
+.cover,
+.coverCostAlert,
+.coverVIPAlert,
+.coverMemberAlert,
+.coverNoMoneyAlert {
   display: none;
+}
+
+.costAlert {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 21.25rem;
+  height: auto;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.95);
 }
 </style>
