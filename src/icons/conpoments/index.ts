@@ -1,4 +1,5 @@
 /* tslint:disable */
+import './group-5'
 import './ic-aboutv-2'
 import './ic-acount'
 import './ic-add-h'
@@ -37,6 +38,7 @@ import './ic-setting-h'
 import './ic-setting'
 import './ic-share'
 import './ic-sina'
+import './ic-tadk'
 import './ic-task'
 import './ic-taskl'
 import './ic-tasklist'

@@ -1,16 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="28" height="33" viewBox="0 0 28 33">
-    <defs>
-        <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#FB6F9C"/>
-            <stop offset="100%" stop-color="#F37F6F"/>
-        </linearGradient>
-        <linearGradient id="b" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#FB6F9C"/>
-            <stop offset="100%" stop-color="#F37F6F"/>
-        </linearGradient>
-    </defs>
-    <g fill="none" fill-rule="evenodd">
-        <path fill="url(#a)" d="M26.768 3.576h-6.502V1.277c0-.665-.545-1.21-1.211-1.21H8.932c-.667 0-1.212.545-1.212 1.21v6.365c0 .665.545 1.21 1.212 1.21h7.484c.667 0 1.212-.545 1.212-1.21 0-.666-.545-1.21-1.212-1.21h-6.273V2.487h7.707v2.298c0 .666.545 1.21 1.212 1.21h6.501v24.559H2.423V5.995h1.851c.666 0 1.212-.544 1.212-1.21 0-.665-.546-1.21-1.212-1.21H1.212C.545 3.576 0 4.12 0 4.786v26.978c0 .666.545 1.21 1.212 1.21h25.556c.667 0 1.212-.544 1.212-1.21V4.785c0-.665-.545-1.21-1.212-1.21"/>
-        <path fill="url(#b)" d="M19.573 14.652a1.214 1.214 0 0 0-1.716-.007l-5.647 5.592-2.067-2.077a1.214 1.214 0 0 0-1.723 1.707l2.921 2.937c.236.236.546.356.862.356.31 0 .62-.114.855-.349l6.508-6.445a1.21 1.21 0 0 0 .007-1.714"/>
-    </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="33px" viewBox="0 0 28 33" enable-background="new 0 0 28 33" xml:space="preserve">  <image id="image0" width="28" height="33" x="0" y="0"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAhCAMAAAD9NzvVAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAC2VBMVEUAAAD/gJ/7cJz8b5z8
+b5v8cJ3/gKr7cpz7cJv7c5r7cJn7cZj9cZr7cZr7cZr/dJv6cZj6cZf9cZn8c5n/qqr/cZz/cpr8
+cZn6cpn/c5z6cZf8cZf7c5f/dZn6cpb6cZX6c5b5d5T/eJz////5cpT7cpb7cpb6dJX7c5P6cpP6
+cpT7cpT7cpX/eZ76c5P6cpT6dJL7dJP7dZT6dZP6cpP/mZn5dZL5dJH6c5H6c5H5c5H6dpD6dZH5
+c5D4dY76dI/6do74dYz6dY76dov5dYz4dYr5dov/d6L8b5z8cJz4d4r5don4don6c5b6cpf4d4j4
+doj4eIf/eJb5dJH6dZH4d4b4eIT/gP//gJf/fJL4doz4d4X3d4X4eIj4dof5dof4fIr3d4f4doj4
+eIn4eoX4eIT4e4T3eYL3eYL4gIb2eIH3eIP4eYP4eoP3eIL4eIL/eoX3en73e373e333fH74eoH3
+eYH4e4D1gID0fXf1fHf1fnn2en73eoD4e332hHv0fnP1f3T0fnT4fH72en32e33/gID2fHz2enz2
+fX34fHz2enr2fXv2fHr1e3n2fXj2fHj2fXb2fHf2fXf2fnX1fHX2gHb0fnX1fXT1fnT0fXL2gHT0
+gHL2gHL1fnT1fnP0f3L0f3L0gHH0gHH0gHH0f3D1gHH1gHH0gHL7cJr7cJv6b5r6cJn6cJj7cJn7
+cZj6cZf6cJf5cZb6cZb6cpb5cZT6cpX6cpT6cpP5cpP5cpH5cpL5c5L6c5L5c5D5c5H5dJH4c4/5
+dI/4dI75dY75dY34dIz4dYv3dYn4dor3doj4don3dof3d4b3eIT3d4T4dYz2eIL3eIP3d4f2eIH2
+eYL3eYL2eYD2eID2en32e332eX72en/0fHf1eX72en71enz1e3r1e3v2e3v0e3n1e3n0fHj1fHj1
+fXf0fHb0fXXzfXP0fnTzfnL0fnPzfnH0fnH0f3H///9CDetpAAAAqXRSTlMACL/u7r0GQ0BHj3x8
+kEQhamxsUAMkJpNpH99YRyPZ/uIrJAG4/vpsR6GRkX8Vb/psQINv+gWq2scz+mxv+m/6bG/6bPpv
++h6VS2/6bODSb/psIuFk+mwCFiPjb/qy/Hkl5P5qb/psuXom5f5nb/psGdnx/mVv+mwa2v5jb/ps
+G9T3YW/6bA5v+mxv+mxv+mz6bG/6b/psb/qucnJycrD6/feQ9vn5+faLbfHpigAAAAFiS0dEIypi
+bDoAAAAHdElNRQfjChULMjC2j/e8AAACD0lEQVQoz2NggABGJmZmFmYWIGJmZmVjQAXsK1etWrlq
+5crVK1evXs2BJsm5Zi0XNxDwcPOuW8MHE+UXEBQSFmHgXL9BFCIgtnGjuCAISEgySG3atHmTNIPM
+5s1QSdnNWzZvAaLNm+UYtm7bJq+gyCCzdZsSRFJZRVVeFYi2blVj2L5DHSSksX2nphYQaOvoQu3T
+26HPsGu3AYhpuGfXrj279uzZu8cIKmm8x4Rh336wpKmZOQRYWMIkD1gxHDxkzYAV2ByyZTh8BIek
+3WF7hqPHHLBLOh5zYjh+3BmH5HEXhhMncUi6nnBjOHUaTdLdwxNMe532ZjhzxgdFjt93ix+Y4X8m
+gOHs2UBkuaDgfftCIJJnQxnOnQ8Ds8MjQGRk1IULUNdHn49huHgJIhkbF8/AkJB4OSkZakbKpVSG
+K1fTwOz0a9cyMrOuZOfALMi9msdw/UY+mF1QePNW0a3iErjtpdfLGG7fKYdwKirv3q2qRjit5l4t
+w/2bdVBefUNjE5K7m++3MDx40ArjKrche6r9QQfDw0ed2IOv63E3w5OnPdgle5/2MTx73o9D8tkE
+hhcvJ2KXnPRyMsOrVzgkp7yayvD6zTTsktNfz2B4+27mrNmzZs2ZNWfO7DmzZ8+dPReIZgPBvHfz
+GRa8f//h/Qcgev/+4/uPQPQeDhYyLFq8ZOmSpUC0BAUsW7Js+QoAdx/dahddNjEAAAAldEVYdGRh
+dGU6Y3JlYXRlADIwMTktMTAtMjFUMTg6NTA6NDgtMDc6MDCBUSJ/AAAAJXRFWHRkYXRlOm1vZGlm
+eQAyMDE5LTEwLTIxVDE4OjUwOjQ4LTA3OjAw8AyawwAAAABJRU5ErkJggg==" />
 </svg>

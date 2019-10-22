@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+import CurrentTask from './views/CurrentTask.vue'
 
 Vue.use(Router)
 
@@ -46,10 +47,10 @@ export default new Router({
       component: () => import('./components/HeaderBar/index.vue'),
     },
     {
-      path: '/loginAndRegistered',
-      name: 'login',
+      path: '/currentTask',
+      name: 'currentTask',
       components: {
-        default: LoginAndRegistered,
+        default: CurrentTask,
         header: HeaderBar
       },
     },
