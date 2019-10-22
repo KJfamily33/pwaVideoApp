@@ -37,6 +37,7 @@ import Holder from 'holderjs'
 import { IVideoInfoObj } from '@/types/video'
 
 @Component
+
 export default class VideoPanelCard extends Vue {
   @Prop({
     default:{
