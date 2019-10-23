@@ -7,6 +7,6 @@ icon.register({
     width: 20,
     height: 20,
     viewBox: '0 0 20 20',
-    data: '<g _fill="none" fill-rule="evenodd"><circle pid="0" cx="10" cy="10" r="10" _fill="#D8D8D8"/><g _fill="#FFF"><path pid="1" d="M5 9h10v2H5z"/><path pid="2" d="M11 5v10H9V5z"/></g></g>'
+    data: '<image width="20" height="20" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAQAAAAngNWGAAAABGdBTUEAALGPC/xhBQAAACBjSFJN AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElN RQfjChYSDgt1NVB2AAAA0klEQVQoz5WTvW3DMBBG3x3szhO4FeBLeg1CZxcZGsEId4k4iHqbBtRq gaQTELrwXyQnkvIqAnz88B1ICnfSMjocOWugpSZYkO62K7dF3OJTRg9pKKz6ISaNewp+x1sp31fx +P6nBuBfdiAQt+mDUeTNKknL06HfzYA46Lp5XURHxgQpi05xUxoATslnibkcP1k9ug25d/3SWXnA gpZN//Tz1ECr1LMCayXMEoNakGbKksaCSje85/jcsJBOwSr8aKC3ChTAyhHVWwn/fbgXxr/CGSv0 RmmGBv9bAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTEwLTIzVDAxOjE0OjExLTA3OjAweCF0zQAA ACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0xMC0yM1QwMToxNDoxMS0wNzowMAl8zHEAAAAASUVORK5C YII="/>'
   }
 })

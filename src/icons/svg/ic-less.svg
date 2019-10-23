@@ -1,6 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-    <g fill="none" fill-rule="evenodd">
-        <circle cx="10" cy="10" r="10" fill="#D8D8D8"/>
-        <path fill="#FFF" d="M5 9h10v2H5z"/>
-    </g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">  <image id="image0" width="20" height="20" x="0" y="0"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAQAAAAngNWGAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElN
+RQfjChYSDytXQEH/AAAAxElEQVQoz5WTQW7CMBBF34zgEtkiMWWfgwQkuElQjlDVN2FBcpDswUjZ
+5hKR6i4gVQvBmLf60jyPLHtG+CXMfUFBTgb0tDTWyDBWZQx+jQsL/iEdpdV/xKD+k5JpnFXyfRPP
+X081APexBwG/DkeiyMZqCfPL6f5uD2K3XMl5y4HX7JQiQYNCyZPEfEY2Zpuo+zFkmtQPmNGzvDs9
+Ra+0SQ1bpUkSm+QHVxmi/3yllEHBalxUc1aDAlgVUZ1V8O7gXomvwg+Mp0BPeehKKAAAACV0RVh0
+ZGF0ZTpjcmVhdGUAMjAxOS0xMC0yM1QwMToxNTo0My0wNzowMEicAL4AAAAldEVYdGRhdGU6bW9k
+aWZ5ADIwMTktMTAtMjNUMDE6MTU6NDMtMDc6MDA5wbgCAAAAAElFTkSuQmCC" />
 </svg>
