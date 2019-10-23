@@ -1,9 +1,14 @@
 <template>
-  <div class="login-registered-panel">
+  <div
+    class="login-registered-panel flex-align-center flex-justify-center"
+    :style="{backgroundImage: 'url('+require('../../assets/'+obj.bgLink+'.jpg')+')'}"
+  >
     <!--第一-->
     <div v-if="obj.index ===1" class="column flex-align-center flex-justify-end">
       <div class="text text-size-40 text-weight-300 text-color-f3806f">{{ obj.firstText }}</div>
-      <div class="margin-bottom-105 text text-color-ffffff text-size-26 text-weight-300">{{ obj.secText }}</div>
+      <div
+        class="margin-bottom-105 text text-color-ffffff text-size-26 text-weight-300"
+      >{{ obj.secText }}</div>
     </div>
     <!--第二-->
     <div
@@ -16,7 +21,9 @@
           class="margin-left-5 text text-size-40 text-weight-300 text-color-f3806f text-align-left"
         >{{ obj.firstText }}</div>
       </div>
-      <div class="text text-color-ffffff text-size-22 text-weight-300 text-align-left">{{ obj.secText }}</div>
+      <div
+        class="text text-color-ffffff text-size-22 text-weight-300 text-align-left"
+      >{{ obj.secText }}</div>
       <div
         class="margin-bottom-105 text text-color-dddddd text-size-26 text-weight-300 text-align-left"
       >{{ obj.thirdText }}</div>
@@ -24,15 +31,17 @@
     <!--第三-->
     <div
       v-if="obj.index ===3"
-      class="column flex-align-end  flex-justify-end margin-right-15 margin-left-47"
+      class="column flex-align-end flex-justify-end margin-right-15 margin-left-47"
     >
       <div class="row flex-direction-row-re flex-justify-center flex-align-center">
-        <svg-icon :name="obj.icon" width="38" height="38" ></svg-icon>
+        <svg-icon :name="obj.icon" width="38" height="38"></svg-icon>
         <div
           class="margin-right-5 text text-size-40 text-weight-300 text-color-f3806f text-align-right"
         >{{ obj.firstText }}</div>
       </div>
-      <div class="text text-color-ffffff text-size-22 text-weight-300 text-align-right">{{ obj.secText }}</div>
+      <div
+        class="text text-color-ffffff text-size-22 text-weight-300 text-align-right"
+      >{{ obj.secText }}</div>
       <div
         class="margin-bottom-105 text text-color-dddddd text-size-26 text-weight-300 text-align-right"
       >{{ obj.thirdText }}</div>
@@ -42,21 +51,21 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
-import { ChangeVIPObj } from '@/types/changeVip'
+import { ChangeVIPObj } from "@/types/changeVip";
 
 @Component
 export default class ChangeVIPPicture extends Vue {
-
-  @Prop() private obj!:ChangeVIPObj
+  @Prop() private obj!: ChangeVIPObj;
 }
 </script>
 
 <style lang="scss" scoped>
 .login-registered-panel {
+  width: 100%;
   height: 100%;
-  background-image: url("../../assets/changeVip1.jpg");
   background-size: cover;
   background-position-x: center;
+  display: inline-flex;
 }
 
 // 排版

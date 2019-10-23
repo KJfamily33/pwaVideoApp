@@ -4,5 +4,6 @@ export interface ChangeVIPObj {
   secText: string
   thirdText: string
   index: number
+  bgLink: string
 
 }
