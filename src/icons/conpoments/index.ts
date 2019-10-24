@@ -1,5 +1,4 @@
 /* tslint:disable */
-
 import './ic-aboutv-2'
 import './ic-acount'
 import './ic-add-h'

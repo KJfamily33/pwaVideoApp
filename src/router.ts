@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+
 import Store from './views/Store.vue'
 import Profile from './views/Profile.vue'
 import About from './views/About.vue'
@@ -14,6 +15,7 @@ import VcoinDescription from './views/VcoinDescription.vue'
 import ChangeCode from './views/ChangeCode.vue'
 import Register from './views/Register.vue'
 import Login from './views/Login.vue'
+import VideoInfo from './views/Video-info.vue'
 
 
 Vue.use(Router)
@@ -142,6 +144,14 @@ export default new Router({
       name: 'login',
       components: {
         default: Login,
+        header: HeaderBar
+      },
+    },
+    {
+      path: '/video-info',
+      name: '/video-info',
+      components: {
+        default: VideoInfo,
         header: HeaderBar
       },
     }
