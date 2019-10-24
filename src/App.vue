@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
+
       <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>|
       <router-link to="/newaddress">NewAddress</router-link>|
@@ -14,6 +15,7 @@
       <router-link to="/register">Register</router-link> |
       <router-link to="/login">Login</router-link> |
       <router-link to="/video-info">Video-Info</router-link> |
+      <router-link to="/currentTask">CurrentTask</router-link>
 
     </div>
     <router-view class="flex" name="header" />

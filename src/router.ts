@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
-
+import CurrentTask from './views/CurrentTask.vue'
 import Store from './views/Store.vue'
 import Profile from './views/Profile.vue'
 import About from './views/About.vue'
@@ -81,6 +81,7 @@ export default new Router({
       component: () => import('./components/HeaderBar/index.vue'),
     },
     {
+
       path: '/register',
       name: 'register',
       components: {
@@ -152,6 +153,14 @@ export default new Router({
       name: '/video-info',
       components: {
         default: VideoInfo,
+        header: HeaderBar
+      },
+    },
+    {
+      path: '/currentTask',
+      name: 'currentTask',
+      components: {
+        default: CurrentTask,
         header: HeaderBar
       },
     }
