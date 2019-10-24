@@ -18,6 +18,7 @@ import Login from './views/Login.vue'
 import VideoInfo from './views/Video-info.vue'
 import ChangeVIP from './views/ChangeVIP.vue'
 import vHistory from './views/VHistory.vue'
+import Search from './views/Search.vue'
 
 Vue.use(Router)
 
@@ -178,6 +179,14 @@ export default new Router({
       name: 'vhistory',
       components: {
         default: vHistory,
+        header: HeaderBar
+      },
+    },
+    {
+      path: '/search',
+      name: 'search',
+      components: {
+        default: Search,
         header: HeaderBar
       },
     }
