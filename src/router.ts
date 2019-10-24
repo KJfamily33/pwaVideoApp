@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
 import Store from './views/Store.vue'
-
 import Profile from './views/Profile.vue'
 import About from './views/About.vue'
 import NewAddress from './views/NewAddress.vue'
@@ -14,6 +12,8 @@ import Share from './views/Share.vue'
 import Description from './views/Description.vue'
 import VcoinDescription from './views/VcoinDescription.vue'
 import ChangeCode from './views/ChangeCode.vue'
+import Register from './views/Register.vue'
+
 
 Vue.use(Router)
 
@@ -78,10 +78,10 @@ export default new Router({
       component: () => import('./components/HeaderBar/index.vue'),
     },
     {
-      path: '/loginAndRegistered',
-      name: 'login',
+      path: '/register',
+      name: 'register',
       components: {
-        default: LoginAndRegistered,
+        default: Register,
         header: HeaderBar
       },
     },

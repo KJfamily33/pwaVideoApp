@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
+
       <router-link to="/">Home</router-link>|
       <router-link to="/videoList">Video</router-link>|
       <router-link to="/loginAndRegistered">LoginAndRegistered</router-link>|
@@ -13,6 +14,7 @@
       <router-link to="/v-coin-description">v-coin-Description</router-link>|
       <router-link to="/ChangeCode">ChangeCode</router-link> |
       <router-link to="/store">Store</router-link> |
+        <router-link to="/register">Register</router-link> |
 
 
     </div>
