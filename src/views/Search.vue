@@ -1,13 +1,13 @@
 <template>
   <div class="body">
     <!--熱門-->
-    <div v-if="isSearch" class="content">
+    <div v-if="!isSearch" class="content">
       <SearchHotCell></SearchHotCell>
       <SearchHotCell></SearchHotCell>
     </div>
 
     <!--搜尋後-->
-    <div class="recommend">
+    <div v-if="isSearch" class="recommend">
       <div>gasdf</div>
       <div>dss</div>
       <div>reee</div>
@@ -17,7 +17,7 @@
       <div>reee</div>
       <div>sdfasdfasdfasdfa</div>
     </div>
-    <div class="scroll">
+    <div  v-if="isSearch" class="scroll">
       <div>ad</div>
       <div class="cell" v-for="(e, i) in 12" :key="i">
         <video-card></video-card>
@@ -91,11 +91,10 @@ export default class Search extends Vue {
   align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
-
 }
 
 .cell {
-    margin-left: 6px;
+  margin-left: 6px;
   margin-right: 6px;
   margin-bottom: 10px;
 }
