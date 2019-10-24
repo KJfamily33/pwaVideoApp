@@ -4,9 +4,9 @@
 import icon from 'vue-svgicon'
 icon.register({
   'ic-vcoin': {
-    width: 15,
-    height: 15,
-    viewBox: '0 0 15 15',
-    data: '<defs><linearGradient id="svgicon_ic-vcoin_a" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FB709B"/><stop offset="100%" stop-color="#F37F6F"/></linearGradient></defs><g _fill="none" fill-rule="evenodd"><circle pid="0" cx="7.5" cy="7.5" r="7.5" _fill="url(#svgicon_ic-vcoin_a)"/><text _fill="#FFF" font-family="STHeitiTC-Medium, Heiti TC" font-size="11.25" font-weight="bold"><tspan x="3.75" y="13">V</tspan></text></g>'
+    width: 20,
+    height: 20,
+    viewBox: '0 0 20 20',
+    data: '<image width="20" height="20" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAABGdBTUEAALGPC/xhBQAAACBjSFJN AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABqlBMVEUAAAD/mZn8cpn8cZv6 cZr8cJr7cZv8cpz/mcz8cZf6cpn8cpn/gP/7c5b7dJT5c5T8dJT5dZD4dZD5dY35dYv4d4j5eIj4 eIb4eYT4eYL3eYL3eoD2e373fHz2fHz2fnv2fnj/gID2fnb2gXTzfnPzfXP2gXL0gHH0gHHzgHDz gHHzgXL6cZj7cpj7cZj6cpb6cpX6cZX6c5T6c5P5cpP5c5H5dJH5dY/4dI/6rb394uf5dZD5dI/7 o7T+6Oz4eZP5dY35gpj+/Pz6n6/4dYz4dY38x9H4dYr4dor80Nf92uD4dov5k6T////5jZ/4d4j4 d4n5l6X5jZz4doj80Nb93OH3doj3d4b95un7x833hZL+/P35oqz4eIf3eIT6rrX++Pn3f4v7vsT+ 7/D3eYX2eIH3eYL2fYb+9/f5s7j2fIT+9PX6t7z2eX/7xMf97Oz5rrH++vv2g4n2eoD2eYD2en72 en33jpD+/v77zM31en32e3z1env1e3v829v2lJT1fHn0e3n3o6L84OD0fHb1fXf0fHf0fXj1ko70 fXT0fXX0fnXzfnLzfXJPAKGUAAAALHRSTlMABVWl2fPZVQVR3NwCioqKUdzcVaXZ2fPz2dmlVdzc UYoCilHc3FWl2fPZVU4DbqgAAAABYktHRE2AaCBlAAAAB3RJTUUH4woXCzUCmxD4cAAAAU5JREFU GNNjYAABRiZmFlZWNmZ2DgY44OTS0dXR1dXT1ePmhArx8OobgIGhgaGhPi8PWJDPyNgIiIzBwMSY HyQmYAoCZqZmQARmCgDtEDS3MLe0srawsTG3sbWzN7cQYmQQdgACRydnBxcXVxcrNwdXBwdhBhF3 dw93D08vD3d3bx9fP28gEGEQ9fcP8A8I9A0KCAgOCQ0OCw4LE2MQDweDiMjw8KjomPDY8NhYcQaJ ODCIT0iMS0pOAbMlGCRTU9NS09LSMzKzsnPSgMzUVCkG6VwIyMsvKCwqLi4pLimRZpApLS0rLSsr La/IqCytAgMZBkbZ6prqmpramjrf+lowkGNkYJBvAIHGhqZmIAFEjfIgzyu0tLa0tLW0d7QBQWub AjiUFJU6u7q6u7qBqKurU0kRGqLKKj0g0NvTq6qMCHpGNXUNTU0tdW1GMBcAvGJokRTeez8AAAAl dEVYdGRhdGU6Y3JlYXRlADIwMTktMTAtMjNUMTg6NTM6MDItMDc6MDDN/O2rAAAAJXRFWHRkYXRl Om1vZGlmeQAyMDE5LTEwLTIzVDE4OjUzOjAyLTA3OjAwvKFVFwAAAABJRU5ErkJggg=="/>'
   }
 })

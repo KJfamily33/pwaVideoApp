@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import LoginAndRegistered from './views/LoginAndRegistered.vue'
 import HeaderBar from './components/HeaderBar/index.vue'
 import FooterBar from './components/FooterControlBar/index.vue'
+import vHistory from './views/VHistory.vue'
 
 Vue.use(Router)
 
@@ -53,5 +54,13 @@ export default new Router({
         header: HeaderBar
       },
     },
+    {
+      path: '/vHistory',
+      name: 'vhistory',
+      components: {
+        default: vHistory,
+        header: HeaderBar
+      },
+    }
   ],
 })
