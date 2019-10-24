@@ -16,6 +16,7 @@ import ChangeCode from './views/ChangeCode.vue'
 import Register from './views/Register.vue'
 import Login from './views/Login.vue'
 import VideoInfo from './views/Video-info.vue'
+import ChangeVIP from './views/ChangeVIP.vue'
 
 
 Vue.use(Router)
@@ -81,7 +82,6 @@ export default new Router({
       component: () => import('./components/HeaderBar/index.vue'),
     },
     {
-
       path: '/register',
       name: 'register',
       components: {
@@ -90,6 +90,7 @@ export default new Router({
       },
     },
     {
+
       path: '/Recharge',
       name: 'recharge',
       components: {
@@ -161,6 +162,14 @@ export default new Router({
       name: 'currentTask',
       components: {
         default: CurrentTask,
+        header: HeaderBar
+      },
+    },
+    {
+      path: '/changeVip',
+      name: 'changevip',
+      components: {
+        default: ChangeVIP,
         header: HeaderBar
       },
     }
