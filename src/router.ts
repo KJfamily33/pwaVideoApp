@@ -13,6 +13,7 @@ import Description from './views/Description.vue'
 import VcoinDescription from './views/VcoinDescription.vue'
 import ChangeCode from './views/ChangeCode.vue'
 import Register from './views/Register.vue'
+import Login from './views/Login.vue'
 
 
 Vue.use(Router)
@@ -120,17 +121,15 @@ export default new Router({
       },
     },
     {
-
-
       path: '/ChangeCode',
       name: 'changecode',
       components: {
         default: ChangeCode,
+
         header: HeaderBar
       },
     },
     {
-
       path: '/store',
       name: 'store',
       components: {
@@ -138,6 +137,14 @@ export default new Router({
         header: HeaderBar
       },
     },
+    {
+      path: '/login',
+      name: 'login',
+      components: {
+        default: Login,
+        header: HeaderBar
+      },
+    }
 
   ],
 })
