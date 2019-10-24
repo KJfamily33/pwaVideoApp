@@ -1,9 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
-    <defs>
-        <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#FB6F9D"/>
-            <stop offset="100%" stop-color="#F3806F"/>
-        </linearGradient>
-    </defs>
-    <path fill="url(#a)" fill-rule="evenodd" d="M5.716 10.596L2.634 7.514 3.66 6.486l2.055 2.055 4.623-4.623 1.027 1.027-5.65 5.65zM7 0a7 7 0 1 0 0 14A7 7 0 0 0 7 0z"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="14px" height="14px" viewBox="0 0 14 14" enable-background="new 0 0 14 14" xml:space="preserve">  <image id="image0" width="14" height="14" x="0" y="0"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABGlBMVEUAAAD/dp37cZz6cJv7
+b5v8cJv7dJv6cpn8cpr7dJf7cpb6cpX5dJP6c5L5dJL5d475dY/6eJH4dY/5dY75doz4dYv/gJ/7
+d4z5d4z5dov5eIj4eIn4d4n4eIf7d4j4eIf3eYT4eIX/gL/5eIf4eIX4eYT7e4j4eYT2eYL4e4H/
+///3fIP3e4T4e4H2eoH1e3/3fID3e4D2e373fX//iYn2fHz2fXr2fXv3gHj1fXf2fXf1fnT/iXb1
+gHP0gHLzgHH1gHH0gHH6cZj7cZn5cpX6cpX5cpT5c5L5dJL5c5H4dI75dY74dov4dYv3d4j4d4j3
+d4f3eIT2eIT2eoH2eYH2e371en71en31fHv1fHr1fXj0fXf0fnT///+rMVStAAAAQnRSTlMADYHP
+8/NC4OBC/v7g/uCBuTPqgdC5CDzzz/PA/Lk88/PdBFf8uTzz0JwBQjzzz4GcPPOBDeCx80L+/uAN
+gdDz88/LVK6oAAAAAWJLR0QqU77UngAAAAd0SU1FB+MKFwwpLz33790AAAC+SURBVAjXJY7XDoJQ
+GIN/3HuLe++9FbciAsLBdURQfP/nEPFL07RJLwoAQJjMFqvZRICBzU7T9IE+OGy/5nQxR4ZhGZZ1
+O/Wlh+M5nj/xJy/nI8AvGIhCIBgSwxBBSEKShKJkLI4SkDyfU+nLJUNmc9drDvK3QrFUrpDV/P12
+r0Ed40azRbY7GD9wF3qy/Ow3B8OnosjKCMYT9aVOZ7qpr8kYgJq/tbcuTVtQv1vU8mOwpP6nV+vN
+drdfr/T4BYEEJaa0d9fZAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTEwLTIzVDE5OjQxOjQ3LTA3
+OjAwA2MajgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0xMC0yM1QxOTo0MTo0Ny0wNzowMHI+ojIA
+AAAASUVORK5CYII=" />
 </svg>

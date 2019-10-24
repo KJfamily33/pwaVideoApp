@@ -17,7 +17,7 @@ import Register from './views/Register.vue'
 import Login from './views/Login.vue'
 import VideoInfo from './views/Video-info.vue'
 import ChangeVIP from './views/ChangeVIP.vue'
-
+import vHistory from './views/VHistory.vue'
 
 Vue.use(Router)
 
@@ -170,6 +170,14 @@ export default new Router({
       name: 'changevip',
       components: {
         default: ChangeVIP,
+        header: HeaderBar
+      },
+    },
+    {
+      path: '/vHistory',
+      name: 'vhistory',
+      components: {
+        default: vHistory,
         header: HeaderBar
       },
     }
