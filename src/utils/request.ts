@@ -2,27 +2,26 @@ import axios from 'axios'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
-  timeout: 5000
+  timeout: 5000,
   // withCredentials: true // send cookies when cross-domain requests
 })
 
 // Request interceptors
 service.interceptors.request.use(
-  (config) => {
+  config => {
     // Add X-Access-Token header to every request, you can add other custom headers here
-    // if (UserModule.token) {
-    //   config.headers['X-Access-Token'] = UserModule.token
-    // }
+    config.headers['Authtoken'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzY0Njc4NzgsIm5iZiI6MTU3NjQ2Nzg3OCwiZXhwIjoxNTc2NDc1MDc4LCJkYXRhIjp7InVzZXJJZCI6MzU5fX0.lFrgjVGIs9Fz9rQtrqlm7sB8BPrbUUpTJAF1xIIP0lg'
+
     return config
   },
-  (error) => {
+  error => {
     Promise.reject(error)
   }
 )
 
 // Response interceptors
 service.interceptors.response.use(
-  (response) => {
+  response => {
     const res = response.data
     if (res.code !== 200) {
       return Promise.reject(new Error(res.message || 'Error'))
@@ -30,7 +29,7 @@ service.interceptors.response.use(
       return response.data
     }
   },
-  (error) => {
+  error => {
     return Promise.reject(error)
   }
 )

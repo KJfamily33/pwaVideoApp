@@ -12,12 +12,13 @@
       <router-link to="/ChangeCode">ChangeCode</router-link>|
       <router-link to="/store">Store</router-link>|
       <router-link to="/register">Register</router-link>|
-      <router-link to="/login">Login</router-link>|
+      <router-link to="/login">User</router-link>|
       <router-link to="/video-info">Video-Info</router-link>|
       <router-link to="/currentTask">CurrentTask</router-link>|
       <router-link to="/changeVip">ChangeVIP</router-link>|
       <router-link to="/vHistory">vHistory</router-link>|
       <router-link to="/search">Search</router-link>|
+      <router-link to="/DPlayerTest">DPlayer</router-link>|
     </div>
     <router-view class="flex" name="header" />
     <router-view class="flex" />
@@ -26,11 +27,8 @@
 </template>
 
 <style lang="scss">
-
-@import '!/bootstrap/scss/bootstrap';
-
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

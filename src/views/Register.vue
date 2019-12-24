@@ -54,7 +54,7 @@ import { Component, Vue } from "vue-property-decorator";
 @Component({
   components: {}
 })
-export default class Login extends Vue {
+export default class User extends Vue {
   buttomAction(index: number) {
     // 1: 登入 2: 註冊
     let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
