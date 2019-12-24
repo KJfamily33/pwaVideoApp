@@ -27,7 +27,7 @@
 
 <style lang="scss">
 
-@import '!/bootstrap/scss/bootstrap';
+
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
