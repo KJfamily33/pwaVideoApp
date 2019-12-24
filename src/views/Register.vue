@@ -9,6 +9,7 @@
         id="account"
         placeholder="输入邮箱地址"
         @input="changeText"
+        v-model="reqParam.email"
       />
       <!--輸入匡- 密碼-->
       <input
@@ -18,8 +19,9 @@
         id="password"
         placeholder="输入会员密码"
         @input="changeText"
+        v-model="reqParam.password"
       />
-       <!--輸入匡- 再次輸入密碼-->
+      <!--輸入匡- 再次輸入密碼-->
       <input
         class="width-80pa color-f3806f text-14-300 margin-bottom-30"
         type="password"
@@ -33,10 +35,13 @@
       <button id="register" class="register width-80pa" @click="buttomAction(2)">已有帐号？前往登入</button>
 
       <!--提示窗-->
-      <div class="cover coverbg"></div>
-      <div class="cover coverContent">
+      <div v-if="isAlert" class="coverbg"></div>
+      <div v-if="isAlert" class="coverContent">
         <div class="covertypesetting">
-          <div class="flex-center text text-25 text-500 color-f3806f" style="flex:3">帐号或密码错误</div>
+          <div
+            class="flex-center text text-25 text-500 color-f3806f"
+            style="flex:3"
+          >{{ alertTitle }}</div>
           <div class="line"></div>
           <div
             class="coverbutton flex-center text text-20 text-500 color-f3806f"
@@ -50,30 +55,59 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { register } from "@/api/register";
 
 @Component({
   components: {}
 })
-export default class Login extends Vue {
+export default class Register extends Vue {
+  reqParam = {
+    email: "",
+    password: "",
+    registerFrom: 0,
+    mobileCode: "",
+    parentId: 0
+  };
+  alertTitle = "";
+  isAlert = false;
+
+  // 判断email
+  checkAccountEmail(email: string) {
+    let reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+    let isok = reg.test(email);
+    if (!isok) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  // 按钮触发
   buttomAction(index: number) {
-    // 1: 登入 2: 註冊
-    let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
-      HTMLDivElement
-    >;
-    for (let i = 0; i < cover.length; i++) {
-      cover[i].style.display = "block";
+    // 1: 注册 2: 登入
+    switch (index) {
+      case 1:
+        if (!this.checkAccountEmail(this.reqParam.email)) {
+          this.alertTitle = "邮箱格式不符";
+          this.isAlert = true;
+        } else {
+          register(this.reqParam)
+            .then(res => {
+              window.console.log(res);
+            })
+            .catch(err => {
+              window.console.log(err);
+            });
+        }
+        break;
+
+      default:
+        break;
     }
   }
 
   // 提示窗確認
   alertAct() {
-    let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
-      HTMLDivElement
-    >;
-    // 隱藏提示窗
-    for (let i = 0; i < cover.length; i++) {
-      cover[i].style.display = "none";
-    }
+    this.isAlert = false;
   }
 
   // 文字匡輸入
@@ -294,9 +328,5 @@ button {
   height: 0.0625rem;
   width: 100%;
   background-color: #f3806f;
-}
-
-.cover {
-  display: none;
 }
 </style>
