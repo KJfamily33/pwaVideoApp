@@ -1,14 +1,14 @@
 import request from '@/utils/request'
 
-interface lRegister {
+interface IRegister {
   email: String,
   password: String,
-  registerFrom: Number,
+  registerFrom: number,
   mobileCode: String,
-  parentId: Number
+  parentId: number
 }
 
-export const register = (params: lRegister) =>
+export const register = (params: IRegister) =>
   request({
     url: '/member/register',
     method: 'post',
