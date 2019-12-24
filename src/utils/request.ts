@@ -22,10 +22,17 @@ service.interceptors.request.use(
 // Response interceptors
 service.interceptors.response.use(
   response => {
+
     const res = response.data
-    if (res.code !== 200) {
+    if (res.status !== 200) {
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
+
+      if (response.config.url.indexOf('register') != -1) {
+      //TODO: 储存token
+      let token = response.headers.authtoken
+
+      }
       return response.data
     }
   },

@@ -4,15 +4,14 @@ interface IRegister {
   email: String,
   password: String,
   registerFrom: number,
-  mobileCode: String,
   parentId: number
 }
 
-export const register = (params: IRegister) =>
+export const register = (data: IRegister) =>
   request({
     url: '/member/register',
     method: 'post',
-    params
+    data
   })
 
 

@@ -261,8 +261,6 @@
 import { Component, Vue } from 'vue-property-decorator'
 import VideoInfoCell from '@/components/VideoInfoCell/index.vue'
 import ShareItem from '@/components/ShareItem/index.vue'
-import DPlayer from 'dplayer'
-
 @Component({
   components: {
     VideoInfoCell,
@@ -272,12 +270,12 @@ import DPlayer from 'dplayer'
 export default class VideoInfo extends Vue {
   mounted(){
     console.log('hello?')
-    const dp = new DPlayer({
-      container: document.getElementById('dplayer'),
-      video: {
-        url: 'demo.mp4',
-      },
-    });
+    // const dp = new DPlayer({
+    //   container: document.getElementById('dplayer'),
+    //   video: {
+    //     url: 'demo.mp4',
+    //   },
+    // });
   }
 
   // 點擊放大縮圖背景
