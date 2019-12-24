@@ -19,6 +19,7 @@
       <router-link to="/vHistory">vHistory</router-link>|
       <router-link to="/search">Search</router-link>|
       <router-link to="/DPlayerTest">DPlayer</router-link>|
+      <router-link to="/videoList">VideoList</router-link>
     </div>
     <router-view class="flex" name="header" />
     <router-view class="flex" />

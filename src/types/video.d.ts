@@ -1,7 +1,16 @@
 export interface IVideoInfoObj {
-  preImg: string
-  time: string
-  title: string
-  uploadDate: string
-  count: number
+
+  id: number,
+  idEncrypt: String,
+  video_path: String,
+  title: String,
+  duration: number,
+  releasedAt: String,
+  author: String,
+  playCount: number,
+  transcodeEncrypt: String,
+  isTranscoded: number,
+  transcodeResolution: number,
+  originHref: String,
+  randomVideoHref: String,
 }

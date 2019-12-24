@@ -10,7 +10,7 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // Add X-Access-Token header to every request, you can add other custom headers here
-    config.headers['Authtoken'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzY0Njc4NzgsIm5iZiI6MTU3NjQ2Nzg3OCwiZXhwIjoxNTc2NDc1MDc4LCJkYXRhIjp7InVzZXJJZCI6MzU5fX0.lFrgjVGIs9Fz9rQtrqlm7sB8BPrbUUpTJAF1xIIP0lg'
+    config.headers['Authtoken'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NzcxNzczOTAsIm5iZiI6MTU3NzE3NzM5MCwiZXhwIjoxNTc3MTg0NTkwLCJkYXRhIjp7InVzZXJJZCI6NDYxfX0.mxGQYmq-ELdSaMc0NWl3IGD2quR_wVt5d1T3zBOkeKc'
 
     return config
   },
@@ -23,7 +23,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => {
     const res = response.data
-    if (res.code !== 200) {
+    if (res.status !== 200) {
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
       return response.data

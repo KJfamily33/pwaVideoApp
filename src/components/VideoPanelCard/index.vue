@@ -1,30 +1,30 @@
 <template>
-  <a class="video-card" href="">
+  <a class="video-card" href>
     <div class="photo-panel">
       <div class="preview-card-link">
         <div>
           <div class="aspect-panel">
             <div class="aspect__spacer"></div>
             <div class="preview-card-panel">
-              <img src="holder.js/100px100py?auto=yes&text=16:9" alt="" />
+              <img :src="this.videoInfoObj.originHref" alt />
             </div>
           </div>
         </div>
         <div class="preview-card-info">
-          <div class="time-box">{{ videoInfoObj.time }}</div>
+          <div class="time-box">{{ getTime() }}</div>
         </div>
       </div>
     </div>
     <div class="context-panel">
       <div class="title">{{ videoInfoObj.title }}</div>
       <div class="info">
-        <span class="">
+        <span class>
           <svg-icon name="ic-time" width="17" height="15"></svg-icon>
-          {{ videoInfoObj.uploadDate }}
+          {{ getDate() }}
         </span>
-        <span class="">
+        <span class>
           <svg-icon name="ic-view" width="21" height="17"></svg-icon>
-          {{ videoInfoObj.count }}
+          {{ videoInfoObj.playCount }}
         </span>
       </div>
     </div>
@@ -34,29 +34,59 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Holder from 'holderjs'
-import { IVideoInfoObj } from '@/types/video'
 
 @Component
-
 export default class VideoPanelCard extends Vue {
-  @Prop({
-    default:{
-      preImg: '',
-      time: '99:99:99',
-      title: '无标题',
-      uploadDate: '1小时前',
-      count: 0,
+  @Prop() private videoInfoObj
+
+  getTime() {
+    let pad = function(num, size) {
+      return ('000' + num).slice(size * -1)
     }
-  }) private videoInfoObj!: IVideoInfoObj
+    let time = parseFloat(this.videoInfoObj.duration).toFixed(3)
+    let hours = Math.floor(time / 60 / 60)
+    let minutes = Math.floor(time / 60) % 60
+    let seconds = Math.floor(time - minutes * 60)
 
+    return pad(hours, 2) + ':' + pad(minutes, 2) + ':' + pad(seconds, 2)
+  }
 
+  getDate() {
+    let dateBegin = new Date(this.videoInfoObj.releasedAt.replace(/-/g, '/')) //将-转化为/，使用new Date
+
+    let dateEnd = new Date() //获取当前时间
+    let dateDiff = dateEnd.getTime() - dateBegin.getTime() //时间差的毫秒数
+    let dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000)) //计算出相差天数
+    let leave1 = dateDiff % (24 * 3600 * 1000) //计算天数后剩余的毫秒数
+    let hours = Math.floor(leave1 / (3600 * 1000)) //计算出小时数
+    //计算相差分钟数
+    let leave2 = leave1 % (3600 * 1000) //计算小时数后剩余的毫秒数
+    let minutes = Math.floor(leave2 / (60 * 1000)) //计算相差分钟数
+    //计算相差秒数
+    let leave3 = leave2 % (60 * 1000) //计算分钟数后剩余的毫秒数
+    let seconds = Math.round(leave3 / 1000)
+
+    if (dayDiff != 0) {
+      return dayDiff + '天前'
+    } else if (hours != 0) {
+      return hours + '小时前'
+    } else {
+      return minutes + '分钟前'
+    }
+  }
   mounted() {
-    const img = document.querySelectorAll('.preview-card-panel img') as unknown as HTMLElement
-    if (!this.videoInfoObj.preImg || this.videoInfoObj.preImg === '') {
-      Holder.run({
-        images: img,
-      })
-    }
+    // const img = (document.querySelectorAll(
+    //   ".preview-card-panel img"
+    // ) as unknown) as HTMLElement;
+    // if (!this.videoInfoObj.originHref || this.videoInfoObj.originHref === "") {
+    //   Holder.run({
+    //     images: img,
+    //   });
+    // } else {
+    //   Holder.run({
+    //     images: ,
+    //   });
+    // }
   }
 }
 </script>
@@ -163,6 +193,11 @@ export default class VideoPanelCard extends Vue {
     .title {
       font-weight: 500;
       color: #000;
+      white-space: nowrap;
+      overflow: hidden;
+      text-align: start;
+      text-overflow: ellipsis;
+      width: 100%;
     }
 
     .info {
