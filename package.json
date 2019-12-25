@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve-dev": "vue-cli-service serve --mode development",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "svg": "vsvg -s ./src/icons/svg -t ./src/icons/conpoments --ext ts --es6"
@@ -11,7 +11,6 @@
   "dependencies": {
     "@types/holderjs": "^2.9.0",
     "axios": "^0.19.0",
-    "bootstrap": "^4.3.1",
     "core-js": "^2.6.5",
     "dplayer": "^1.25.0",
     "hls.js": "^0.13.0",
