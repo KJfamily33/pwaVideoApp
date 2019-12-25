@@ -6,8 +6,9 @@ import {
   getModule,
 } from 'vuex-module-decorators'
 import store from '@/store'
-import { getToken, setToken } from '@/utils/cookies'
+import { getToken, setToken, getUserId , setUserId } from '@/utils/cookies'
 import { login } from '@/api/login'
+import {register} from '@/api/register'
 
 export interface IUserState {
   userId: number
@@ -16,7 +17,7 @@ export interface IUserState {
 
 @Module({ dynamic: true, store, name: 'login' })
 class User extends VuexModule implements IUserState {
-  public userId: number = 0
+  public userId: number = Number.parseInt(getUserId() || '0')
   public token: string = getToken() || ''
 
   @Mutation
@@ -43,6 +44,26 @@ class User extends VuexModule implements IUserState {
     const headers = res.headers
     setToken(headers.authtoken)
     this.SET_TOKEN(headers.authtoken)
+    return res
+  }
+
+  @Action({rawError : true})
+  public async Register(data:{
+    email: String,
+    password: String,
+    registerFrom: number,
+    parentId: number
+  }){
+      const res = await register(data)
+      // 储存token
+      const headers = res.headers
+      setToken(headers.authtoken)
+      this.SET_TOKEN(headers.authtoken)
+      // 储存userId
+      const info = res.data.data
+      const userId = info.userId.toString()
+      setUserId(userId)
+      this.SET_USER_ID(userId)
     return res
   }
 }

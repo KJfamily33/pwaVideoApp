@@ -73,7 +73,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { register } from '@/api/register'
+import { UserModule } from '@/store/modules/user'
 
 @Component({
   components: {},
@@ -120,10 +120,8 @@ export default class Register extends Vue {
           this.alertTitle = '密码不相同'
           this.isAlert = true
         } else {
-          register(this.reqParam)
+          UserModule.Register(this.reqParam)
             .then(res => {
-              // TODO: 储存UserID
-              let userid = res.data.userId
               this.$router.push('/videoList')
             })
             .catch(err => {

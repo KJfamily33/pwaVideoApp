@@ -22,6 +22,7 @@ service.interceptors.request.use(
 // Response interceptors
 service.interceptors.response.use(
   response => {
+    window.console.log(response)
     const res = response.data
     if (res.status !== 200) {
       return response
