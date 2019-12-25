@@ -1,41 +1,39 @@
 <template>
   <div class="body column">
-    <div class="adBanner margin-top-10 margin-bottom-12 margin-left-6 margin-right-6"></div>
+    <div
+      class="adBanner margin-top-10 margin-bottom-12 margin-left-6 margin-right-6"
+    ></div>
     <!--每日任務-->
     <IconTextWithLine></IconTextWithLine>
-    <div v-for="(e, i) in 3" :key="i" >
-        <TaskCell></TaskCell>
+    <div v-for="(e, i) in 3" :key="i">
+      <TaskCell></TaskCell>
     </div>
     <!--每週任務-->
     <IconTextWithLine></IconTextWithLine>
     <div v-for="(e, i) in 1" :key="i">
-        <TaskCell></TaskCell>
+      <TaskCell></TaskCell>
     </div>
     <!--每月任務-->
     <IconTextWithLine></IconTextWithLine>
     <div v-for="(e, i) in 1" :key="i">
-        <TaskCell></TaskCell>
+      <TaskCell></TaskCell>
     </div>
-
-
-
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import IconTextWithLine from "@/components/IconTextWithLine/index.vue";
-import TaskCell from "@/components/TaskCell/index.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import IconTextWithLine from '@/components/IconTextWithLine/index.vue'
+import TaskCell from '@/components/TaskCell/index.vue'
 
 @Component({
   components: {
     IconTextWithLine,
-    TaskCell
-  }
+    TaskCell,
+  },
 })
 export default class CurrentTask extends Vue {}
 </script>
-
 
 <style lang="scss" scoped>
 .body {

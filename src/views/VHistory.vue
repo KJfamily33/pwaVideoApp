@@ -5,8 +5,18 @@
       <svg-icon name="ic-vcoin" width="20" height="20"></svg-icon>
       <div class="money">999,999,999,999</div>
       <div class="sortIcon">
-        <svg-icon v-if="!isSort" name="ic-setting" width="20" height="29"></svg-icon>
-        <svg-icon v-if="isSort" name="ic-setting-h" width="20" height="29"></svg-icon>
+        <svg-icon
+          v-if="!isSort"
+          name="ic-setting"
+          width="20"
+          height="29"
+        ></svg-icon>
+        <svg-icon
+          v-if="isSort"
+          name="ic-setting-h"
+          width="20"
+          height="29"
+        ></svg-icon>
       </div>
     </div>
     <!--內容列-->
@@ -55,27 +65,27 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import VHistoryCell from "@/components/VHistoryCell/index.vue";
-import { VHistoryInfoObj } from "@/types/vhistory";
+import { Component, Vue } from 'vue-property-decorator'
+import VHistoryCell from '@/components/VHistoryCell/index.vue'
+import { VHistoryInfoObj } from '@/types/vhistory'
 
 @Component({
   components: {
-    VHistoryCell
-  }
+    VHistoryCell,
+  },
 })
 export default class VHistory extends Vue {
   // 是否有篩選條件 改變icon
-  private isSort = false;
+  private isSort = false
 
   private obj: VHistoryInfoObj = {
-    iconName: "每日",
-    taskTitle: "每日登陸",
-    taskContent: "每日登陆 2019-08-30",
-    timeText: "2019-08-30 01:03",
-    money: "30",
-    cost: "+"
-  };
+    iconName: '每日',
+    taskTitle: '每日登陸',
+    taskContent: '每日登陆 2019-08-30',
+    timeText: '2019-08-30 01:03',
+    money: '30',
+    cost: '+',
+  }
 }
 </script>
 <style lang="scss" scoped>

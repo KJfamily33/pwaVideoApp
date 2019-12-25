@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve-dev": "vue-cli-service serve --mode development",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "svg": "vsvg -s ./src/icons/svg -t ./src/icons/conpoments --ext ts --es6"
@@ -11,13 +11,13 @@
   "dependencies": {
     "@types/holderjs": "^2.9.0",
     "axios": "^0.19.0",
-    "bootstrap": "^4.3.1",
     "core-js": "^2.6.5",
     "dplayer": "^1.25.0",
     "hls.js": "^0.13.0",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
+    "vue-i18n": "^8.15.3",
     "vue-property-decorator": "^8.1.0",
     "vue-router": "^3.0.3",
     "vue-svgicon": "^3.2.6",
@@ -34,6 +34,7 @@
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/eslint-config-typescript": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "common": "^0.2.5",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",

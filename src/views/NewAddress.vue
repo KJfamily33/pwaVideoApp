@@ -2,24 +2,34 @@
   <div class="background">
     <div class="cover-panel">
       <div class="content">
-        <p class="text title" style="color: #f3806f;font-weight: 500;">用户最新地址</p>
+        <p class="text title" style="color: #f3806f;font-weight: 500;">
+          用户最新地址
+        </p>
         <div class="row">
           <div class="colum">
             <NewAddressBtn></NewAddressBtn>
-          <NewAddressBtn></NewAddressBtn>
-          <NewAddressBtn></NewAddressBtn>
-          <NewAddressBtn></NewAddressBtn>
-          <NewAddressBtn></NewAddressBtn>
-          <NewAddressBtn></NewAddressBtn>
+            <NewAddressBtn></NewAddressBtn>
+            <NewAddressBtn></NewAddressBtn>
+            <NewAddressBtn></NewAddressBtn>
+            <NewAddressBtn></NewAddressBtn>
+            <NewAddressBtn></NewAddressBtn>
           </div>
         </div>
         <div class="isandroid">
           <div class="android">
             <svg-icon name="ic-applogo" width="60" height="60"></svg-icon>
-          <span class="text" style="font-size: 0.875rem;
-  font-weight: 300;">V2视频</span>
-  <span class="text" style="font-size: 1rem;
-  font-weight: 500;">安卓最佳体验</span>
+            <span
+              class="text"
+              style="font-size: 0.875rem;
+  font-weight: 300;"
+              >V2视频</span
+            >
+            <span
+              class="text"
+              style="font-size: 1rem;
+  font-weight: 500;"
+              >安卓最佳体验</span
+            >
           </div>
         </div>
       </div>
@@ -28,22 +38,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import NewAddressBtn from "@/components/NewAddressBtn/index.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import NewAddressBtn from '@/components/NewAddressBtn/index.vue'
 
 @Component({
   components: {
-    NewAddressBtn
-  }
+    NewAddressBtn,
+  },
 })
 export default class NewAddress extends Vue {}
 </script>
 
-
 <style scoped lang="scss">
 .background {
   height: 100%;
-  background-image: url("../assets/bg-new_address.jpg");
+  background-image: url('../assets/bg-new_address.jpg');
   background-size: cover;
   background-position-x: center;
 }
@@ -94,7 +103,7 @@ export default class NewAddress extends Vue {}
   position: absolute;
   bottom: 1.875rem;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
 
 .android {
@@ -103,7 +112,6 @@ export default class NewAddress extends Vue {}
   flex-basis: 100%;
   flex: 1;
   align-items: center;
-
 }
 
 .isandroid svg {

@@ -1,18 +1,12 @@
 <template>
-	<div class="">
-
-	</div>
+  <div class=""></div>
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 
-    @Component({
-        components: {
-
-        },
-    })
-    export default class Example extends Vue {
-
-    }
+@Component({
+  components: {},
+})
+export default class Example extends Vue {}
 </script>

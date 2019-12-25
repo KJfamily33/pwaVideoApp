@@ -9,6 +9,7 @@
         id="account"
         placeholder="输入邮箱地址"
         @input="changeText"
+        v-model="reqParam.email"
       />
       <!--輸入匡- 密碼-->
       <input
@@ -16,10 +17,11 @@
         type="password"
         name="password"
         id="password"
-        placeholder="输入会员密码"
+        placeholder="输入会员密码(最少八位数)"
         @input="changeText"
+        v-model="reqParam.password"
       />
-       <!--輸入匡- 再次輸入密碼-->
+      <!--輸入匡- 再次輸入密碼-->
       <input
         class="width-80pa color-f3806f text-14-300 margin-bottom-30"
         type="password"
@@ -27,21 +29,42 @@
         id="repassword"
         placeholder="再输入一次会员密码"
         @input="changeText"
+        v-model="rePassword"
       />
       <!--按鈕 登入-->
-      <button id="login" class="login" @click="buttomAction(1)" disabled="disabled">注册</button>
-      <button id="register" class="register width-80pa" @click="buttomAction(2)">已有帐号？前往登入</button>
+      <button
+        id="login"
+        class="login"
+        @click="buttomAction(1)"
+        disabled="disabled"
+      >
+        注册
+      </button>
+      <button
+        id="register"
+        class="register width-80pa"
+        @click="buttomAction(2)"
+      >
+        已有帐号？前往登入
+      </button>
 
       <!--提示窗-->
-      <div class="cover coverbg"></div>
-      <div class="cover coverContent">
+      <div v-if="isAlert" class="coverbg"></div>
+      <div v-if="isAlert" class="coverContent">
         <div class="covertypesetting">
-          <div class="flex-center text text-25 text-500 color-f3806f" style="flex:3">帐号或密码错误</div>
+          <div
+            class="flex-center text text-25 text-500 color-f3806f"
+            style="flex:3"
+          >
+            {{ alertTitle }}
+          </div>
           <div class="line"></div>
           <div
             class="coverbutton flex-center text text-20 text-500 color-f3806f"
             @click="alertAct"
-          >确定</div>
+          >
+            确定
+          </div>
         </div>
       </div>
     </div>
@@ -49,51 +72,95 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
+import { UserModule } from '@/store/modules/user'
 
 @Component({
-  components: {}
+  components: {},
 })
-export default class User extends Vue {
+export default class Register extends Vue {
+  reqParam = {
+    email: '',
+    password: '',
+    registerFrom: 3,
+    parentId: 0,
+  }
+  alertTitle = ''
+  isAlert = false
+  rePassword = ''
+
+  // 判断email
+  checkAccountEmail() {
+    let reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
+    let isok = reg.test(this.reqParam.email)
+    if (!isok) {
+      return false
+    } else {
+      return true
+    }
+  }
+
+  // 判断密码与再次输入
+  checkPasswordisSame() {
+    let isSame = false
+    if (this.rePassword === this.reqParam.password) {
+      isSame = true
+    }
+    return isSame
+  }
+  // 按钮触发
   buttomAction(index: number) {
-    // 1: 登入 2: 註冊
-    let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
-      HTMLDivElement
-    >;
-    for (let i = 0; i < cover.length; i++) {
-      cover[i].style.display = "block";
+    // 1: 注册 2: 登入
+    switch (index) {
+      case 1:
+        if (!this.checkAccountEmail()) {
+          this.alertTitle = '邮箱格式不符'
+          this.isAlert = true
+        } else if (!this.checkPasswordisSame()) {
+          this.alertTitle = '密码不相同'
+          this.isAlert = true
+        } else {
+          UserModule.Register(this.reqParam)
+            .then(res => {
+              this.$router.push('/videoList')
+            })
+            .catch(err => {
+              this.alertTitle = err
+              this.isAlert = true
+            })
+        }
+        break
+      case 2:
+        this.$router.push('/login')
+        break
+      default:
+        break
     }
   }
 
   // 提示窗確認
   alertAct() {
-    let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
-      HTMLDivElement
-    >;
-    // 隱藏提示窗
-    for (let i = 0; i < cover.length; i++) {
-      cover[i].style.display = "none";
-    }
+    this.isAlert = false
   }
 
   // 文字匡輸入
   changeText() {
-    let acInput = document.getElementById("account") as HTMLInputElement;
-    let psInput = document.getElementById("password") as HTMLInputElement;
-    let repsInput = document.getElementById("repassword") as HTMLInputElement;
-    let button = document.getElementById("login") as HTMLButtonElement;
-    let acText = acInput.value;
-    let psText = psInput.value;
-    let repsText = repsInput.value;
+    let acInput = document.getElementById('account') as HTMLInputElement
+    let psInput = document.getElementById('password') as HTMLInputElement
+    let repsInput = document.getElementById('repassword') as HTMLInputElement
+    let button = document.getElementById('login') as HTMLButtonElement
+    let acText = acInput.value
+    let psText = psInput.value
+    let repsText = repsInput.value
     // 帳號有輸入並且密碼>7位
     if (acText.length > 0 && psText.length > 7 && repsText.length > 7) {
-      button.disabled = false;
-      button.classList.remove("login");
-      button.classList.add("isLogin");
+      button.disabled = false
+      button.classList.remove('login')
+      button.classList.add('isLogin')
     } else {
-      button.disabled = true;
-      button.classList.add("login");
-      button.classList.remove("isLogin");
+      button.disabled = true
+      button.classList.add('login')
+      button.classList.remove('isLogin')
     }
   }
 }
@@ -103,7 +170,7 @@ export default class User extends Vue {
 // 背景圖
 .picture {
   height: 100%;
-  background-image: url("../assets/register_bg.jpg");
+  background-image: url('../assets/register_bg.jpg');
   background-size: cover;
   background-position-x: center;
 }
@@ -294,9 +361,5 @@ button {
   height: 0.0625rem;
   width: 100%;
   background-color: #f3806f;
-}
-
-.cover {
-  display: none;
 }
 </style>

@@ -2354,6 +2354,11 @@ common-tags@^1.4.0:
   resolved "https://registry.yarnpkg.com/common-tags/-/common-tags-1.8.0.tgz#8e3153e542d4a39e9b10554434afaaf98956a937"
   integrity sha512-6P6g0uetGpW/sdyUy/iQQCbFF0kWVMSIVSyYz7Zgjcgh8mgw8PQzDNZeyZ5DQ2gM7LBoZPHmnjz8rUthkBG5tw==
 
+common@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/common/-/common-0.2.5.tgz#3c7182f678bd1e3681cd5cc348c759fe8dd22394"
+  integrity sha1-PHGC9ni9HjaBzVzDSMdZ/o3SI5Q=
+
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
@@ -8871,6 +8876,11 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.3.tgz#2756f46cb3258054c5f4723de8ae7e87302a1ccf"
   integrity sha512-KmvZVtmM26BQOMK1rwUZsrqxEGeKiYSZGA7SNWE6uExx8UX/cj9hq2MRV/wWC3Cq6AoeDGk57rL9YMFRel/q+g==
+
+vue-i18n@^8.15.3:
+  version "8.15.3"
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.15.3.tgz#9f947802d9b734fcb92e2ce724da654f2f9fc0f4"
+  integrity sha512-PVNgo6yhOmacZVFjSapZ314oewwLyXHjJwAqjnaPN1GJAJd/dvsrShGzSiJuCX4Hc36G4epJvNXUwO8y7wEKew==
 
 vue-loader@^15.7.0:
   version "15.7.1"

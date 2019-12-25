@@ -1,7 +1,13 @@
 import request from '@/utils/request'
-export const login = (params: any) =>
+
+interface ILogin {
+  username: string
+  password: string
+}
+
+export const login = (data: ILogin) =>
   request({
     url: '/member/login',
     method: 'post',
-    params,
+    data,
   })

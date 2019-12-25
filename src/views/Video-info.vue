@@ -261,7 +261,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import VideoInfoCell from '@/components/VideoInfoCell/index.vue'
 import ShareItem from '@/components/ShareItem/index.vue'
-import DPlayer from 'dplayer'
+
 
 @Component({
   components: {
@@ -270,19 +270,21 @@ import DPlayer from 'dplayer'
   },
 })
 export default class VideoInfo extends Vue {
-  mounted(){
+  mounted() {
     console.log('hello?')
-    const dp = new DPlayer({
-      container: document.getElementById('dplayer'),
-      video: {
-        url: 'demo.mp4',
-      },
-    });
+    // const dp = new DPlayer({
+    //   container: document.getElementById('dplayer'),
+    //   video: {
+    //     url: 'demo.mp4',
+    //   },
+    // })
   }
 
   // 點擊放大縮圖背景
   closeCover() {
-    let cover = document.getElementsByClassName('cover') as HTMLCollectionOf<HTMLDivElement>
+    let cover = document.getElementsByClassName('cover') as HTMLCollectionOf<
+      HTMLDivElement
+    >
     for (let i = 0; i < cover.length; i++) {
       cover[i].style.display = 'none'
     }
@@ -290,7 +292,9 @@ export default class VideoInfo extends Vue {
 
   // 點擊縮圖
   showPicture() {
-    let cover = document.getElementsByClassName('cover') as HTMLCollectionOf<HTMLDivElement>
+    let cover = document.getElementsByClassName('cover') as HTMLCollectionOf<
+      HTMLDivElement
+    >
     for (let i = 0; i < cover.length; i++) {
       cover[i].style.display = 'flex'
     }
@@ -298,7 +302,9 @@ export default class VideoInfo extends Vue {
 
   // 縮圖與標籤 展開與縮起
   updown() {
-    let scroll = document.getElementsByClassName('scroll') as HTMLCollectionOf<HTMLDivElement>
+    let scroll = document.getElementsByClassName('scroll') as HTMLCollectionOf<
+      HTMLDivElement
+    >
     let icUp = document.getElementById('ic-up') as HTMLElement
     let icDown = document.getElementById('ic-down') as HTMLElement
 

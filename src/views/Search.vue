@@ -17,7 +17,7 @@
       <div>reee</div>
       <div>sdfasdfasdfasdfa</div>
     </div>
-    <div  v-if="isSearch" class="scroll">
+    <div v-if="isSearch" class="scroll">
       <div>ad</div>
       <div class="cell" v-for="(e, i) in 12" :key="i">
         <video-card></video-card>
@@ -27,20 +27,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import SearchHotCell from "@/components/SearchHotCell/index.vue";
-import VideoCard from "@/components/VideoPanelCard/index.vue";
-import AdBanner from "@/components/AdBanner/index.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import SearchHotCell from '@/components/SearchHotCell/index.vue'
+import VideoCard from '@/components/VideoPanelCard/index.vue'
+import AdBanner from '@/components/AdBanner/index.vue'
 
 @Component({
   components: {
     SearchHotCell,
     VideoCard,
-    AdBanner
-  }
+    AdBanner,
+  },
 })
 export default class Search extends Vue {
-  private isSearch = false;
+  private isSearch = false
 }
 </script>
 <style lang="scss" scoped>

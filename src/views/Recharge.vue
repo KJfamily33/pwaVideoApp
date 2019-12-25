@@ -6,10 +6,19 @@
         <a class="text-13-300">限时优惠中</a>
       </a>
     </div>
-    <div class="text margin-top15 margin-bottom5 text-color-f3806f text-16-300">专享高速播放通道 每日激情无限看</div>
+    <div class="text margin-top15 margin-bottom5 text-color-f3806f text-16-300">
+      专享高速播放通道 每日激情无限看
+    </div>
     <!--一個月-->
     <label class="opction" for="radio1">
-      <input type="radio" id="radio1" name="radio" checked="checked" class="margin-left15" @click="selectedRechargeMoney('100元')"/>
+      <input
+        type="radio"
+        id="radio1"
+        name="radio"
+        checked="checked"
+        class="margin-left15"
+        @click="selectedRechargeMoney('100元')"
+      />
       <label class="column" for="radio1">
         <div class="text-15-300 text text-color-f3806f">1个月</div>
       </label>
@@ -21,8 +30,14 @@
       </label>
     </label>
     <!--三個月-->
-    <label class="opction" for="radio2" >
-      <input type="radio" id="radio2" name="radio" class="margin-left15" @click="selectedRechargeMoney('200元')"/>
+    <label class="opction" for="radio2">
+      <input
+        type="radio"
+        id="radio2"
+        name="radio"
+        class="margin-left15"
+        @click="selectedRechargeMoney('200元')"
+      />
       <label class="column" for="radio2">
         <div class="text-15-300 text text-color-f3806f">3个月</div>
       </label>
@@ -34,8 +49,14 @@
       </label>
     </label>
     <!--六個月-->
-    <label class="opction" for="radio3" >
-      <input type="radio" id="radio3" name="radio" class="margin-left15" @click="selectedRechargeMoney('300元')"/>
+    <label class="opction" for="radio3">
+      <input
+        type="radio"
+        id="radio3"
+        name="radio"
+        class="margin-left15"
+        @click="selectedRechargeMoney('300元')"
+      />
       <label class="column" for="radio3">
         <div class="text-15-300 text text-color-f3806f">6个月</div>
       </label>
@@ -47,8 +68,14 @@
       </label>
     </label>
     <!--十二個月-->
-    <label class="opction" for="radio4" >
-      <input type="radio" id="radio4" name="radio" class="margin-left15" @click="selectedRechargeMoney('500元')"/>
+    <label class="opction" for="radio4">
+      <input
+        type="radio"
+        id="radio4"
+        name="radio"
+        class="margin-left15"
+        @click="selectedRechargeMoney('500元')"
+      />
       <label class="column" for="radio4">
         <div class="text-15-300 text text-color-f3806f">12个月</div>
       </label>
@@ -69,19 +96,28 @@
       <!--標題-->
       <div class="title" style="margin-top: 10px;">
         <div class="column">
-          <a class="text text-color-f3806f text-16-300" @click="closeRecharge">取消</a>
+          <a class="text text-color-f3806f text-16-300" @click="closeRecharge"
+            >取消</a
+          >
         </div>
         <div class="column">
           <div id="money" class="text text-20-500 text-color-6a6a6a">100元</div>
         </div>
         <div class="column">
-          <div class="text text-color-f3806f text-16-500" @click="closeRecharge">支付</div>
+          <div
+            class="text text-color-f3806f text-16-500"
+            @click="closeRecharge"
+          >
+            支付
+          </div>
         </div>
       </div>
       <!--線-->
       <div class="line"></div>
       <!--支付方式text-->
-      <div class="text text-color-f3806f text-15-500 margin-bottom10">支付方式</div>
+      <div class="text text-color-f3806f text-15-500 margin-bottom10">
+        支付方式
+      </div>
       <div class="row-wap overflow">
         <div class="isbox">
           <div class="checkbox"></div>
@@ -95,35 +131,35 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
-  components: {}
+  components: {},
 })
 export default class Recharge extends Vue {
   // 選擇充值渠道
   gotoRecharge() {
-    var elements = document.getElementsByClassName("hide") as HTMLCollectionOf<
+    var elements = document.getElementsByClassName('hide') as HTMLCollectionOf<
       HTMLElement
-    >;
+    >
     for (var i = 0; i < elements.length; i++) {
-      elements[i].style.display = "block";
+      elements[i].style.display = 'block'
     }
   }
   // 關閉充值渠道
   closeRecharge() {
-    var elements = document.getElementsByClassName("hide") as HTMLCollectionOf<
+    var elements = document.getElementsByClassName('hide') as HTMLCollectionOf<
       HTMLElement
-    >;
+    >
     for (var i = 0; i < elements.length; i++) {
-      elements[i].style.display = "none";
+      elements[i].style.display = 'none'
     }
   }
 
   // 選擇充值金額
   selectedRechargeMoney(radioName: string) {
-    var money = document.getElementById('money') as HTMLElement;
-    money.innerText = radioName;
+    var money = document.getElementById('money') as HTMLElement
+    money.innerText = radioName
   }
 }
 </script>
@@ -199,7 +235,7 @@ export default class Recharge extends Vue {
 }
 
 // 選單
-input[type="radio"] {
+input[type='radio'] {
   outline: none;
   /* remove standard background appearance */
   -webkit-appearance: none;
@@ -214,7 +250,7 @@ input[type="radio"] {
 }
 
 // 選單選擇後
-input[type="radio"]:checked {
+input[type='radio']:checked {
   background-color: #fb6f9d;
 }
 
@@ -336,7 +372,8 @@ button {
   border-width: 1px;
   border-image-source: linear-gradient(to bottom, #fa7098, #f37f71);
   border-image-slice: 1;
-  background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(to bottom, #fa7098, #f37f71);
+  background-image: linear-gradient(to bottom, #ffffff, #ffffff),
+    linear-gradient(to bottom, #fa7098, #f37f71);
   background-origin: border-box;
   background-clip: content-box, border-box;
   display: flex;
@@ -348,7 +385,7 @@ button {
   height: 14px;
   background-image: linear-gradient(to bottom, #fb6f9d, #f3806f);
   border-radius: 50%;
-  margin-left: 8px
+  margin-left: 8px;
 }
 
 .box {

@@ -46,19 +46,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import StroeApp from "@/components/StoreApp/index.vue";
-import StroeApplication from "@/components/StoreApplication/index.vue";
+import { Component, Vue } from 'vue-property-decorator'
+import StroeApp from '@/components/StoreApp/index.vue'
+import StroeApplication from '@/components/StoreApplication/index.vue'
 
 @Component({
   components: {
     StroeApp,
-    StroeApplication
-  }
+    StroeApplication,
+  },
 })
 export default class Store extends Vue {}
 </script>
-
 
 <style lang="scss" scoped>
 .body {
@@ -98,8 +97,6 @@ export default class Store extends Vue {}
   align-items: center;
   justify-content: flex-start;
 }
-
-
 
 .margin-top-5 {
   margin-top: 5px;
@@ -190,6 +187,4 @@ export default class Store extends Vue {}
   border-radius: 0.25rem;
   background-color: red;
 }
-
-
 </style>

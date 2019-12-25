@@ -12,7 +12,7 @@
       <router-link to="/ChangeCode">ChangeCode</router-link>|
       <router-link to="/store">Store</router-link>|
       <router-link to="/register">Register</router-link>|
-      <router-link to="/login">User</router-link>|
+      <router-link to="/login">Login</router-link>|
       <router-link to="/video-info">Video-Info</router-link>|
       <router-link to="/currentTask">CurrentTask</router-link>|
       <router-link to="/changeVip">ChangeVIP</router-link>|

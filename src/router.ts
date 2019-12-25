@@ -19,7 +19,6 @@ import VideoInfo from './views/Video-info.vue'
 import ChangeVIP from './views/ChangeVIP.vue'
 import vHistory from './views/VHistory.vue'
 import Search from './views/Search.vue'
-// import DPlayerTest from './views/DPlayerTest.vue'
 
 Vue.use(Router)
 
@@ -67,7 +66,7 @@ export default new Router({
     },
     {
       path: '/videoList',
-      name: 'video',
+      name: 'videoList',
       component: () => import('./views/VideoListPage.vue'),
     },
     {
@@ -184,14 +183,6 @@ export default new Router({
         default: Search,
         header: HeaderBar,
       },
-    },
-    // {
-    //   path: '/DPlayerTest',
-    //   name: 'DPlayerTest',
-    //   components: {
-    //     default: DPlayerTest,
-    //     header: HeaderBar,
-    //   },
-    // },
+    }
   ],
 })
