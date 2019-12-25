@@ -1,5 +1,5 @@
 <template>
-  <a class="video-card" href>
+  <a class="video-card" href @click="clickCard(videoInfoObj)">
     <div class="photo-panel">
       <div class="preview-card-link">
         <div>
@@ -73,6 +73,10 @@ export default class VideoPanelCard extends Vue {
     } else {
       return minutes + '分钟前'
     }
+  }
+
+  clickCard(data) {
+    this.$router.push({name:'/video-info', params:{data}})
   }
   mounted() {
     // const img = (document.querySelectorAll(
