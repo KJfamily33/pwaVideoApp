@@ -19,6 +19,7 @@ import VideoInfo from './views/Video-info.vue'
 import ChangeVIP from './views/ChangeVIP.vue'
 import vHistory from './views/VHistory.vue'
 import Search from './views/Search.vue'
+import DPlayerTest from './views/DPlayerTest.vue'
 
 Vue.use(Router)
 
@@ -42,8 +43,6 @@ export default new Router({
       components: {
         default: NewAddress,
         header: HeaderBar,
-
-
       },
     },
     {
@@ -53,7 +52,7 @@ export default new Router({
         default: Profile,
         header: HeaderBar,
         footer: FooterBar,
-      }
+      },
     },
     {
       path: '/about',
@@ -64,12 +63,11 @@ export default new Router({
       components: {
         default: About,
         header: HeaderBar,
-
       },
     },
     {
       path: '/videoList',
-      name: 'video',
+      name: 'videoList',
       component: () => import('./views/VideoListPage.vue'),
     },
     {
@@ -87,17 +85,16 @@ export default new Router({
       name: 'register',
       components: {
         default: Register,
-        header: HeaderBar
+        header: HeaderBar,
       },
     },
     {
-
       path: '/Recharge',
       name: 'recharge',
       components: {
         default: Recharge,
-        header: HeaderBar
-      }
+        header: HeaderBar,
+      },
     },
     {
       path: '/vip-description',
@@ -105,16 +102,15 @@ export default new Router({
       components: {
         default: Description,
 
-        header: HeaderBar
+        header: HeaderBar,
       },
     },
     {
-
       path: '/share',
       name: 'share',
       components: {
         default: Share,
-        header: HeaderBar
+        header: HeaderBar,
       },
     },
     {
@@ -122,7 +118,7 @@ export default new Router({
       name: 'v-coin-description',
       components: {
         default: VcoinDescription,
-        header: HeaderBar
+        header: HeaderBar,
       },
     },
     {
@@ -131,7 +127,7 @@ export default new Router({
       components: {
         default: ChangeCode,
 
-        header: HeaderBar
+        header: HeaderBar,
       },
     },
     {
@@ -139,7 +135,7 @@ export default new Router({
       name: 'store',
       components: {
         default: Store,
-        header: HeaderBar
+        header: HeaderBar,
       },
     },
     {
@@ -147,7 +143,6 @@ export default new Router({
       name: 'login',
       components: {
         default: Login,
-        header: HeaderBar
       },
     },
     {
@@ -155,7 +150,7 @@ export default new Router({
       name: '/video-info',
       components: {
         default: VideoInfo,
-        header: HeaderBar
+        header: HeaderBar,
       },
     },
     {
@@ -163,7 +158,7 @@ export default new Router({
       name: 'currentTask',
       components: {
         default: CurrentTask,
-        header: HeaderBar
+        header: HeaderBar,
       },
     },
     {
@@ -171,7 +166,7 @@ export default new Router({
       name: 'changevip',
       components: {
         default: ChangeVIP,
-        header: HeaderBar
+        header: HeaderBar,
       },
     },
     {
@@ -179,7 +174,7 @@ export default new Router({
       name: 'vhistory',
       components: {
         default: vHistory,
-        header: HeaderBar
+        header: HeaderBar,
       },
     },
     {
@@ -187,9 +182,16 @@ export default new Router({
       name: 'search',
       components: {
         default: Search,
-        header: HeaderBar
+        header: HeaderBar,
       },
-    }
-
+    },
+    {
+      path: '/DPlayerTest',
+      name: 'DPlayerTest',
+      components: {
+        default: DPlayerTest,
+        header: HeaderBar,
+      },
+    },
   ],
 })

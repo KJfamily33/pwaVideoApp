@@ -5,7 +5,9 @@
     <ChangeVIPPicture :obj="objs[0]"></ChangeVIPPicture>
     <!--下方橫幅-->
     <div class="inLine-Content margin-bottom-10">
-      <div class="inLine row padding-left-10 padding-right-10 flex-align-center">
+      <div
+        class="inLine row padding-left-10 padding-right-10 flex-align-center"
+      >
         <div class="column flex-3">
           <div
             class="text text-color-f3806f text-size-20 text-weight-300 text-align-start text-wrap"
@@ -15,10 +17,18 @@
           </div>
         </div>
         <div class="column flex-1 margin-left-10 margin-right-10">
-          <button class="change text text-size-8 text-weight-300 text-color-ffffff">无法兑换</button>
+          <button
+            class="change text text-size-8 text-weight-300 text-color-ffffff"
+          >
+            无法兑换
+          </button>
         </div>
         <div class="column flex-1">
-          <button class="buy text text-size-8 text-weight-300 text-color-f3806f">直接购买</button>
+          <button
+            class="buy text text-size-8 text-weight-300 text-color-f3806f"
+          >
+            直接购买
+          </button>
         </div>
       </div>
     </div>
@@ -26,110 +36,134 @@
     <!--提示窗-->
     <div class="cover coverbg"></div>
     <!--提示窗 兌換-->
-    <div class="cover column coverContent flex-align-center flex-justify-center">
+    <div
+      class="cover column coverContent flex-align-center flex-justify-center"
+    >
       <div
         class="margin-top-26 margin-bottom-20 text text-size-25 text-weight-500 text-color-f3806f"
-      >兑换7天VIP</div>
+      >
+        兑换7天VIP
+      </div>
       <div class="margin-bottom-24 row flex-align-center flex-justify-center">
         <svg-icon name="ic-less" width="20" height="20"></svg-icon>
         <div
           class="margin-left-20 margin-right-6 text text-size-23 text-weight-300 text-color-f3806f"
-        >0</div>
-        <div class="margin-right-20 text text-size-28 text-weight-300 text-color-f5f5f5">个</div>
+        >
+          0
+        </div>
+        <div
+          class="margin-right-20 text text-size-28 text-weight-300 text-color-f5f5f5"
+        >
+          个
+        </div>
         <svg-icon name="ic-add-h" width="20" height="20"></svg-icon>
       </div>
       <div class="line"></div>
       <div class="row  width-100pa">
         <div class="column flex-1 margin-bottom-15 margin-top-15">
-          <div class="text text-size-20 text-weight-300 text-color-f3806f">取消</div>
+          <div class="text text-size-20 text-weight-300 text-color-f3806f">
+            取消
+          </div>
         </div>
         <div class="column ">
           <div class="vline"></div>
         </div>
         <div class="column flex-1 margin-bottom-15 margin-top-15">
-          <div class="text text-size-20 text-weight-500 text-color-f3806f">确定</div>
+          <div class="text text-size-20 text-weight-500 text-color-f3806f">
+            确定
+          </div>
         </div>
       </div>
     </div>
 
     <!--提示窗 兌換成功-->
-    <div class="cover column coverContent flex-align-center flex-justify-center">
-      <div class="text text-size-25 text-weight-500 text-color-f3806f margin-top-46 margin-bottom-46">兑换成功</div>
+    <div
+      class="cover column coverContent flex-align-center flex-justify-center"
+    >
+      <div
+        class="text text-size-25 text-weight-500 text-color-f3806f margin-top-46 margin-bottom-46"
+      >
+        兑换成功
+      </div>
       <div class="line"></div>
-      <div class="margin-top-15 margin-bottom-15 text text-size-20 text-weight-500 text-color-f3806f width-100pa">确定</div>
+      <div
+        class="margin-top-15 margin-bottom-15 text text-size-20 text-weight-500 text-color-f3806f width-100pa"
+      >
+        确定
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import ChangeVIPPicture from "@/components/ChangeVIPPicture/index.vue";
-import { ChangeVIPObj } from "@/types/changeVip";
+import { Component, Vue } from 'vue-property-decorator'
+import ChangeVIPPicture from '@/components/ChangeVIPPicture/index.vue'
+import { ChangeVIPObj } from '@/types/changeVip'
 
 @Component({
   components: {
-    ChangeVIPPicture
-  }
+    ChangeVIPPicture,
+  },
 })
 export default class ChangeVIP extends Vue {
   private objs: Array<ChangeVIPObj> = [
     {
-      icon: "",
-      firstText: "每3500V币",
-      secText: "可兑换为7天VIP",
-      thirdText: "",
+      icon: '',
+      firstText: '每3500V币',
+      secText: '可兑换为7天VIP',
+      thirdText: '',
       index: 1,
-      bgLink: "changeVip1"
+      bgLink: 'changeVip1',
     },
     {
-      icon: "ic-noad",
-      firstText: "屏蔽广告",
-      secText: "无广告,观看无干扰",
-      thirdText: "畅快享受视频冲击, 不再被广告中断视频",
+      icon: 'ic-noad',
+      firstText: '屏蔽广告',
+      secText: '无广告,观看无干扰',
+      thirdText: '畅快享受视频冲击, 不再被广告中断视频',
       index: 2,
-      bgLink: "changeVip2"
+      bgLink: 'changeVip2',
     },
     {
-      icon: "ic-speedplay",
-      firstText: "极速拨放",
-      secText: "观看更快,体验更爽",
-      thirdText: "为您特别打造通道, 不被抢网速观看视频不卡顿",
+      icon: 'ic-speedplay',
+      firstText: '极速拨放',
+      secText: '观看更快,体验更爽',
+      thirdText: '为您特别打造通道, 不被抢网速观看视频不卡顿',
       index: 3,
-      bgLink: "changeVip3"
+      bgLink: 'changeVip3',
     },
     {
-      icon: "ic-download",
-      firstText: "无限下载",
-      secText: "免费下载,保存到本地",
-      thirdText: "容量多大就存多少视频,免费收藏视频, 无需担心片源消失。",
+      icon: 'ic-download',
+      firstText: '无限下载',
+      secText: '免费下载,保存到本地',
+      thirdText: '容量多大就存多少视频,免费收藏视频, 无需担心片源消失。',
       index: 2,
-      bgLink: "changeVip4"
+      bgLink: 'changeVip4',
     },
     {
-      icon: "ic-fullhd",
-      firstText: "清晰无码",
-      secText: "海量视频,全部无码",
-      thirdText: "原始承现视频内容, 看到喊不要",
+      icon: 'ic-fullhd',
+      firstText: '清晰无码',
+      secText: '海量视频,全部无码',
+      thirdText: '原始承现视频内容, 看到喊不要',
       index: 3,
-      bgLink: "changeVip5"
+      bgLink: 'changeVip5',
     },
     {
-      icon: "ic-allscreen",
-      firstText: "多屏共享",
-      secText: "移动PC端会员权益",
-      thirdText: "单一帐号，各平台权益共享",
+      icon: 'ic-allscreen',
+      firstText: '多屏共享',
+      secText: '移动PC端会员权益',
+      thirdText: '单一帐号，各平台权益共享',
       index: 2,
-      bgLink: "changeVip6"
+      bgLink: 'changeVip6',
     },
     {
-      icon: "ic-vipstemp",
-      firstText: "尊贵徽章",
-      secText: "尊贵身份,如影随形",
-      thirdText: "高上大象徵，受人景仰",
+      icon: 'ic-vipstemp',
+      firstText: '尊贵徽章',
+      secText: '尊贵身份,如影随形',
+      thirdText: '高上大象徵，受人景仰',
       index: 3,
-      bgLink: "changeVip7"
-    }
-  ];
+      bgLink: 'changeVip7',
+    },
+  ]
 }
 </script>
 <style lang="scss" scoped>
@@ -373,11 +407,9 @@ export default class ChangeVIP extends Vue {
 }
 
 .vline {
-
   width: 0.0625rem;
   height: 100%;
   background-color: #f3806f;
-
 }
 
 .cover {

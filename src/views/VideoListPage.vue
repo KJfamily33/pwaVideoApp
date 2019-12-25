@@ -12,13 +12,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import VideoCard from '@/components/VideoPanelCard/index.vue'
-import AdBanner from "@/components/AdBanner/index.vue";
+import AdBanner from '@/components/AdBanner/index.vue'
 import { IVideoInfoObj } from '@/types/video'
 
 @Component({
   components: {
     VideoCard,
-    AdBanner
+    AdBanner,
   },
 })
 export default class VideoListPage extends Vue {
@@ -41,7 +41,7 @@ export default class VideoListPage extends Vue {
   margin: 10px 0px;
 }
 
-  .video-list {
-    margin: 8px;
-  }
+.video-list {
+  margin: 8px;
+}
 </style>

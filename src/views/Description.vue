@@ -11,16 +11,27 @@
         <div class="text">什么是VIP</div>
       </div>
       <div class="column">
-        <svg-icon id="oneDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
-        <svg-icon id="oneUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+        <svg-icon
+          id="oneDown"
+          name="ic-down"
+          width="10"
+          height="6"
+          class="downicon"
+        ></svg-icon>
+        <svg-icon
+          id="oneUp"
+          name="ic-up"
+          width="10"
+          height="6"
+          class="upicon"
+        ></svg-icon>
       </div>
     </div>
     <div
       id="one"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
     >
-      VIP的有效期内，可无限观看，无限下载包括AV影院在内的
-      全部视频！
+      VIP的有效期内，可无限观看，无限下载包括AV影院在内的 全部视频！
       <br />
       <br />适用于V2视频相关平台，后续将扩大至其他平台
       <br />（后续将再行公布）。
@@ -34,8 +45,20 @@
         <div class="text">如何获得VIP</div>
       </div>
       <div class="column">
-        <svg-icon id="twoDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
-        <svg-icon id="twoUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+        <svg-icon
+          id="twoDown"
+          name="ic-down"
+          width="10"
+          height="6"
+          class="downicon"
+        ></svg-icon>
+        <svg-icon
+          id="twoUp"
+          name="ic-up"
+          width="10"
+          height="6"
+          class="upicon"
+        ></svg-icon>
       </div>
     </div>
     <div
@@ -55,14 +78,28 @@
         <div class="text">如何查询VIP</div>
       </div>
       <div class="column">
-        <svg-icon id="thirdDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
-        <svg-icon id="thirdUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+        <svg-icon
+          id="thirdDown"
+          name="ic-down"
+          width="10"
+          height="6"
+          class="downicon"
+        ></svg-icon>
+        <svg-icon
+          id="thirdUp"
+          name="ic-up"
+          width="10"
+          height="6"
+          class="upicon"
+        ></svg-icon>
       </div>
     </div>
     <div
       id="third"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
-    >登入后至『个人』, 即可得知VIP到期日期。</div>
+    >
+      登入后至『个人』, 即可得知VIP到期日期。
+    </div>
     <!--第四列-->
     <div id="fourtitle" class="title margin-bottom-5" @click="show('four')">
       <div class="column">
@@ -72,8 +109,20 @@
         <div class="text">VIP使用期限</div>
       </div>
       <div class="column">
-        <svg-icon id="fourDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
-        <svg-icon id="fourUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+        <svg-icon
+          id="fourDown"
+          name="ic-down"
+          width="10"
+          height="6"
+          class="downicon"
+        ></svg-icon>
+        <svg-icon
+          id="fourUp"
+          name="ic-up"
+          width="10"
+          height="6"
+          class="upicon"
+        ></svg-icon>
       </div>
     </div>
     <div
@@ -87,39 +136,38 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
-  components: {}
+  components: {},
 })
 export default class Description extends Vue {
   show(id: string) {
-    var content = document.getElementById(id) as HTMLDivElement;
-    var iconDown = document.getElementById(id + "Down") as HTMLElement;
-    var iconUp = document.getElementById(id + "Up") as HTMLElement;
-    var title = document.getElementById(id + "title") as HTMLDivElement;
+    var content = document.getElementById(id) as HTMLDivElement
+    var iconDown = document.getElementById(id + 'Down') as HTMLElement
+    var iconUp = document.getElementById(id + 'Up') as HTMLElement
+    var title = document.getElementById(id + 'title') as HTMLDivElement
 
-    if (content.style.display === "none") {
+    if (content.style.display === 'none') {
       // 顯示內容
-      content.style.display = "block";
+      content.style.display = 'block'
       // 更改icon
-      iconDown.style.display = "none";
-      iconUp.style.display = "inline-block";
+      iconDown.style.display = 'none'
+      iconUp.style.display = 'inline-block'
       // 更改title間距
-      title.style.marginBottom = "0px";
+      title.style.marginBottom = '0px'
     } else {
       // 隱藏內容
-      content.style.display = "none";
+      content.style.display = 'none'
       // 更改icon
-      iconDown.style.display = "inline-block";
-      iconUp.style.display = "none";
+      iconDown.style.display = 'inline-block'
+      iconUp.style.display = 'none'
       // 更改title間距
-      title.style.marginBottom = "5px";
+      title.style.marginBottom = '5px'
     }
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .body {

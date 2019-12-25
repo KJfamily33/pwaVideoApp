@@ -39,84 +39,82 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
-import ProfileRow from "@/components/ProfileRow/index.vue";
-import HeaderBar from "../components/HeaderBar/index.vue";
-import { IProfileInfoObj } from "@/types/profile";
+import { Component, Vue, Prop } from 'vue-property-decorator'
+import ProfileRow from '@/components/ProfileRow/index.vue'
+import HeaderBar from '../components/HeaderBar/index.vue'
+import { IProfileInfoObj } from '@/types/profile'
 
 @Component({
   components: {
-    ProfileRow
-  }
+    ProfileRow,
+  },
 })
 export default class Profile extends Vue {
-
-  private objs : Array<IProfileInfoObj> = [
+  private objs: Array<IProfileInfoObj> = [
     {
-      preImg: "ic-acount",
-      title: "帐户",
-      subtitle: "9487@gmail.com",
+      preImg: 'ic-acount',
+      title: '帐户',
+      subtitle: '9487@gmail.com',
       icon: false,
-      link: "", /** 需要轉跳的頁面 */
+      link: '' /** 需要轉跳的頁面 */,
     },
     {
-      preImg: "ic-exchang",
-      title: "兑换码",
-      subtitle: "",
+      preImg: 'ic-exchang',
+      title: '兑换码',
+      subtitle: '',
       icon: true,
-      link: "videoList", /** 需要轉跳的頁面 */
+      link: 'videoList' /** 需要轉跳的頁面 */,
     },
     {
-      preImg: "ic-card",
-      title: "充值",
-      subtitle: "",
+      preImg: 'ic-card',
+      title: '充值',
+      subtitle: '',
       icon: true,
-      link: "", /** 需要轉跳的頁面 */
+      link: '' /** 需要轉跳的頁面 */,
     },
     {
-      preImg: "ic-ropaganda",
-      title: "推广",
-      subtitle: "",
+      preImg: 'ic-ropaganda',
+      title: '推广',
+      subtitle: '',
       icon: true,
-      link: "", /** 需要轉跳的頁面 */
+      link: '' /** 需要轉跳的頁面 */,
     },
     {
-      preImg: "ic-vcoinqa",
-      title: "V币说明",
-      subtitle: "",
+      preImg: 'ic-vcoinqa',
+      title: 'V币说明',
+      subtitle: '',
       icon: true,
-      link: "", /** 需要轉跳的頁面 */
+      link: '' /** 需要轉跳的頁面 */,
     },
     {
-      preImg: "ic-vipqa",
-      title: "VIP说明",
-      subtitle: "",
+      preImg: 'ic-vipqa',
+      title: 'VIP说明',
+      subtitle: '',
       icon: true,
-      link: "", /** 需要轉跳的頁面 */
+      link: '' /** 需要轉跳的頁面 */,
     },
     {
-      preImg: "ic-website",
-      title: "最新地址",
-      subtitle: "",
+      preImg: 'ic-website',
+      title: '最新地址',
+      subtitle: '',
       icon: true,
-      link: "", /** 需要轉跳的頁面 */
+      link: '' /** 需要轉跳的頁面 */,
     },
     {
-      preImg: "ic-aboutv-2",
-      title: "关于V2",
-      subtitle: "",
+      preImg: 'ic-aboutv-2',
+      title: '关于V2',
+      subtitle: '',
       icon: true,
-      link: "", /** 需要轉跳的頁面 */
+      link: '' /** 需要轉跳的頁面 */,
     },
     {
-      preImg: "ic-logout",
-      title: "退出",
-      subtitle: "",
+      preImg: 'ic-logout',
+      title: '退出',
+      subtitle: '',
       icon: true,
-      link: "", /** 需要轉跳的頁面 */
+      link: '' /** 需要轉跳的頁面 */,
     },
-
-  ];
+  ]
 }
 </script>
 
@@ -131,7 +129,7 @@ export default class Profile extends Vue {
   height: 6.125rem;
   width: 100%;
   max-height: 6.125rem;
-  background-image: url("../assets/bg-profile.jpg");
+  background-image: url('../assets/bg-profile.jpg');
   background-size: 100% 6.125rem;
   background-position-x: center;
 }

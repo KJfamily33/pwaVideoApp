@@ -11,17 +11,28 @@
         <div class="text">什么是V币</div>
       </div>
       <div class="column">
-        <svg-icon id="oneDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
-        <svg-icon id="oneUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+        <svg-icon
+          id="oneDown"
+          name="ic-down"
+          width="10"
+          height="6"
+          class="downicon"
+        ></svg-icon>
+        <svg-icon
+          id="oneUp"
+          name="ic-up"
+          width="10"
+          height="6"
+          class="upicon"
+        ></svg-icon>
       </div>
     </div>
     <div
       id="one"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
     >
-      V币是V2 APP 率先使用的奖励性虚拟货币。
-      暂时只适用于V2 APP，后续将扩大至其他平台（后续将再行
-      公布）。
+      V币是V2 APP 率先使用的奖励性虚拟货币。 暂时只适用于V2
+      APP，后续将扩大至其他平台（后续将再行 公布）。
       <br />
       <br />V币不能直接兑换现金，但却在使用上可以针对平台上推出的
       活动兑换部份有价产品。
@@ -35,14 +46,28 @@
         <div class="text">如何获得V币</div>
       </div>
       <div class="column">
-        <svg-icon id="twoDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
-        <svg-icon id="twoUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+        <svg-icon
+          id="twoDown"
+          name="ic-down"
+          width="10"
+          height="6"
+          class="downicon"
+        ></svg-icon>
+        <svg-icon
+          id="twoUp"
+          name="ic-up"
+          width="10"
+          height="6"
+          class="upicon"
+        ></svg-icon>
       </div>
     </div>
     <div
       id="two"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
-    >登入后至『任务中心』, 完成任务。根据不同任务类型获得。</div>
+    >
+      登入后至『任务中心』, 完成任务。根据不同任务类型获得。
+    </div>
     <!--第三列-->
     <div id="thirdtitle" class="title margin-bottom-5" @click="show('third')">
       <div class="column">
@@ -52,14 +77,28 @@
         <div class="text">如何查询V币</div>
       </div>
       <div class="column">
-        <svg-icon id="thirdDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
-        <svg-icon id="thirdUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+        <svg-icon
+          id="thirdDown"
+          name="ic-down"
+          width="10"
+          height="6"
+          class="downicon"
+        ></svg-icon>
+        <svg-icon
+          id="thirdUp"
+          name="ic-up"
+          width="10"
+          height="6"
+          class="upicon"
+        ></svg-icon>
       </div>
     </div>
     <div
       id="third"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
-    >登入后至『任务中心』-> 『V币纪录』中查询V币数量。</div>
+    >
+      登入后至『任务中心』-> 『V币纪录』中查询V币数量。
+    </div>
     <!--第四列-->
     <div id="fourtitle" class="title margin-bottom-5" @click="show('four')">
       <div class="column">
@@ -69,8 +108,20 @@
         <div class="text">V币如何使用</div>
       </div>
       <div class="column">
-        <svg-icon id="fourDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
-        <svg-icon id="fourUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+        <svg-icon
+          id="fourDown"
+          name="ic-down"
+          width="10"
+          height="6"
+          class="downicon"
+        ></svg-icon>
+        <svg-icon
+          id="fourUp"
+          name="ic-up"
+          width="10"
+          height="6"
+          class="upicon"
+        ></svg-icon>
       </div>
     </div>
     <div
@@ -81,8 +132,7 @@
       <br />
       <br />2. VIP兑换(3500V币=7天VIP，兑换后立即生效)。
       <br />
-      <br />获得VIP后,该帐号可在所有客户端（PC，手机网页，平板）
-      享受特权。
+      <br />获得VIP后,该帐号可在所有客户端（PC，手机网页，平板） 享受特权。
       <br />
       <button class="gotobuy margin-top-5">前往兑换</button>
     </div>
@@ -95,14 +145,28 @@
         <div class="text">V币使用期限</div>
       </div>
       <div class="column">
-        <svg-icon id="fiveDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
-        <svg-icon id="fiveUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+        <svg-icon
+          id="fiveDown"
+          name="ic-down"
+          width="10"
+          height="6"
+          class="downicon"
+        ></svg-icon>
+        <svg-icon
+          id="fiveUp"
+          name="ic-up"
+          width="10"
+          height="6"
+          class="upicon"
+        ></svg-icon>
       </div>
     </div>
     <div
       id="five"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
-    >V币无使用期限，用完为止。</div>
+    >
+      V币无使用期限，用完为止。
+    </div>
     <!--第六列-->
     <div id="sixtitle" class="title margin-bottom-5" @click="show('six')">
       <div class="column">
@@ -112,69 +176,80 @@
         <div class="text">V币攻略</div>
       </div>
       <div class="column">
-        <svg-icon id="sixDown" name="ic-down" width="10" height="6" class="downicon"></svg-icon>
-        <svg-icon id="sixUp" name="ic-up" width="10" height="6" class="upicon"></svg-icon>
+        <svg-icon
+          id="sixDown"
+          name="ic-down"
+          width="10"
+          height="6"
+          class="downicon"
+        ></svg-icon>
+        <svg-icon
+          id="sixUp"
+          name="ic-up"
+          width="10"
+          height="6"
+          class="upicon"
+        ></svg-icon>
       </div>
     </div>
     <div
       id="six"
       class="one padding-top-5 margin-bottom-5 text-content padding-left-right-20 padding-top-bottom-10"
-    >1. 登入后至『任务中心』->『当前任务』, 完成『今日登入』
-任务, 领取10V币。
-<br>
-<br>
-2. 使用10V币观看一部视频。
-<br>
-<br>
-3. 至『任务中心』->『当前任务』, 完成『观看广告』任务,
-领取10V币。
-<br>
-<br>
-4. 再观看一部视频, 并重复2.与3.步骤。
-<br>
-<br>
-5. 观看第四部视频前, 至『任务中心』->『当前任务』, 完成
-『观看3部视频』任务, 领取30V币。
-<br>
-<br>
-<span class="color-f3806f">＊一天最多可免费看14部视频</span></div>
+    >
+      1. 登入后至『任务中心』->『当前任务』, 完成『今日登入』 任务, 领取10V币。
+      <br />
+      <br />
+      2. 使用10V币观看一部视频。
+      <br />
+      <br />
+      3. 至『任务中心』->『当前任务』, 完成『观看广告』任务, 领取10V币。
+      <br />
+      <br />
+      4. 再观看一部视频, 并重复2.与3.步骤。
+      <br />
+      <br />
+      5. 观看第四部视频前, 至『任务中心』->『当前任务』, 完成
+      『观看3部视频』任务, 领取30V币。
+      <br />
+      <br />
+      <span class="color-f3806f">＊一天最多可免费看14部视频</span>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
-  components: {}
+  components: {},
 })
 export default class Description extends Vue {
   show(id: string) {
-    var content = document.getElementById(id) as HTMLDivElement;
-    var iconDown = document.getElementById(id + "Down") as HTMLElement;
-    var iconUp = document.getElementById(id + "Up") as HTMLElement;
-    var title = document.getElementById(id + "title") as HTMLDivElement;
+    var content = document.getElementById(id) as HTMLDivElement
+    var iconDown = document.getElementById(id + 'Down') as HTMLElement
+    var iconUp = document.getElementById(id + 'Up') as HTMLElement
+    var title = document.getElementById(id + 'title') as HTMLDivElement
 
-    if (content.style.display === "none") {
+    if (content.style.display === 'none') {
       // 顯示內容
-      content.style.display = "block";
+      content.style.display = 'block'
       // 更改icon
-      iconDown.style.display = "none";
-      iconUp.style.display = "inline-block";
+      iconDown.style.display = 'none'
+      iconUp.style.display = 'inline-block'
       // 更改title間距
-      title.style.marginBottom = "0px";
+      title.style.marginBottom = '0px'
     } else {
       // 隱藏內容
-      content.style.display = "none";
+      content.style.display = 'none'
       // 更改icon
-      iconDown.style.display = "inline-block";
-      iconUp.style.display = "none";
+      iconDown.style.display = 'inline-block'
+      iconUp.style.display = 'none'
       // 更改title間距
-      title.style.marginBottom = "5px";
+      title.style.marginBottom = '5px'
     }
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .body {

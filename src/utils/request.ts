@@ -1,38 +1,36 @@
 import axios from 'axios'
+import { UserModule } from '@/store/modules/user'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
-  timeout: 5000
+  timeout: 5000,
   // withCredentials: true // send cookies when cross-domain requests
 })
 
 // Request interceptors
 service.interceptors.request.use(
-  (config) => {
+  config => {
     // Add X-Access-Token header to every request, you can add other custom headers here
-    // if (UserModule.token) {
-    //   config.headers['X-Access-Token'] = UserModule.token
-    // }
+    config.headers['Authtoken'] = UserModule.token
     return config
   },
-  (error) => {
+  error => {
     Promise.reject(error)
   }
 )
 
 // Response interceptors
 service.interceptors.response.use(
-  (response) => {
+  response => {
     const res = response.data
-    if (res.code !== 200) {
-      return Promise.reject(new Error(res.message || 'Error'))
+    if (res.status !== 200) {
+      return response
     } else {
-      return response.data
+      return response
     }
   },
-  (error) => {
+  error => {
     return Promise.reject(error)
   }
 )
-
 export default service

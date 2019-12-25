@@ -7,6 +7,7 @@
         type="text"
         name="account"
         id="account"
+        v-model="userAccount"
         placeholder="输入会员帐号或邮箱地址"
         @input="changeText"
       />
@@ -16,6 +17,7 @@
         type="password"
         name="password"
         id="password"
+        v-model="userPassword"
         placeholder="输入会员密码"
         @input="changeText"
       />
@@ -27,19 +29,34 @@
         </div>
       </div>
       <!--按鈕 登入-->
-      <button id="login" class="login" @click="buttomAction(1)" disabled="disabled">登入</button>
-      <button id="register" class="register width-80pa" @click="buttomAction(2)">没有帐号？前往注册</button>
+      <button id="login" class="login" @click="buttonAction(1)">
+        登入
+      </button>
+      <button
+        id="register"
+        class="register width-80pa"
+        @click="buttonAction(2)"
+      >
+        没有帐号？前往注册
+      </button>
 
       <!--提示窗-->
       <div class="cover coverbg"></div>
       <div class="cover coverContent">
         <div class="covertypesetting">
-          <div class="flex-center text text-25 text-500 color-f3806f" style="flex:3">帐号或密码错误</div>
+          <div
+            class="flex-center text text-25 text-500 color-f3806f"
+            style="flex:3"
+          >
+            帐号或密码错误
+          </div>
           <div class="line"></div>
           <div
             class="coverbutton flex-center text text-20 text-500 color-f3806f"
             @click="alertAct"
-          >确定</div>
+          >
+            确定
+          </div>
         </div>
       </div>
     </div>
@@ -47,49 +64,73 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
+import { UserModule } from '@/store/modules/user'
 
 @Component({
-  components: {}
+  components: {},
 })
-export default class Login extends Vue {
-  buttomAction(index: number) {
+export default class User extends Vue {
+  private userAccount: string = ''
+  private userPassword: string = ''
+
+  protected buttonAction(index: number) {
     // 1: 登入 2: 註冊
-    let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
-      HTMLDivElement
-    >;
-    for (let i = 0; i < cover.length; i++) {
-      cover[i].style.display = "block";
+    switch (index) {
+      case 1: {
+        UserModule.Login({
+          username: this.userAccount,
+          password: this.userPassword,
+        }).then(res => {
+          const { status, message, data } = res.data
+          if (status !== 200) {
+            let cover = document.getElementsByClassName(
+              'cover'
+            ) as HTMLCollectionOf<HTMLDivElement>
+            for (let i = 0; i < cover.length; i++) {
+              cover[i].style.display = 'block'
+            }
+          } else {
+            this.$router.push({ name: 'videoList' })
+          }
+        })
+
+        break
+      }
+
+      case 2: {
+        break
+      }
     }
   }
-
+  private formData() {}
   // 提示窗確認
   alertAct() {
-    let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
+    let cover = document.getElementsByClassName('cover') as HTMLCollectionOf<
       HTMLDivElement
-    >;
+    >
     // 隱藏提示窗
     for (let i = 0; i < cover.length; i++) {
-      cover[i].style.display = "none";
+      cover[i].style.display = 'none'
     }
   }
 
   // 文字匡輸入
   changeText() {
-    let acInput = document.getElementById("account") as HTMLInputElement;
-    let psInput = document.getElementById("password") as HTMLInputElement;
-    let button = document.getElementById("login") as HTMLButtonElement;
-    let acText = acInput.value;
-    let psText = psInput.value;
+    let acInput = document.getElementById('account') as HTMLInputElement
+    let psInput = document.getElementById('password') as HTMLInputElement
+    let button = document.getElementById('login') as HTMLButtonElement
+    let acText = acInput.value
+    let psText = psInput.value
     // 帳號有輸入並且密碼>7位
     if (acText.length > 0 && psText.length > 7) {
-      button.disabled = false;
-      button.classList.remove("login");
-      button.classList.add("isLogin");
+      button.disabled = false
+      button.classList.remove('login')
+      button.classList.add('isLogin')
     } else {
-      button.disabled = true;
-      button.classList.add("login");
-      button.classList.remove("isLogin");
+      button.disabled = true
+      button.classList.add('login')
+      button.classList.remove('isLogin')
     }
   }
 }
@@ -99,7 +140,7 @@ export default class Login extends Vue {
 // 背景圖
 .picture {
   height: 100%;
-  background-image: url("../assets/login_bg.jpg");
+  background-image: url('../assets/login_bg.jpg');
   background-size: cover;
   background-position-x: center;
 }

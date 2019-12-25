@@ -18,6 +18,8 @@
       <router-link to="/changeVip">ChangeVIP</router-link>|
       <router-link to="/vHistory">vHistory</router-link>|
       <router-link to="/search">Search</router-link>|
+      <router-link to="/DPlayerTest">DPlayer</router-link>|
+      <router-link to="/videoList">VideoListPage</router-link>|
     </div>
     <router-view class="flex" name="header" />
     <router-view class="flex" />
@@ -26,11 +28,8 @@
 </template>
 
 <style lang="scss">
-
-@import '!/bootstrap/scss/bootstrap';
-
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

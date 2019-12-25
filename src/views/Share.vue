@@ -3,7 +3,9 @@
   <div class="body">
     <!--遮罩-->
     <div class="cover-panel">
-      <div class="text text-color-f3806f text-30-500 margin-top-56">轻松赚取V币</div>
+      <div class="text text-color-f3806f text-30-500 margin-top-56">
+        轻松赚取V币
+      </div>
       <div class="text text-color-ffffff text-20-500 margin-top-20">
         已推广人数：
         <span class="text-color-f3806f">1</span>
@@ -15,58 +17,90 @@
       <!--按鈕-->
       <div class="row margin-top-43">
         <div class="column">
-          <button class="text text-color-ffffff text-20-500" @click="shareAlert(1)">分享推广连结</button>
+          <button
+            class="text text-color-ffffff text-20-500"
+            @click="shareAlert(1)"
+          >
+            分享推广连结
+          </button>
         </div>
         <div class="column">
-          <button class="text text-color-ffffff text-20-500 alpha" @click="shareAlert(2)">复制推广码</button>
+          <button
+            class="text text-color-ffffff text-20-500 alpha"
+            @click="shareAlert(2)"
+          >
+            复制推广码
+          </button>
         </div>
       </div>
       <!--底部-->
-      <div class="text text-color-ffffff text-17-500 margin-top-43">分享且成功注册,免费领取V币</div>
+      <div class="text text-color-ffffff text-17-500 margin-top-43">
+        分享且成功注册,免费领取V币
+      </div>
       <!--提視窗背景-->
       <div id="coverbg" class="coverBG"></div>
       <!--提視窗分享-->
       <div id="share" class="share">
-        <div class="text text-color-f3806f text-20-500 margin-top-bottom-10">我要分享</div>
+        <div class="text text-color-f3806f text-20-500 margin-top-bottom-10">
+          我要分享
+        </div>
         <div class="line margin-left-right-6 margin-bottom-30"></div>
         <div class="share-row">
           <!--QQ-->
-          <div class="share-item margin-left-right-25 margin-bottom-20" @click="shareSelected(1)">
+          <div
+            class="share-item margin-left-right-25 margin-bottom-20"
+            @click="shareSelected(1)"
+          >
             <div class="share-app">
               <svg-icon name="ic-qq" width="66" height="66"></svg-icon>
             </div>
             <div class="text text-color-6a6a6a text-16-300">QQ</div>
           </div>
           <!--微信-->
-          <div class="share-item margin-left-right-25 margin-bottom-20" @click="shareSelected(2)">
+          <div
+            class="share-item margin-left-right-25 margin-bottom-20"
+            @click="shareSelected(2)"
+          >
             <div class="share-app">
               <svg-icon name="ic-wechat" width="66" height="66"></svg-icon>
             </div>
             <div class="text text-color-6a6a6a text-16-300">微信</div>
           </div>
           <!--腾讯微博-->
-          <div class="share-item margin-left-right-25 margin-bottom-20" @click="shareSelected(3)">
+          <div
+            class="share-item margin-left-right-25 margin-bottom-20"
+            @click="shareSelected(3)"
+          >
             <div class="share-app">
               <svg-icon name="ic-weibo" width="66" height="66"></svg-icon>
             </div>
             <div class="text text-color-6a6a6a text-16-300">腾讯微博</div>
           </div>
           <!--新浪微博-->
-          <div class="share-item margin-left-right-25 margin-bottom-20" @click="shareSelected(4)">
+          <div
+            class="share-item margin-left-right-25 margin-bottom-20"
+            @click="shareSelected(4)"
+          >
             <div class="share-app">
               <svg-icon name="ic-sina" width="66" height="66"></svg-icon>
             </div>
             <div class="text text-color-6a6a6a text-16-300">新浪微博</div>
           </div>
           <!--网易-->
-          <div class="share-item margin-left-right-25 margin-bottom-20" @click="shareSelected(5)">
+          <div
+            class="share-item margin-left-right-25 margin-bottom-20"
+            @click="shareSelected(5)"
+          >
             <div class="share-app">
               <svg-icon name="ic-nets" width="66" height="66"></svg-icon>
             </div>
             <div class="text text-color-6a6a6a text-16-300">网易</div>
           </div>
           <!--飞秋-->
-          <div class="share-item margin-left-right-25 margin-bottom-20" @click="shareSelected(6)">
+          <div
+            class="share-item margin-left-right-25 margin-bottom-20"
+            @click="shareSelected(6)"
+          >
             <div class="share-app">
               <svg-icon name="ic-feiq" width="66" height="66"></svg-icon>
             </div>
@@ -77,7 +111,9 @@
             id="shareSeleted"
             class="text text-color-f3806f text-20-300 padding-top-bottom-15 cancel-bg"
             @click="shareSelected(0)"
-          >取消</div>
+          >
+            取消
+          </div>
         </div>
       </div>
       <!--提示窗已複製-->
@@ -95,34 +131,34 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
-  components: {}
+  components: {},
 })
 export default class Share extends Vue {
   // 分享選項
   shareSelected(index: number) {
     // 0: 取消 1: QQ 2: 微信 3: 騰訊微博 4: 新浪微博 5: 網易 6: 非秋
-    let coverbg = document.getElementById("coverbg") as HTMLDivElement;
-    let share = document.getElementById("share") as HTMLDivElement;
-    let copy = document.getElementById("copy") as HTMLDivElement;
-    coverbg.style.display = "none";
-    share.style.display = "none";
-    copy.style.display = "none";
+    let coverbg = document.getElementById('coverbg') as HTMLDivElement
+    let share = document.getElementById('share') as HTMLDivElement
+    let copy = document.getElementById('copy') as HTMLDivElement
+    coverbg.style.display = 'none'
+    share.style.display = 'none'
+    copy.style.display = 'none'
   }
 
   // 分享連結
   shareAlert(index: number) {
     // 1: share 2: copy
-    let coverbg = document.getElementById("coverbg") as HTMLDivElement;
-    let share = document.getElementById("share") as HTMLDivElement;
-    let copy = document.getElementById("copy") as HTMLDivElement;
-    coverbg.style.display = "block";
+    let coverbg = document.getElementById('coverbg') as HTMLDivElement
+    let share = document.getElementById('share') as HTMLDivElement
+    let copy = document.getElementById('copy') as HTMLDivElement
+    coverbg.style.display = 'block'
     if (index === 1) {
-      share.style.display = "flex";
+      share.style.display = 'flex'
     } else {
-      copy.style.display = "flex";
+      copy.style.display = 'flex'
     }
   }
 }
@@ -131,7 +167,7 @@ export default class Share extends Vue {
 <style lang="scss" scoped>
 .body {
   height: 100%;
-  background-image: url("../assets/share_bg.jpg");
+  background-image: url('../assets/share_bg.jpg');
   background-size: cover;
   background-position-x: center;
 }

@@ -2,75 +2,86 @@
   <div class="body">
     <!--圖片-->
     <div class="pictrue"></div>
-    <div class="text text-16-500" style="margin-top:16.7px">请输入兑换码兑换VIP</div>
+    <div class="text text-16-500" style="margin-top:16.7px">
+      请输入兑换码兑换VIP
+    </div>
     <!--輸入匡-->
     <div>
-      <input id="text" @input="changeText()" type="text" placeholder="请输入兑换码" />
+      <input
+        id="text"
+        @input="changeText()"
+        type="text"
+        placeholder="请输入兑换码"
+      />
     </div>
     <!--按鈕-->
     <div>
-      <button id="button" class="unChange" disabled="disabled" @click="change">点击兑换</button>
+      <button id="button" class="unChange" disabled="disabled" @click="change">
+        点击兑换
+      </button>
     </div>
     <!--提示窗-->
     <div class="cover coverBackground"></div>
     <div class="cover coverContent row">
       <div class="text text-25-500 margin-all-auto">获得7天VIP</div>
       <div class="line"></div>
-      <div class="text text-20-500 margin-top-bottom-15" @click="alertSure">确定</div>
+      <div class="text text-20-500 margin-top-bottom-15" @click="alertSure">
+        确定
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
-  components: {}
+  components: {},
 })
 export default class ChangeCode extends Vue {
   // 提視窗事件
   alertSure() {
     // 清空資料
-    let input = document.getElementById("text") as HTMLInputElement;
-    input.value = "";
+    let input = document.getElementById('text') as HTMLInputElement
+    input.value = ''
     // 按鈕enable
-    let button = document.getElementById("button") as HTMLButtonElement;
-    button.disabled = true;
-    button.classList.add("unChange");
-    button.classList.remove("change");
+    let button = document.getElementById('button') as HTMLButtonElement
+    button.disabled = true
+    button.classList.add('unChange')
+    button.classList.remove('change')
     // 關閉提示窗
-    let inAlert = document.getElementsByClassName("cover");
+    let inAlert = document.getElementsByClassName('cover')
     for (let i = 0; i < inAlert.length; i++) {
-      let alert = inAlert[i] as HTMLElement;
-      alert.style.visibility = "hidden";
+      let alert = inAlert[i] as HTMLElement
+      alert.style.visibility = 'hidden'
     }
   }
   // 按鈕事件
   change() {
-    let input = document.getElementById("text") as HTMLInputElement;
-    const text = input.value;
+    let input = document.getElementById('text') as HTMLInputElement
+    const text = input.value
     // TODO: 用 text 帶入 API
-    let inAlert = document.getElementsByClassName("cover");
+    let inAlert = document.getElementsByClassName('cover')
     for (let i = 0; i < inAlert.length; i++) {
-      let alert = inAlert[i] as HTMLElement;
-      alert.style.visibility = "visible";
+      let alert = inAlert[i] as HTMLElement
+      alert.style.visibility = 'visible'
     }
   }
 
   // 文字匡輸入
   changeText() {
-    let input = document.getElementById("text") as HTMLInputElement;
-    let button = document.getElementById("button") as HTMLButtonElement;
-    let text = input.value;
+    let input = document.getElementById('text') as HTMLInputElement
+    let button = document.getElementById('button') as HTMLButtonElement
+    let text = input.value
     // 位數大於等於16 才可點擊
     if (text.length >= 16) {
-      button.disabled = false;
-      button.classList.remove("unChange");
-      button.classList.add("change");
+      button.disabled = false
+      button.classList.remove('unChange')
+      button.classList.add('change')
     } else {
-      button.disabled = true;
-      button.classList.add("unChange");
-      button.classList.remove("change");
+      button.disabled = true
+      button.classList.add('unChange')
+      button.classList.remove('change')
     }
   }
 }
@@ -89,7 +100,7 @@ export default class ChangeCode extends Vue {
   height: 16.875rem;
   max-height: 16.875rem;
   width: 100%;
-  background-image: url("../assets/change_code.jpg");
+  background-image: url('../assets/change_code.jpg');
   background-size: cover;
   background-position-x: center;
 }

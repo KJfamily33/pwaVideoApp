@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-
-  </div>
+  <div class="home"></div>
 </template>
 
 <script lang="ts">
@@ -10,7 +8,6 @@ import HelloWorld from '@/components/HelloWorld.vue'
 import VideoCard from '@/components/VideoPanelCard/index.vue'
 import { FooBarModule } from '@/store/modules/footer-bar'
 
-
 @Component({
   components: {
     HelloWorld,
@@ -18,7 +15,7 @@ import { FooBarModule } from '@/store/modules/footer-bar'
   },
 })
 export default class Home extends Vue {
-  mounted(){
+  mounted() {
     FooBarModule.SetActiveState('video')
   }
 }

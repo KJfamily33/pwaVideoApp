@@ -19,7 +19,7 @@
         placeholder="输入会员密码"
         @input="changeText"
       />
-       <!--輸入匡- 再次輸入密碼-->
+      <!--輸入匡- 再次輸入密碼-->
       <input
         class="width-80pa color-f3806f text-14-300 margin-bottom-30"
         type="password"
@@ -29,19 +29,39 @@
         @input="changeText"
       />
       <!--按鈕 登入-->
-      <button id="login" class="login" @click="buttomAction(1)" disabled="disabled">注册</button>
-      <button id="register" class="register width-80pa" @click="buttomAction(2)">已有帐号？前往登入</button>
+      <button
+        id="login"
+        class="login"
+        @click="buttomAction(1)"
+        disabled="disabled"
+      >
+        注册
+      </button>
+      <button
+        id="register"
+        class="register width-80pa"
+        @click="buttomAction(2)"
+      >
+        已有帐号？前往登入
+      </button>
 
       <!--提示窗-->
       <div class="cover coverbg"></div>
       <div class="cover coverContent">
         <div class="covertypesetting">
-          <div class="flex-center text text-25 text-500 color-f3806f" style="flex:3">帐号或密码错误</div>
+          <div
+            class="flex-center text text-25 text-500 color-f3806f"
+            style="flex:3"
+          >
+            帐号或密码错误
+          </div>
           <div class="line"></div>
           <div
             class="coverbutton flex-center text text-20 text-500 color-f3806f"
             @click="alertAct"
-          >确定</div>
+          >
+            确定
+          </div>
         </div>
       </div>
     </div>
@@ -49,51 +69,51 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component({
-  components: {}
+  components: {},
 })
-export default class Login extends Vue {
+export default class User extends Vue {
   buttomAction(index: number) {
     // 1: 登入 2: 註冊
-    let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
+    let cover = document.getElementsByClassName('cover') as HTMLCollectionOf<
       HTMLDivElement
-    >;
+    >
     for (let i = 0; i < cover.length; i++) {
-      cover[i].style.display = "block";
+      cover[i].style.display = 'block'
     }
   }
 
   // 提示窗確認
   alertAct() {
-    let cover = document.getElementsByClassName("cover") as HTMLCollectionOf<
+    let cover = document.getElementsByClassName('cover') as HTMLCollectionOf<
       HTMLDivElement
-    >;
+    >
     // 隱藏提示窗
     for (let i = 0; i < cover.length; i++) {
-      cover[i].style.display = "none";
+      cover[i].style.display = 'none'
     }
   }
 
   // 文字匡輸入
   changeText() {
-    let acInput = document.getElementById("account") as HTMLInputElement;
-    let psInput = document.getElementById("password") as HTMLInputElement;
-    let repsInput = document.getElementById("repassword") as HTMLInputElement;
-    let button = document.getElementById("login") as HTMLButtonElement;
-    let acText = acInput.value;
-    let psText = psInput.value;
-    let repsText = repsInput.value;
+    let acInput = document.getElementById('account') as HTMLInputElement
+    let psInput = document.getElementById('password') as HTMLInputElement
+    let repsInput = document.getElementById('repassword') as HTMLInputElement
+    let button = document.getElementById('login') as HTMLButtonElement
+    let acText = acInput.value
+    let psText = psInput.value
+    let repsText = repsInput.value
     // 帳號有輸入並且密碼>7位
     if (acText.length > 0 && psText.length > 7 && repsText.length > 7) {
-      button.disabled = false;
-      button.classList.remove("login");
-      button.classList.add("isLogin");
+      button.disabled = false
+      button.classList.remove('login')
+      button.classList.add('isLogin')
     } else {
-      button.disabled = true;
-      button.classList.add("login");
-      button.classList.remove("isLogin");
+      button.disabled = true
+      button.classList.add('login')
+      button.classList.remove('isLogin')
     }
   }
 }
@@ -103,7 +123,7 @@ export default class Login extends Vue {
 // 背景圖
 .picture {
   height: 100%;
-  background-image: url("../assets/register_bg.jpg");
+  background-image: url('../assets/register_bg.jpg');
   background-size: cover;
   background-position-x: center;
 }
