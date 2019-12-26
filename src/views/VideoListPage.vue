@@ -61,6 +61,7 @@ export default class VideoListPage extends Vue {
       const resdata = res.data.data.video
       resdata.forEach((el, index) => {
         el.itemIndex = this.resObj.length + index
+        this.resObj.push(el)
       })
       this.allCount = res.data.data.totalColumns
       this.isLoading = false
