@@ -7,12 +7,17 @@
             <div class="aspect__spacer"></div>
             <div class="preview-card-panel">
               <video
-                ref="videoRef"
+                v-if="isPlay && videoInfoObj.randomVideoHref != ''"
+                autoplay
                 loop="loop"
                 muted
                 :src="videoInfoObj.randomVideoHref"
-                :poster="videoInfoObj.originHref"
               ></video>
+              <img
+                :class="(!isPlay || videoInfoObj.randomVideoHref === '') ? displayblock : displaynone"
+                :src="videoInfoObj.originHref"
+                alt
+              />
             </div>
           </div>
         </div>
@@ -32,7 +37,6 @@
           <svg-icon name="ic-view" width="21" height="17"></svg-icon>
           {{ videoInfoObj.playCount }}
         </span>
-        <span>{{videoInfoObj.isPlay}}</span>
       </div>
     </div>
   </a>
@@ -44,8 +48,9 @@ import Holder from "holderjs";
 
 @Component
 export default class VideoPanelCard extends Vue {
-  @Prop()  videoInfoObj;
-  isFirst = true
+  @Prop() videoInfoObj;
+
+  isPlay = false;
   getTime() {
     let pad = function(num, size) {
       return ("000" + num).slice(size * -1);
@@ -84,38 +89,6 @@ export default class VideoPanelCard extends Vue {
 
   clickCard(data) {
     this.$router.push({ name: "/video-info", params: { data } });
-  }
-
-  mounted() {
-    this.isFirst = false
-    if (
-      this.videoInfoObj.isPlay  &&
-      this.videoInfoObj.randomVideoHref != ""
-    ) {
-      window.console.log("MOUNTED isPlay", this.videoInfoObj);
-      this.playVideo();
-    } else {
-      this.pauseVideo();
-    }
-  }
-
-  @Watch('videoInfoObj', { immediate: true, deep: true })
-  watchVideoInfoObj(nv, ov) {
-    window.console.log("newValue", nv,ov);
-    if (this.isFirst) return
-    if (nv.isPlay  && nv.randomVideoHref != "") {
-      window.console.log("WATCH isPlay", nv);
-      this.playVideo();
-    } else {
-      this.pauseVideo();
-    }
-  }
-
-  playVideo() {
-    this.$refs.videoRef.play();
-  }
-  pauseVideo() {
-    this.$refs.videoRef.pause();
   }
 }
 </script>
@@ -170,6 +143,14 @@ export default class VideoPanelCard extends Vue {
           left: 0;
           width: 100%;
           height: 100%;
+        }
+
+        .displaynone {
+          display: none;
+        }
+
+        .displayblock {
+          display: block;
         }
       }
     }
