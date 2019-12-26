@@ -1,6 +1,6 @@
 <template>
-  <a class="video-card" href @click="clickCard(videoInfoObj)">
-    <div class="photo-panel">
+  <a class="video-card">
+    <div class="photo-panel" @click="clickCard(videoInfoObj, 0)">
       <div class="preview-card-link">
         <div>
           <div class="aspect-panel">
@@ -13,11 +13,7 @@
                 muted
                 :src="videoInfoObj.randomVideoHref"
               ></video>
-              <img
-                :class="(!isPlay || videoInfoObj.randomVideoHref === '') ? displayblock : displaynone"
-                :src="videoInfoObj.originHref"
-                alt
-              />
+              <img :src="videoInfoObj.originHref" alt />
             </div>
           </div>
         </div>
@@ -26,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="context-panel">
+    <div class="context-panel" @click="clickCard(videoInfoObj, 1)">
       <div class="title">{{ videoInfoObj.title }}</div>
       <div class="info">
         <span class>
@@ -43,52 +39,67 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import Holder from "holderjs";
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import Holder from 'holderjs'
 
 @Component
 export default class VideoPanelCard extends Vue {
-  @Prop() videoInfoObj;
+  @Prop() videoInfoObj
 
-  isPlay = false;
+  isPlay = false
+
   getTime() {
     let pad = function(num, size) {
-      return ("000" + num).slice(size * -1);
-    };
-    let time = parseFloat(this.videoInfoObj.duration).toFixed(3);
-    let hours = Math.floor(time / 60 / 60);
-    let minutes = Math.floor(time / 60) % 60;
-    let seconds = Math.floor(time - minutes * 60);
+      return ('000' + num).slice(size * -1)
+    }
+    let time = parseFloat(this.videoInfoObj.duration).toFixed(3)
+    let hours = Math.floor(time / 60 / 60)
+    let minutes = Math.floor(time / 60) % 60
+    let seconds = Math.floor(time - minutes * 60)
 
-    return pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2);
+    return pad(hours, 2) + ':' + pad(minutes, 2) + ':' + pad(seconds, 2)
   }
 
   getDate() {
-    let dateBegin = new Date(this.videoInfoObj.releasedAt.replace(/-/g, "/")); //将-转化为/，使用new Date
+    let dateBegin = new Date(this.videoInfoObj.releasedAt.replace(/-/g, '/')) //将-转化为/，使用new Date
 
-    let dateEnd = new Date(); //获取当前时间
-    let dateDiff = dateEnd.getTime() - dateBegin.getTime(); //时间差的毫秒数
-    let dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000)); //计算出相差天数
-    let leave1 = dateDiff % (24 * 3600 * 1000); //计算天数后剩余的毫秒数
-    let hours = Math.floor(leave1 / (3600 * 1000)); //计算出小时数
+    let dateEnd = new Date() //获取当前时间
+    let dateDiff = dateEnd.getTime() - dateBegin.getTime() //时间差的毫秒数
+    let dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000)) //计算出相差天数
+    let leave1 = dateDiff % (24 * 3600 * 1000) //计算天数后剩余的毫秒数
+    let hours = Math.floor(leave1 / (3600 * 1000)) //计算出小时数
     //计算相差分钟数
-    let leave2 = leave1 % (3600 * 1000); //计算小时数后剩余的毫秒数
-    let minutes = Math.floor(leave2 / (60 * 1000)); //计算相差分钟数
+    let leave2 = leave1 % (3600 * 1000) //计算小时数后剩余的毫秒数
+    let minutes = Math.floor(leave2 / (60 * 1000)) //计算相差分钟数
     //计算相差秒数
-    let leave3 = leave2 % (60 * 1000); //计算分钟数后剩余的毫秒数
-    let seconds = Math.round(leave3 / 1000);
+    let leave3 = leave2 % (60 * 1000) //计算分钟数后剩余的毫秒数
+    let seconds = Math.round(leave3 / 1000)
 
     if (dayDiff != 0) {
-      return dayDiff + "天前";
+      return dayDiff + '天前'
     } else if (hours != 0) {
-      return hours + "小时前";
+      return hours + '小时前'
     } else {
-      return minutes + "分钟前";
+      return minutes + '分钟前'
     }
   }
 
-  clickCard(data) {
-    this.$router.push({ name: "/video-info", params: { data } });
+  clickCard(data, index) {
+    switch (index) {
+      case 0:
+        if (this.isPlay === true) {
+          this.$router.push({ name: '/video-info', params: { data } })
+        } else {
+          this.isPlay = true
+          this.$emit('startVideo',this.videoInfoObj.itemIndex)
+        }
+
+        break
+
+      default:
+        this.$router.push({ name: '/video-info', params: { data } })
+        break
+    }
   }
 }
 </script>
@@ -144,14 +155,6 @@ export default class VideoPanelCard extends Vue {
           width: 100%;
           height: 100%;
         }
-
-        .displaynone {
-          display: none;
-        }
-
-        .displayblock {
-          display: block;
-        }
       }
     }
 
@@ -201,7 +204,7 @@ export default class VideoPanelCard extends Vue {
     font-size: 0.95rem;
     border-radius: 0;
     height: 3.25rem;
-    font-family: Helvetica, "Hiragino Sans GB", "Microsoft Yahei", "微软雅黑",
+    font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑',
       Arial, sans-serif;
     display: flex;
     flex-direction: column;

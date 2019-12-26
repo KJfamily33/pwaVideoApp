@@ -5,56 +5,66 @@
       <a href v-if="i > 0 && i % 3 === 0">
         <ad-banner></ad-banner>
       </a>
-      <video-card ref="item" :videoInfoObj="resObj[i]"></video-card>
+      <video-card
+        ref="item"
+        :videoInfoObj="resObj[i]"
+        v-on:startVideo="startVideo"
+      ></video-card>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import VideoCard from "@/components/VideoPanelCard/index.vue";
-import AdBanner from "@/components/AdBanner/index.vue";
-import { videoList } from "@/api/videoList";
+import { Component, Vue } from 'vue-property-decorator'
+import VideoCard from '@/components/VideoPanelCard/index.vue'
+import AdBanner from '@/components/AdBanner/index.vue'
+import { videoList } from '@/api/videoList'
 
 @Component({
   components: {
     VideoCard,
-    AdBanner
-  }
+    AdBanner,
+  },
 })
 export default class VideoListPage extends Vue {
-  private five = [1, 2, 3, 4, 5, 6, 7];
+  private five = [1, 2, 3, 4, 5, 6, 7]
 
   private doSomethingAction() {}
-  resObj = [];
-  isLoading = false;
-  allCount = 0;
+  resObj = []
+  isLoading = false
+  allCount = 0
 
   // 请求参数
   // AV:　AV影院／　MANGO:　芒果,所有视频,除了AV影院／　RECOMMEND:　精品推薦／　ETHICS:　三级倫理／　SPECIALS：專題／　LATEST：最新
   reqParam = {
-    type: "LATEST",
+    type: 'LATEST',
     perPage: 10,
-    page: 1
-  };
+    page: 1,
+  }
 
   created() {
-    this.getList();
+    this.getList()
   }
 
   getList() {
     videoList(this.reqParam).then(res => {
-      this.resObj = res.data.data.video;
-      this.allCount = res.data.data.totalColumns;
-    });
+      this.resObj = res.data.data.video
+      this.resObj.forEach((el, index) => {
+        el.itemIndex = index
+      })
+      this.allCount = res.data.data.totalColumns
+    })
   }
 
   loadMore() {
     videoList(this.reqParam).then(res => {
-      const resdata = res.data.data.video;
-      this.allCount = res.data.data.totalColumns;
-      this.isLoading = false;
-    });
+      const resdata = res.data.data.video
+      resdata.forEach((el, index) => {
+        el.itemIndex = this.resObj.length + index
+      })
+      this.allCount = res.data.data.totalColumns
+      this.isLoading = false
+    })
   }
 
   mounted() {
@@ -62,43 +72,40 @@ export default class VideoListPage extends Vue {
 
     window.onscroll = () => {
       // 判断滑动位置
-      let card = document.getElementsByClassName("list-item");
-      let visibleBottom =
-        window.scrollY + document.documentElement.clientHeight;
-      let visibleTop = window.scrollY;
-      let count = 0;
-      for (let i = 0; i < card.length; i++) {
-        let centerY = card[i].offsetTop + card[i].offsetHeight / 2;
-        if (centerY > visibleTop && centerY < visibleBottom) {
-          count += 1;
+      let card = document.getElementsByClassName('list-item')
+      let visibleBottom = window.scrollY + document.documentElement.clientHeight
+      let visibleTop = window.scrollY
 
+      for (let i = 0; i < card.length; i++) {
+        let centerY = card[i].offsetTop + card[i].offsetHeight / 2
+        if (centerY > visibleTop && centerY < visibleBottom) {
           // 加载更多
           if (i == this.resObj.length - 3) {
-            this.isLoadMore();
+            this.isLoadMore()
           }
-
-          // 第一笔可视范围播放影片
-          if (count === 1) {
-            this.$refs.item[i].isPlay = true;
-          } else {
-            this.$refs.item[i].isPlay = false;
-          }
-        } else {
-          this.$refs.item[i].isPlay = false;
         }
       }
-    };
+    }
   }
   // 加载更多
   isLoadMore() {
-    const nowCount = this.resObj.length;
+    const nowCount = this.resObj.length
     if (nowCount > this.allCount) {
-      return;
+      return
     }
     if (!this.isLoading) {
-      this.isLoading = true;
-      this.reqParam.page += 1;
-      this.loadMore();
+      this.isLoading = true
+      this.reqParam.page += 1
+      this.loadMore()
+    }
+  }
+
+  startVideo(val) {
+    let card = document.getElementsByClassName('list-item')
+    for (let i = 0; i < card.length; i++) {
+      if (i != val) {
+        this.$refs.item[i].isPlay = false
+      }
     }
   }
 }
