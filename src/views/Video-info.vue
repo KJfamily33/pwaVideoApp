@@ -271,7 +271,6 @@ export default class VideoInfo extends Vue {
 
   created() {
     const { params, query } = this.$route
-    console.log(params)
     this.propVideoId = params.videoId
     this.propVideoIdEncrypt = params.videoIdEncrypt
   }
@@ -424,12 +423,10 @@ export default class VideoInfo extends Vue {
   }
 
   private setVideoAccessList(dataList: []) {
-    console.log(dataList)
     this.videoLinkObj = dataList
   }
 
   private setVideoInfo(dataList: []) {
-    console.log(dataList)
     this.videoInfoObj = dataList
   }
 }

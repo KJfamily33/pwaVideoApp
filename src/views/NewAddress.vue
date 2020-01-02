@@ -52,12 +52,10 @@ export default class NewAddress extends Vue {
 
   mounted() {
     const _this = this
-    console.log('123')
 
     newestAddress().then(res => {
       if (res.status === 200) {
         _this.addressList = res.data.data.urls
-        console.log(_this.addressList)
       }
     })
   }

@@ -49,7 +49,7 @@ export default class VideoPanelCard extends Vue {
   isPlay = false
 
   mounted() {
-    console.log(this.videoInfoObj)
+
   }
 
   getTime() {
