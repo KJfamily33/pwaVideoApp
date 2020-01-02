@@ -78,32 +78,16 @@ export default class User extends Vue {
     // 1: 登入 2: 註冊
     switch (index) {
       case 1: {
-        UserModule.Login({
-          username: this.userAccount,
-          password: this.userPassword,
-        }).then(res => {
-          const { status, message, data } = res.data
-          if (status !== 200) {
-            let cover = document.getElementsByClassName(
-              'cover'
-            ) as HTMLCollectionOf<HTMLDivElement>
-            for (let i = 0; i < cover.length; i++) {
-              cover[i].style.display = 'block'
-            }
-          } else {
-            this.$router.push({ name: 'videoList' })
-          }
-        })
-
+        this.doLoginAction()
         break
       }
 
       case 2: {
+        this.$router.push({ name: 'register' })
         break
       }
     }
   }
-  private formData() {}
   // 提示窗確認
   alertAct() {
     let cover = document.getElementsByClassName('cover') as HTMLCollectionOf<
@@ -132,6 +116,25 @@ export default class User extends Vue {
       button.classList.add('login')
       button.classList.remove('isLogin')
     }
+  }
+
+  private doLoginAction(){
+    UserModule.Login({
+      username: this.userAccount,
+      password: this.userPassword,
+    }).then(res => {
+      const { status, message, data } = res.data
+      if (status !== 200) {
+        let cover = document.getElementsByClassName(
+          'cover'
+        ) as HTMLCollectionOf<HTMLDivElement>
+        for (let i = 0; i < cover.length; i++) {
+          cover[i].style.display = 'block'
+        }
+      } else {
+        this.$router.push({ name: 'videoList' })
+      }
+    })
   }
 }
 </script>

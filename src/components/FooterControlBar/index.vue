@@ -3,7 +3,7 @@
     <div class="aspect__spacer"></div>
     <div class="control-bar">
       <router-link
-        to="/footer"
+        to="/videoList"
         class="item"
         v-on:click.native="setActive('video')"
       >
@@ -31,7 +31,7 @@
         <p :style="isActiveSearch ? activeStyle : defaultStyle">搜寻</p>
       </router-link>
       <router-link
-        to="/footer"
+        to="/currentTask"
         class="item"
         v-on:click.native="setActive('task')"
       >
@@ -45,7 +45,7 @@
         <p :style="isActiveTask ? activeStyle : defaultStyle">任务中心</p>
       </router-link>
       <router-link
-        to="/footer"
+        to="/store"
         class="item"
         v-on:click.native="setActive('store')"
       >
@@ -59,9 +59,9 @@
         <p :style="isActiveStore ? activeStyle : defaultStyle">应用中心</p>
       </router-link>
       <router-link
-        to="/footer"
+        to="/profile"
         class="item"
-        v-on:click.native="setActive('person')"
+        v-on:click.native="setActive('profile')"
       >
         <svg-icon
           name="ic-person"
@@ -84,6 +84,22 @@ import { FooBarModule } from '@/store/modules/footer-bar'
   components: {},
 })
 export default class FooterControlBar extends Vue {
+  mounted() {
+    const urlPath = location.pathname
+
+    if (urlPath.indexOf('video') > 0) {
+      this.setActive('video')
+    } else if (urlPath.indexOf('search') > 0) {
+      this.setActive('search')
+    } else if (urlPath.indexOf('task') > 0) {
+      this.setActive('task')
+    } else if (urlPath.indexOf('store') > 0) {
+      this.setActive('store')
+    } else if (urlPath.indexOf('profile') > 0) {
+      this.setActive('profile')
+    }
+  }
+
   get isActiveVideo(): boolean {
     return FooBarModule.isActiveVideo
   }
@@ -123,7 +139,7 @@ export default class FooterControlBar extends Vue {
 .footer {
   bottom: 0;
   left: 0;
-  position: absolute;
+  position: fixed;
   width: 100vw;
 
   -webkit-backdrop-filter: blur(9.6px);

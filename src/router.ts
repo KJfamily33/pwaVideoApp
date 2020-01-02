@@ -19,6 +19,7 @@ import VideoInfo from './views/Video-info.vue'
 import ChangeVIP from './views/ChangeVIP.vue'
 import vHistory from './views/VHistory.vue'
 import Search from './views/Search.vue'
+import VideoList from './views/VideoListPage.vue'
 
 Vue.use(Router)
 
@@ -67,7 +68,11 @@ export default new Router({
     {
       path: '/videoList',
       name: 'videoList',
-      component: () => import('./views/VideoListPage.vue'),
+      components: {
+        default: VideoList,
+        header: HeaderBar,
+        footer: FooterBar,
+      },
     },
     {
       path: '/footer',
@@ -135,6 +140,7 @@ export default new Router({
       components: {
         default: Store,
         header: HeaderBar,
+        footer: FooterBar,
       },
     },
     {
@@ -145,11 +151,10 @@ export default new Router({
       },
     },
     {
-      path: '/video-info',
+      path: '/video-info/:videoIdEncrypt',
       name: '/video-info',
       components: {
         default: VideoInfo,
-        header: HeaderBar,
       },
     },
     {
@@ -158,6 +163,7 @@ export default new Router({
       components: {
         default: CurrentTask,
         header: HeaderBar,
+        footer: FooterBar,
       },
     },
     {
@@ -183,6 +189,6 @@ export default new Router({
         default: Search,
         header: HeaderBar,
       },
-    }
+    },
   ],
 })

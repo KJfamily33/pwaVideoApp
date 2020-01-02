@@ -1,9 +1,11 @@
 <template>
   <div class="body">
     <!--播放器-->
-    <div class="video">
-      <div id="dplayer"></div>
-    </div>
+    <!--    <div class="scale" style="position: relative">-->
+    <!--      <div class="item">-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <div class="video-window" id="dplayer" style="width: 100%"></div>
 
     <!--縮圖-->
     <div class="updown">
@@ -30,48 +32,30 @@
       <div class="canscroll">
         <!--縮圖-->
         <div
+          v-for="item in videoInfoObj.originHrefs"
           class="picture margin-left-right-3 margin-top-10"
-          @click="showPicture"
-        ></div>
-        <div class="picture margin-left-right-3 margin-top-10"></div>
-        <div class="picture margin-left-right-3 margin-top-10"></div>
-        <div class="picture margin-left-right-3 margin-top-10"></div>
-        <div class="picture margin-left-right-3 margin-top-10"></div>
-        <div class="picture margin-left-right-3 margin-top-10"></div>
+        >
+          <img :src="item" alt="" />
+        </div>
+
+        <!--        <div-->
+        <!--          class="picture margin-left-right-3 margin-top-10"-->
+        <!--          @click="showPicture"-->
+        <!--        ></div>-->
+        <!--        <div class="picture margin-left-right-3 margin-top-10"></div>-->
+        <!--        <div class="picture margin-left-right-3 margin-top-10"></div>-->
+        <!--        <div class="picture margin-left-right-3 margin-top-10"></div>-->
+        <!--        <div class="picture margin-left-right-3 margin-top-10"></div>-->
+        <!--        <div class="picture margin-left-right-3 margin-top-10"></div>-->
       </div>
     </div>
     <div class="scroll">
       <!--標籤-->
-      <div class="canscroll">
+      <div class="canscroll" v-for="tag in videoInfoObj.tags">
         <div
           class="scrolltext margin-left-right-3 margin-bottom-10 padding-left-right-10"
         >
-          234
-        </div>
-        <div
-          class="scrolltext margin-left-right-3 margin-bottom-10 padding-left-right-10"
-        >
-          aasdf234
-        </div>
-        <div
-          class="scrolltext margin-left-right-3 margin-bottom-10 padding-left-right-10"
-        >
-          23fasdf4
-        </div>
-        <div
-          class="scrolltext margin-left-right-3 margin-bottom-10 padding-left-right-10"
-        >
-          2f34
-        </div>
-        <div
-          class="scrolltext margin-left-right-3 margin-bottom-10 padding-left-right-10"
-        >
-          23fffffasdfasdfasdf4
-        </div>
-        <div
-          class="scrolltext margin-left-right-3 margin-bottom-10 padding-left-right-10"
-        >
-          234asdfasdf
+          {{ tag.name }}
         </div>
       </div>
     </div>
@@ -86,8 +70,8 @@
     <div class="line width-95pa margin-bottom-10"></div>
     <!--影片-->
     <div style="overflow-y:scroll">
-      <div class="flex-center" v-for="(e, i) in 6" :key="i">
-        <VideoInfoCell></VideoInfoCell>
+      <div class="flex-center" v-for="(e, i) in guessYouLikeList" :key="i">
+        <VideoInfoCell :videoInfoObj="e"></VideoInfoCell>
       </div>
     </div>
     <!--遮罩背景-->
@@ -258,10 +242,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 import VideoInfoCell from '@/components/VideoInfoCell/index.vue'
 import ShareItem from '@/components/ShareItem/index.vue'
 
+import '@/styles/DPlayer.min.css'
+import Hls from 'hls.js'
+import DPlayer from 'dplayer'
+import {
+  getGuessYouLikeList,
+  getVideoAccessList,
+  getVideoInfo,
+  getOldVideoAccessList,
+} from '@/api/videoInfo'
 
 @Component({
   components: {
@@ -270,14 +263,22 @@ import ShareItem from '@/components/ShareItem/index.vue'
   },
 })
 export default class VideoInfo extends Vue {
+  private propVideoId = '0'
+  private propVideoIdEncrypt = ''
+  private videoLinkObj = []
+  private videoInfoObj = {}
+  private guessYouLikeList = []
+
+  created() {
+    const { params, query } = this.$route
+    console.log(params)
+    this.propVideoId = params.videoId
+    this.propVideoIdEncrypt = params.videoIdEncrypt
+  }
+
   mounted() {
-    console.log('hello?')
-    // const dp = new DPlayer({
-    //   container: document.getElementById('dplayer'),
-    //   video: {
-    //     url: 'demo.mp4',
-    //   },
-    // })
+    const _this = this
+    this.doGetVideoInfoAction(this.propVideoIdEncrypt)
   }
 
   // 點擊放大縮圖背景
@@ -322,6 +323,115 @@ export default class VideoInfo extends Vue {
       }
     }
   }
+
+  doAction() {}
+
+  private doGetVideoInfoAction(videoIdEncrypt: string) {
+    const _this = this
+    let requestInfo = {
+      idEncrypt: videoIdEncrypt,
+    }
+    getVideoInfo(requestInfo).then(res => {
+      if (res.data.status === 200) {
+        const video = res.data.data.video
+        let parts = location.pathname.split('/')
+        let idEncrypt = parts.pop() || parts.pop() // handle potential trailing slash
+
+        _this.setVideoInfo(video)
+        _this.doGetGuessYouLikeAction(video.videoId.toString())
+
+        if (video.isTranscoded === 1) {
+          _this.doGetVideoAccessListAction(idEncrypt)
+        } else if (video.isTranscoded === 0) {
+          _this.doGetOldVideoAccessListAction(idEncrypt)
+        }
+      }
+    })
+  }
+
+  private doGetVideoAccessListAction(videoIdEncrypt: string) {
+    const _this = this
+    let requestInfo = {
+      idEncrypt: videoIdEncrypt,
+    }
+    getVideoAccessList(requestInfo).then(res => {
+      const _this = this
+      if (res.status === 200) {
+        _this.setVideoAccessList(res.data.data.videos)
+        const mapList = _this.videoLinkObj.map(e => {
+          return {
+            name: e.name,
+            url: e.href,
+            type: 'customHls',
+            streamToken: e.streamToken
+          }
+        })
+
+        const dp = new DPlayer({
+          container: document.getElementById('dplayer'),
+          video: {
+            quality: mapList,
+            defaultQuality: 0,
+            type: 'customHls',
+            customType: {
+              customHls: function(video: any, player: any) {
+                const hls = new Hls()
+                hls.config.xhrSetup = function(xhr, url) {
+                  xhr.setRequestHeader(
+                    'Content-Type',
+                    'application/json; charset=utf-8'
+                  )
+                  xhr.setRequestHeader(
+                    'StreamToken',
+                    mapList[0].streamToken
+                  )
+                }
+                hls.loadSource(video.src)
+                hls.attachMedia(video)
+              },
+            },
+          },
+        })
+      }
+    })
+  }
+
+  private doGetGuessYouLikeAction(videoId: string) {
+    const _this = this
+    let requestInfo = {
+      id: videoId,
+      count: 3,
+    }
+    getGuessYouLikeList(requestInfo).then(res => {
+      if (res.status === 200) {
+        _this.setGuessYouLikeList(res.data.data.video)
+      } else if (res.status === 101) {
+        _this.setGuessYouLikeList([])
+      }
+    })
+  }
+
+  private doGetOldVideoAccessListAction(videoIdEncrypt: string | undefined) {
+    const _this = this
+    let requestInfo = {
+      idEncrypt: videoIdEncrypt ? videoIdEncrypt : '',
+    }
+    getOldVideoAccessList(requestInfo)
+  }
+
+  private setGuessYouLikeList(dataList: []) {
+    this.guessYouLikeList = dataList
+  }
+
+  private setVideoAccessList(dataList: []) {
+    console.log(dataList)
+    this.videoLinkObj = dataList
+  }
+
+  private setVideoInfo(dataList: []) {
+    console.log(dataList)
+    this.videoInfoObj = dataList
+  }
 }
 </script>
 
@@ -339,10 +449,26 @@ export default class VideoInfo extends Vue {
   overflow: hidden;
 }
 
-.video {
-  padding-top: 66.66%;
+.scale {
   width: 100%;
   background-color: red;
+  position: relative;
+}
+
+.item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  .video-window {
+    position: relative;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 1;
+  }
 }
 
 // 排版
@@ -636,6 +762,10 @@ export default class VideoInfo extends Vue {
   border-radius: 0.25rem;
   background-color: red;
   display: inline-block;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .scrolltext {

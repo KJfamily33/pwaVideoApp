@@ -8,6 +8,7 @@ import App from './App.vue'
 import router from './router'
 import store from '@/store'
 import './registerServiceWorker'
+import { getToken } from '@/utils/cookies'
 
 import '@/styles/index.scss'
 Vue.config.productionTip = false
@@ -16,6 +17,15 @@ Vue.use(SvgIcon, {
   tagName: 'svg-icon',
   defaultWidth: '1em',
   defaultHeight: '1em',
+})
+router.beforeEach((to, from, next) => {
+  const isLogin = getToken() || ''
+  if (isLogin) {
+    next()
+  } else {
+    if (to.path !== '/login') next('/login')
+    else next()
+  }
 })
 
 new Vue({

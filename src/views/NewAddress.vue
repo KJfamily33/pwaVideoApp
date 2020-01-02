@@ -40,13 +40,28 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import NewAddressBtn from '@/components/NewAddressBtn/index.vue'
+import { newestAddress } from '@/api/newestAddress'
 
 @Component({
   components: {
     NewAddressBtn,
   },
 })
-export default class NewAddress extends Vue {}
+export default class NewAddress extends Vue {
+  private addressList = []
+
+  mounted() {
+    const _this = this
+    console.log('123')
+
+    newestAddress().then(res => {
+      if (res.status === 200) {
+        _this.addressList = res.data.data.urls
+        console.log(_this.addressList)
+      }
+    })
+  }
+}
 </script>
 
 <style scoped lang="scss">

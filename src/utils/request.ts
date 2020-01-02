@@ -22,6 +22,12 @@ service.interceptors.request.use(
 // Response interceptors
 service.interceptors.response.use(
   response => {
+    // if (response.data.data.code === 'offline') {
+    //   return response
+    // } else {
+    //
+    // }
+
     const res = response.data
     if (res.status !== 200) {
       return Promise.reject(new Error(res.message || 'Error'))

@@ -114,10 +114,13 @@ export default class VideoListPage extends Vue {
 
 <style lang="scss" scoped>
 .list-item > * {
-  margin: 10px 0px;
+  margin: 15px 0px;
 }
 
 .video-list {
-  margin: 8px;
+  margin-top: 40px;
+  width: 100vw;
+  padding: 0px 15px;
+  /*overflow-y: auto;*/
 }
 </style>

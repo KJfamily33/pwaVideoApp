@@ -13,10 +13,17 @@
       </div>
       <div class="center">
         <div v-if="!showVideoTitle" class="logo">
-          <svg-icon name="ic-v-2-logo" width="80" height="18" color="#FFF"></svg-icon>
+          <svg-icon
+            name="ic-v-2-logo"
+            width="80"
+            height="18"
+            color="#FFF"
+          ></svg-icon>
         </div>
         <div v-if="!showVideoTitle" class="path-name">影片列表</div>
-        <div v-if="showVideoTitle" class="title">文字測試文字測試文字測試文字測試文字測試</div>
+        <div v-if="showVideoTitle" class="title">
+          文字測試文字測試文字測試文字測試文字測試
+        </div>
       </div>
       <div class="pull-right">
         <div v-if="showQuestionBtn" class="question">
@@ -67,9 +74,15 @@ export default class HeaderBar extends Vue {
 .header {
   width: 100vw;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.24), 0 0 8px 0 rgba(0, 0, 0, 0.12);
-  background-image: linear-gradient(to bottom, #f3806f, #ff68b0 190%);
+  background-color: rgb(255, 0, 118);
+  opacity: 0.9;
   min-height: 3.25rem;
   max-height: 4.5rem;
+
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   display: flex;
   justify-content: center;
@@ -95,7 +108,7 @@ export default class HeaderBar extends Vue {
       .path-name {
         color: white;
         font-size: 15px;
-        padding: 0 .5rem;
+        padding: 0 0.5rem;
       }
       .title {
         font-size: 15px;

@@ -1,45 +1,62 @@
 <template>
-	    <!--影片-->
-    <div class="videoCell width-95pa margin-bottom-10 row">
-      <div class="column flex-1">
-        <div class="videoCellPicture">
-          <div class="videoTime text text-color-ffffff text-12-500 padding-left-right-4">
-            99:99:99
-          </div>
+  <!--影片-->
+  <div class="videoCell width-95pa margin-bottom-10 row">
+    <div class="column flex-1">
+      <div class="videoCellPicture">
+        <img :src="videoInfoObj.originHref" alt="" />
+        <div
+          class="videoTime text text-color-ffffff text-12-500 padding-left-right-4"
+        >
+          {{ getTime() }}
         </div>
       </div>
-      <div class="column flex-center-end flex-2 padding-right-4">
-        <div
-          class="text text-color-000000 text-14-500 flex-1 flex-center text-ellipsis"
-        >样子很帅的华裔小哥和漂亮女朋友样子很帅的华裔小哥和漂亮女朋友样子很帅的华裔小哥和漂亮女朋友样子很帅的华裔小哥和漂亮女朋友</div>
-        <div class="column flex-around-end flex-2">
-          <div class="row flex-center" style="float:right">
-            <svg-icon name="ic-view" width="20" height="13"></svg-icon>
-            <div class="text text-color-a5a5a5 text-12-300 margin-left-5">1734次观看</div>
+    </div>
+    <div class="column flex-center-end flex-2 padding-right-4">
+      <div
+        class="text text-color-000000 text-14-500 flex-1 flex-center text-ellipsis"
+      >
+        {{ videoInfoObj.title }}
+      </div>
+      <div class="column flex-around-end flex-2">
+        <div class="row flex-center" style="float:right">
+          <svg-icon name="ic-view" width="20" height="13"></svg-icon>
+          <div class="text text-color-a5a5a5 text-12-300 margin-left-5">
+            {{ videoInfoObj.playCount }}次观看
           </div>
-          <div class="row flex-center" style="float:right">
-            <svg-icon name="ic-time" width="13" height="13"></svg-icon>
-            <div class="text text-color-a5a5a5 text-12-300 margin-left-5">18小时前</div>
+        </div>
+        <div class="row flex-center" style="float:right">
+          <svg-icon name="ic-time" width="13" height="13"></svg-icon>
+          <div class="text text-color-a5a5a5 text-12-300 margin-left-5">
+            {{ videoInfoObj.releasedAt }}
           </div>
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 
-    @Component({
-        components: {
+@Component({
+  components: {},
+})
+export default class VideoInfoCell extends Vue {
+  @Prop() private videoInfoObj: any
 
-        },
-    })
-    export default class VideoInfoCell extends Vue {
-
+  getTime() {
+    let pad = function(num, size) {
+      return ('000' + num).slice(size * -1)
     }
+    let time = parseFloat(this.videoInfoObj.duration).toFixed(3)
+    let hours = Math.floor(time / 60 / 60)
+    let minutes = Math.floor(time / 60) % 60
+    let seconds = Math.floor(time - minutes * 60)
+
+    return pad(hours, 2) + ':' + pad(minutes, 2) + ':' + pad(seconds, 2)
+  }
+}
 </script>
-
-
 
 <style lang="scss" scoped>
 // 影片
@@ -48,15 +65,20 @@
   border-radius: 0.25rem;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
-
 }
 
 .videoCellPicture {
- position:relative;
+  position: relative;
   width: 8.125rem;
   height: 100%;
   border-radius: 0.25rem;
   background-color: red;
+  img {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
 }
 
 .videoTime {
@@ -68,10 +90,9 @@
     rgba(249, 117, 141, 0.5),
     rgba(246, 98, 76, 0.51)
   );
-  position:absolute;
-    bottom:0;
-    right:0;
-
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 // 排版
@@ -180,8 +201,8 @@
 }
 
 .text-12-500 {
-   font-size: 0.75rem;
- font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .text-16-500 {
@@ -222,5 +243,4 @@
   text-align: center;
   line-height: 24px;
 }
-
 </style>

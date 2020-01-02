@@ -73,7 +73,7 @@ class FooterBar extends VuexModule implements IFooBarState {
         this.SET_STORE_ACTIVE()
         break;
       }
-      case 'person': {
+      case 'profile': {
         this.SET_PERSON_ACTIVE()
         break;
       }

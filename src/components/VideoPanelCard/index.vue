@@ -48,6 +48,10 @@ export default class VideoPanelCard extends Vue {
 
   isPlay = false
 
+  mounted() {
+    console.log(this.videoInfoObj)
+  }
+
   getTime() {
     let pad = function(num, size) {
       return ('000' + num).slice(size * -1)
@@ -88,10 +92,15 @@ export default class VideoPanelCard extends Vue {
     switch (index) {
       case 0:
         if (this.isPlay === true) {
-          this.$router.push({ name: '/video-info', params: { data } })
+          const videoIdEncrypt =
+            data.isTranscoded === 0 ? data.idEncrypt : data.transcodeEncrypt
+          this.$router.push({
+            name: '/video-info',
+            params: { videoIdEncrypt: videoIdEncrypt },
+          })
         } else {
           this.isPlay = true
-          this.$emit('startVideo',this.videoInfoObj.itemIndex)
+          this.$emit('startVideo', this.videoInfoObj.itemIndex)
         }
 
         break
@@ -120,9 +129,9 @@ export default class VideoPanelCard extends Vue {
   background: #fff;
   padding: 0;
   border: none;
-  border-radius: 0.28571429rem;
+  border-radius: 0.8rem;
   -webkit-box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  box-shadow: 0 2px 6px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
   -webkit-transition: -webkit-box-shadow 0.1s ease, -webkit-transform 0.1s ease;
   transition: -webkit-box-shadow 0.1s ease, -webkit-transform 0.1s ease;
   transition: box-shadow 0.1s ease, transform 0.1s ease;
@@ -146,6 +155,9 @@ export default class VideoPanelCard extends Vue {
         img {
           height: 100%;
           width: 100%;
+
+          border-top-left-radius: 0.8rem;
+          border-top-right-radius: 0.8rem;
         }
 
         video {
@@ -198,7 +210,7 @@ export default class VideoPanelCard extends Vue {
     border-top: 1px solid rgba(34, 36, 38, 0.1);
     background: 0 0;
     margin: 0;
-    padding: 0.5rem 0.7rem;
+    padding: 0.3rem 0.8rem;
     -webkit-box-shadow: none;
     box-shadow: none;
     font-size: 0.95rem;
@@ -219,6 +231,7 @@ export default class VideoPanelCard extends Vue {
       text-align: start;
       text-overflow: ellipsis;
       width: 100%;
+      font-size: 18px;
     }
 
     .info {
