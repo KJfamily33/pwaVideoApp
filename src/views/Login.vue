@@ -107,7 +107,7 @@ export default class User extends Vue {
     let acText = acInput.value
     let psText = psInput.value
     // 帳號有輸入並且密碼>7位
-    if (acText.length > 0 && psText.length > 7) {
+    if (acText.length > 0 && psText.length > 4) {
       button.disabled = false
       button.classList.remove('login')
       button.classList.add('isLogin')

@@ -44,7 +44,7 @@ import Holder from 'holderjs'
 
 @Component
 export default class VideoPanelCard extends Vue {
-  @Prop() videoInfoObj
+  @Prop() videoInfoObj: any
 
   isPlay = false
 
@@ -53,10 +53,10 @@ export default class VideoPanelCard extends Vue {
   }
 
   getTime() {
-    let pad = function(num, size) {
+    let pad = function(num: string | number, size: number) {
       return ('000' + num).slice(size * -1)
     }
-    let time = parseFloat(this.videoInfoObj.duration).toFixed(3)
+    let time: any = parseFloat(this.videoInfoObj.duration).toFixed(3)
     let hours = Math.floor(time / 60 / 60)
     let minutes = Math.floor(time / 60) % 60
     let seconds = Math.floor(time - minutes * 60)

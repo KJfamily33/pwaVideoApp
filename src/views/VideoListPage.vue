@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 <template>
   <div class="video-list">
+    <header-bar></header-bar>
     <div class="list-item" v-for="(e, i) in resObj" :key="i">
       <a href v-if="i > 0 && i % 3 === 0">
         <ad-banner></ad-banner>
@@ -19,11 +20,13 @@ import { Component, Vue } from 'vue-property-decorator'
 import VideoCard from '@/components/VideoPanelCard/index.vue'
 import AdBanner from '@/components/AdBanner/index.vue'
 import { videoList } from '@/api/videoList'
+import HeaderBar from '@/components/HeaderBar/index.vue'
 
 @Component({
   components: {
     VideoCard,
     AdBanner,
+    HeaderBar,
   },
 })
 export default class VideoListPage extends Vue {
@@ -118,9 +121,11 @@ export default class VideoListPage extends Vue {
 }
 
 .video-list {
-  margin-top: 40px;
+  padding-top: 40px;
   width: 100vw;
-  padding: 0px 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+
   /*overflow-y: auto;*/
 }
 </style>

@@ -20,7 +20,7 @@
     <!--      <router-link to="/search">Search</router-link>|-->
     <!--      <router-link to="/videoList">VideoList</router-link>-->
     <!--    </div>-->
-    <router-view class="flex header" name="header" />
+<!--    <router-view class="flex header" name="header" />-->
     <router-view class="flex content-body" />
     <router-view class="flex footer" name="footer" />
   </div>

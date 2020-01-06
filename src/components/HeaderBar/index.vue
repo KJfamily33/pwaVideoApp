@@ -58,6 +58,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { debounce, throttle } from '@/utils/commons'
 
 @Component({
   components: {},
@@ -68,6 +69,20 @@ export default class HeaderBar extends Vue {
   private showShareBtn = false
   private showQuestionBtn = false
   private showPromotionBtn = false
+  private headerVisible = true
+
+  mounted() {
+    const _this = this
+    function headerFold() {
+      console.log(window.scrollY)
+      _this.headerVisible = false
+    }
+    const throttleHeaderFold = throttle(headerFold, 150)
+
+    window.addEventListener('scroll', function(e) {
+      throttleHeaderFold(e)
+    })
+  }
 }
 </script>
 <style lang="scss" scoped>
