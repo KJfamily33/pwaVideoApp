@@ -10,6 +10,7 @@ import store from '@/store'
 import './registerServiceWorker'
 import { getToken } from '@/utils/cookies'
 
+import '@/styles/animate.css'
 import '@/styles/index.scss'
 Vue.config.productionTip = false
 
