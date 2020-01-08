@@ -1,6 +1,6 @@
 <template>
-  <div class="header">
-    <div class="control-bar">
+  <div class="header animated" id="headerBar">
+    <div class="header-control-bar">
       <div class="pull-left">
         <div v-if="showBackBtn" class="go-back">
           <svg-icon
@@ -74,14 +74,94 @@ export default class HeaderBar extends Vue {
   mounted() {
     const _this = this
     function headerFold() {
-      console.log(window.scrollY)
-      _this.headerVisible = false
+      _this.headerVisible = true
     }
-    const throttleHeaderFold = throttle(headerFold, 150)
+    const throttleHeaderFold = throttle(headerFold, 1500)
 
-    window.addEventListener('scroll', function(e) {
-      throttleHeaderFold(e)
+    // window.addEventListener('scroll', function(e) {
+    //   if (_this.headerVisible === true) {
+    //     throttleHeaderFold(e)
+    //   }
+    // })
+
+    this.wetherScroll()
+  }
+
+  private wetherScroll() {
+    const _this = this
+    let startX: number = 0,
+      startY: number = 0,
+      endX: number = 0,
+      endY: number = 0
+    let body = document.getElementsByTagName('body')[0]
+    body.addEventListener('touchstart', function(event) {
+      let touch = event.targetTouches[0]
+      //滑动起点的坐标
+      startX = touch.pageX
+      startY = touch.pageY
+      // console.log('startX:' + startX + ',' + 'startY:' + startY)
     })
+    body.addEventListener('touchmove', function(event) {
+      let touch = event.targetTouches[0]
+      //手势滑动时，手势坐标不断变化，取最后一点的坐标为最终的终点坐标
+      endX = touch.pageX
+      endY = touch.pageY
+      // console.log('endX:' + endX + ',' + 'endY:' + endY)
+
+      let dY = endY - startY
+      if ((_this.headerVisible === false && dY > 3) || window.scrollY < 54) {
+        console.log('顯示')
+        _this.showCtrlBar()
+      } else if (_this.headerVisible === true && dY < -3) {
+        console.log('隱藏')
+        _this.hideCtrlBar()
+      }
+    })
+    body.addEventListener('touchend', function(event) {
+      let distanceX = endX - startX,
+        distanceY = endY - startY
+      // console.log('distanceX:' + distanceX + ',' + 'distanceY:' + distanceY)
+      //移动端设备的屏幕宽度
+      let clientHeight = document.documentElement.clientHeight
+      // console.log(clientHeight;*0.2);
+      //判断是否滑动了，而不是屏幕上单击了
+      if (startY != Math.abs(distanceY)) {
+        //在滑动的距离超过屏幕高度的20%时，做某种操作
+        if (Math.abs(distanceY) > clientHeight * 0.2) {
+          //向下滑实行函数someAction1，向上滑实行函数someAction2
+          // distanceY <0 ? someAction1():someAction2();
+        }
+      }
+      startX = startY = endX = endY = 0
+    })
+  }
+
+  private hideCtrlBar() {
+    const headerBar = document.getElementById('headerBar')
+
+    if (headerBar) {
+      headerBar.classList.add('slideOutUp')
+      setTimeout(function() {
+        headerBar.classList.add('outView')
+      }, 400)
+
+      headerBar.classList.remove('slideInDown')
+      headerBar.classList.remove('inView')
+    }
+    this.headerVisible = false
+  }
+  private showCtrlBar() {
+    const headerBar = document.getElementById('headerBar')
+
+    if (headerBar) {
+      headerBar.classList.add('slideInDown')
+      headerBar.classList.add('inView')
+
+      headerBar.classList.remove('slideOutUp')
+      headerBar.classList.remove('outView')
+    }
+
+    this.headerVisible = true
   }
 }
 </script>
@@ -103,7 +183,7 @@ export default class HeaderBar extends Vue {
   justify-content: center;
   align-items: center;
 
-  .control-bar {
+  .header-control-bar {
     width: 100%;
     flex: 1 1;
 
@@ -159,5 +239,27 @@ export default class HeaderBar extends Vue {
 
   .nav-bar {
   }
+}
+
+.slideOutUp.outView {
+  top: -4.25rem;
+  animation-duration: 1s !important; //动画持续时间
+  animation-delay: 0s !important; //动画延迟时间
+  animation-iteration-count: 1 !important; //动画执行次数
+
+  -webkit-animation-duration: 1s !important; //动画持续时间
+  -webkit-animation-delay: 0s !important; //动画延迟时间
+  -webkit-animation-iteration-count: 1 !important; //动画执行次数
+}
+
+.slideInDown.inView {
+  top: 0px;
+  animation-duration: 0.3s !important; //动画持续时间
+  animation-delay: 0s !important; //动画延迟时间
+  animation-iteration-count: 1 !important; //动画执行次数
+
+  -webkit-animation-duration: 0.3s !important; //动画持续时间
+  -webkit-animation-delay: 0s !important; //动画延迟时间
+  -webkit-animation-iteration-count: 1 !important; //动画执行次数
 }
 </style>

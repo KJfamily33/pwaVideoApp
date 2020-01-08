@@ -121,7 +121,7 @@ export default class VideoListPage extends Vue {
 }
 
 .video-list {
-  padding-top: 40px;
+  padding-top: 50px;
   width: 100vw;
   padding-left: 15px;
   padding-right: 15px;

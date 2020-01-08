@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer" id="footer">
     <div class="aspect__spacer"></div>
     <div class="control-bar">
       <router-link
@@ -12,7 +12,7 @@
           width="24"
           height="24"
           :color="isActiveVideo ? activeColor : defaultColor"
-          :opacity="isActiveVideo ? 1 : 0.5"
+          :opacity="isActiveVideo ? 1 : 0.7"
         ></svg-icon>
         <p :style="isActiveVideo ? activeStyle : defaultStyle">影片</p>
       </router-link>
@@ -26,7 +26,7 @@
           width="24"
           height="24"
           :color="isActiveSearch ? activeColor : defaultColor"
-          :opacity="isActiveSearch ? 1 : 0.5"
+          :opacity="isActiveSearch ? 1 : 0.7"
         ></svg-icon>
         <p :style="isActiveSearch ? activeStyle : defaultStyle">搜寻</p>
       </router-link>
@@ -40,7 +40,7 @@
           width="24"
           height="24"
           :color="isActiveTask ? activeColor : defaultColor"
-          :opacity="isActiveTask ? 1 : 0.5"
+          :opacity="isActiveTask ? 1 : 0.7"
         ></svg-icon>
         <p :style="isActiveTask ? activeStyle : defaultStyle">任务中心</p>
       </router-link>
@@ -54,7 +54,7 @@
           width="24"
           height="24"
           :color="isActiveStore ? activeColor : defaultColor"
-          :opacity="isActiveStore ? 1 : 0.5"
+          :opacity="isActiveStore ? 1 : 0.7"
         ></svg-icon>
         <p :style="isActiveStore ? activeStyle : defaultStyle">应用中心</p>
       </router-link>
@@ -68,7 +68,7 @@
           width="24"
           height="24"
           :color="isActivePerson ? activeColor : defaultColor"
-          :opacity="isActivePerson ? 1 : 0.5"
+          :opacity="isActivePerson ? 1 : 0.7"
         ></svg-icon>
         <p :style="isActivePerson ? activeStyle : defaultStyle">个人</p>
       </router-link>
@@ -98,6 +98,36 @@ export default class FooterControlBar extends Vue {
     } else if (urlPath.indexOf('profile') > 0) {
       this.setActive('profile')
     }
+
+    const isIPhonex = () => {
+      if (typeof window !== 'undefined' && window) {
+        return (
+          /iphone/gi.test(window.navigator.userAgent) &&
+          window.screen.height >= 812
+        )
+      }
+      return false
+    }
+
+    if (isIPhonex()) {
+      let footer = document.getElementById('footer')
+      if (footer) {
+        footer.style.paddingBottom = '17px'
+      }
+
+      let btnList = document.getElementsByClassName('control-bar')
+      btnList[0].setAttribute('style', 'height:calc(100% - 17px)')
+    }
+  }
+
+  private isIPhonex() {
+    if (typeof window !== 'undefined' && window) {
+      return (
+        /iphone/gi.test(window.navigator.userAgent) &&
+        window.screen.height >= 812
+      )
+    }
+    return false
   }
 
   get isActiveVideo(): boolean {
@@ -174,7 +204,7 @@ export default class FooterControlBar extends Vue {
   }
 
   p {
-    margin: 4px 0px 1px 0px;
+    margin: 2px 0px 1px 0px;
     font-size: 12px;
   }
 }
