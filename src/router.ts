@@ -20,6 +20,7 @@ import ChangeVIP from './views/ChangeVIP.vue'
 import vHistory from './views/VHistory.vue'
 import Search from './views/Search.vue'
 import VideoList from './views/VideoListPage.vue'
+import TestPage from './views/TestPage.vue'
 
 Vue.use(Router)
 
@@ -188,6 +189,15 @@ export default new Router({
       components: {
         default: Search,
         header: HeaderBar,
+      },
+    },
+    {
+      path: '/TestPage',
+      name: 'TestPage',
+      components: {
+        default: TestPage,
+        header: HeaderBar,
+        footer: FooterBar,
       },
     },
   ],
