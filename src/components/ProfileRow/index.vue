@@ -1,13 +1,14 @@
 <template>
   <div class="size">
-    <div class="column">
-      <svg-icon name="ic-acount" width="22" height="22" class="icon"></svg-icon>
+    <a :href="ProfileInfoObj.link" class="column">
+      <!-- <svg-icon name="ic-acount" width="22" height="22" class="icon"></svg-icon> -->
+      <img :src="ProfileInfoObj.preImg">
       <div class="text" style="margin-left:15px">{{ ProfileInfoObj.title }}</div>
       <div class="text" style="margin-left:5px">{{ ProfileInfoObj.subtitle }}</div>
       <a href v-if="ProfileInfoObj.icon == true">
         <svg-icon name="ic-forward" width="6" height="10" class="ic_forward"></svg-icon>
       </a>
-    </div>
+    </a>
   </div>
 </template>
 <script lang="ts">
