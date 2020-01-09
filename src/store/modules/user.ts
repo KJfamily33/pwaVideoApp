@@ -41,9 +41,17 @@ class User extends VuexModule implements IUserState {
       password = password.toString()
     }
     const res = await login({ username, password })
+
+    // 储存token
     const headers = res.headers
     setToken(headers.authtoken)
     this.SET_TOKEN(headers.authtoken)
+
+    // 储存userId
+    const info = res.data.data
+    const userId = info.userId.toString()
+    setUserId(userId)
+    this.SET_USER_ID(userId)
     return res
   }
 

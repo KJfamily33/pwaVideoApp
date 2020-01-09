@@ -30,7 +30,27 @@ service.interceptors.response.use(
 
     const res = response.data
     if (res.status !== 200) {
-      return Promise.reject(new Error(res.message || 'Error'))
+      if (res.status === 103) {
+        return response
+      }
+      else if (res.status === 126) {
+        return response
+      }
+      else if (res.status === 127) {
+        return response
+      }
+      else if (res.status === 128) {
+        return response
+      }
+      else if (res.status === 129) {
+        return response
+      } 
+      else if (res.status === 130) {
+        return response
+      }
+      else {
+        return Promise.reject(new Error(res.message || 'Error'))
+      }
     } else {
       return response
     }

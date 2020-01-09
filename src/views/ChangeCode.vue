@@ -12,6 +12,7 @@
         @input="changeText()"
         type="text"
         placeholder="请输入兑换码"
+        v-model="exchangeCode"
       />
     </div>
     <!--按鈕-->
@@ -23,7 +24,7 @@
     <!--提示窗-->
     <div class="cover coverBackground"></div>
     <div class="cover coverContent row">
-      <div class="text text-25-500 margin-all-auto">获得7天VIP</div>
+      <div class="text text-25-500 margin-all-auto">{{ message }}</div>
       <div class="line"></div>
       <div class="text text-20-500 margin-top-bottom-15" @click="alertSure">
         确定
@@ -34,11 +35,15 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { getExchangeCode } from '@/api/exchangeCode'
+import { UserModule } from '@/store/modules/user'
 
 @Component({
   components: {},
 })
 export default class ChangeCode extends Vue {
+  private exchangeCode: string = ''
+  private message: string = ''
   // 提視窗事件
   alertSure() {
     // 清空資料
@@ -58,9 +63,22 @@ export default class ChangeCode extends Vue {
   }
   // 按鈕事件
   change() {
-    let input = document.getElementById('text') as HTMLInputElement
-    const text = input.value
+    // let input = document.getElementById('text') as HTMLInputElement
+    // const text = input.value
     // TODO: 用 text 帶入 API
+    const _this = this
+    let requestInfo = {
+      webTypeId: 1,
+      webId: 1,
+      userId: UserModule.userId,
+      exchangeCode: _this.exchangeCode
+    }
+    getExchangeCode(requestInfo).then(res => {
+        _this.message = res.data.message
+    }).catch(e=>{
+      console.log(e)
+    })
+
     let inAlert = document.getElementsByClassName('cover')
     for (let i = 0; i < inAlert.length; i++) {
       let alert = inAlert[i] as HTMLElement
