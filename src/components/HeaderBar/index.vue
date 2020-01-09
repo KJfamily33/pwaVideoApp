@@ -223,6 +223,7 @@ export default class HeaderBar extends Vue {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  backdrop-filter: blur(9.6px);
 
   .header-control-bar {
     width: 100%;

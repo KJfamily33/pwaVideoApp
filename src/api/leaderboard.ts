@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-export const getLeaderboard = () =>
+export const getLeaderBoard = () =>
   request({
     url: '/leaderboard/all',
     method: 'get',
