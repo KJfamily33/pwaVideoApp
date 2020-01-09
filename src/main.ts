@@ -9,10 +9,14 @@ import router from './router'
 import store from '@/store'
 import './registerServiceWorker'
 import { getToken } from '@/utils/cookies'
+import EventBus from 'vue-bus-ts'
 
 import '@/styles/animate.css'
 import '@/styles/index.scss'
 Vue.config.productionTip = false
+
+Vue.use(EventBus)
+var bus = new EventBus.Bus()
 
 Vue.use(SvgIcon, {
   tagName: 'svg-icon',
@@ -30,6 +34,7 @@ router.beforeEach((to, from, next) => {
 })
 
 new Vue({
+  bus,
   router,
   store,
   render: h => h(App),

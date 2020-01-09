@@ -12,3 +12,9 @@ export const videoList = (data: IVideoList) =>
     method: 'post',
     data,
   })
+
+export const videoCategory = () =>
+  request({
+      url: '/video/category',
+      method: 'get'
+  })

@@ -20,7 +20,7 @@ import ChangeVIP from './views/ChangeVIP.vue'
 import vHistory from './views/VHistory.vue'
 import Search from './views/Search.vue'
 import VideoList from './views/VideoListPage.vue'
-import TestPage from './views/TestPage.vue'
+import LeaderBoard from './views/LeaderBoard.vue'
 
 Vue.use(Router)
 
@@ -192,11 +192,10 @@ export default new Router({
       },
     },
     {
-      path: '/TestPage',
-      name: 'TestPage',
+      path: '/leaderBoard',
+      name: 'leaderBoard',
       components: {
-        default: TestPage,
-        header: HeaderBar,
+        default: LeaderBoard,
         footer: FooterBar,
       },
     },

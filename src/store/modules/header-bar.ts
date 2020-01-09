@@ -7,9 +7,9 @@ import {
 } from 'vuex-module-decorators'
 import store from '@/store'
 import request from '@/utils/request'
+import { ICategoryList } from '@/store/modules/footer-bar'
 
-export interface IHeaderBarState {
-}
+export interface IHeaderBarState {}
 
 @Module({ dynamic: true, store, name: 'headerBar' })
 class HeaderBar extends VuexModule implements IHeaderBarState {
@@ -22,19 +22,24 @@ class HeaderBar extends VuexModule implements IHeaderBarState {
   private showQuestionBtn = false
   private showPromotionBtn = false
 
-  private navBarList:any[] = []
+  private videoCategoryList: ICategoryList[] = []
 
   @Mutation
-  private SET_NAV_BAR_LIST(data:any[]) {
-    this.navBarList = data
+  private SET_CATEGORY_LIST(categoryList: ICategoryList[]) {
+    this.videoCategoryList = categoryList
+  }
+
+  @Action
+  public setCategoryList(categoryList: ICategoryList[]) {
+    this.SET_CATEGORY_LIST(categoryList)
   }
 
   @Action
   public changeToVideoPage(params: any) {
     request({
-      url:'/login',
-      method:'get',
-      params
+      url: '/login',
+      method: 'get',
+      params,
     })
   }
 }

@@ -3,6 +3,20 @@
     <div class="aspect__spacer"></div>
     <div class="control-bar">
       <router-link
+        to="/leaderBoard"
+        class="item"
+        v-on:click.native="setActive('leaderBoard')"
+      >
+        <svg-icon
+          name="trophy"
+          width="24"
+          height="24"
+          :color="isActiveLeaderBoard ? activeColor : defaultColor"
+          :opacity="isActiveLeaderBoard ? 1 : 0.7"
+        ></svg-icon>
+        <p :style="isActiveLeaderBoard ? activeStyle : defaultStyle">排行榜</p>
+      </router-link>
+      <router-link
         to="/videoList"
         class="item"
         v-on:click.native="setActive('video')"
@@ -15,20 +29,6 @@
           :opacity="isActiveVideo ? 1 : 0.7"
         ></svg-icon>
         <p :style="isActiveVideo ? activeStyle : defaultStyle">影片</p>
-      </router-link>
-      <router-link
-        to="/footer"
-        class="item"
-        v-on:click.native="setActive('search')"
-      >
-        <svg-icon
-          name="ic-search"
-          width="24"
-          height="24"
-          :color="isActiveSearch ? activeColor : defaultColor"
-          :opacity="isActiveSearch ? 1 : 0.7"
-        ></svg-icon>
-        <p :style="isActiveSearch ? activeStyle : defaultStyle">搜寻</p>
       </router-link>
       <router-link
         to="/currentTask"
@@ -89,8 +89,8 @@ export default class FooterControlBar extends Vue {
 
     if (urlPath.indexOf('video') > 0) {
       this.setActive('video')
-    } else if (urlPath.indexOf('search') > 0) {
-      this.setActive('search')
+    } else if (urlPath.indexOf('leaderBoard') > 0) {
+      this.setActive('leaderBoard')
     } else if (urlPath.indexOf('task') > 0) {
       this.setActive('task')
     } else if (urlPath.indexOf('store') > 0) {
@@ -133,8 +133,8 @@ export default class FooterControlBar extends Vue {
   get isActiveVideo(): boolean {
     return FooBarModule.isActiveVideo
   }
-  get isActiveSearch(): boolean {
-    return FooBarModule.isActiveSearch
+  get isActiveLeaderBoard(): boolean {
+    return FooBarModule.isActiveLeaderBoard
   }
   get isActiveTask(): boolean {
     return FooBarModule.isActiveTask

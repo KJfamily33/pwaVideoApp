@@ -1,59 +1,121 @@
 <template>
   <div class="hotbar">
-    <div class="section" v-for="(type, indx) in typeList" :key="indx">
+    <div class="section" v-for="(type, indx) in leaderBoardList" :key="indx">
       <div class="hotlist">
         <div class="most">
-          <span>最多人看的<span class="most-type">{{ type.typeName }}</span></span>
+          <span
+            >最多人看的<span class="most-type">{{ type.typeName }}</span></span
+          >
         </div>
         <div class="filter">
-          <a v-if="isDaily" href="" class="filter-btn-active" @click.prevent="">每日</a>
-          <a v-else href="" class="filter-btn" @click.prevent="checkDaily">每日</a>
-          <a v-if="isWeekly" href="" class="filter-btn-active" @click.prevent="">每周</a>
-          <a v-else href="" class="filter-btn" @click.prevent="checkWeekly">每周</a>
-          <a v-if="isMonthly" href="" class="filter-btn-active" @click.prevent="">每月</a>
-          <a v-else href="" class="filter-btn" @click.prevent="checkMonthly">每月</a>
+          <a
+            href=""
+            :class="changeDailyBtnColor(type)"
+            @click.prevent="checkDaily(type)"
+            >每日</a
+          >
+          <a
+            href=""
+            :class="changeWeeklyBtnColor(type)"
+            @click.prevent="checkWeekly(type)"
+            >每周</a
+          >
+          <a
+            href=""
+            :class="changeMonthlyBtnColor(type)"
+            @click.prevent="checkMonthly(type)"
+            >每月</a
+          >
         </div>
       </div>
-      <HotVideoCard :hotList="type.weekly"></HotVideoCard>
+      <HotVideoCard :hotList="checkFilterRange(type)"></HotVideoCard>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import HotVideoCard from '@/components/HotVideoCard/index.vue'
+import { LeaderBoardModule } from '@/store/modules/leaderBoard'
 
 @Component({
   components: {
-    HotVideoCard
+    HotVideoCard,
   },
 })
 export default class HotBar extends Vue {
-  @Prop() private typeList!: any
-  private typeDate = []
-  private isDaily = false
-  private isWeekly = true
-  private isMonthly = false
+  public leaderBoardList: any = []
 
+  // @Watch('leaderBoardList')
+  // private test() {
+  //   console.log('test')
+  // }
+
+  private checkFilterRange(type) {
+    const _this = this
+    if (type['isDaily']) {
+      return type.daily
+    } else if (type['isWeekly']) {
+      return type.weekly
+    } else if (type['isMonthly']) {
+      return type.monthly
+    }
+  }
   mounted() {
-    const vm = this
+    const _this = this
+    this.$bus.$on('leaderBoard', function() {
+      _this.leaderBoardList = LeaderBoardModule.leaderBoardList
+      for (let i = 0; i < _this.leaderBoardList.length; i++) {
+        let list = _this.leaderBoardList[i]
+        if (list['isDaily'] === undefined || list['isDaily'] === null) {
+          Vue.set(list, 'isDaily', false)
+        }
+        if (list['isWeekly'] === undefined || list['isWeekly'] === null) {
+          Vue.set(list, 'isWeekly', true)
+        }
+        if (list['isMonthly'] === undefined || list['isMonthly'] === null) {
+          Vue.set(list, 'isMonthly', false)
+        }
+      }
+    })
   }
-  checkDaily() {
-    const vm = this
-    vm.isDaily = true
-    vm.isWeekly = false
-    vm.isMonthly = false
+
+  beforeDestroy() {
+    const _this = this
+    this.$bus.$off('leaderBoard', 0)
   }
-  checkWeekly() {
-    const vm = this
-    vm.isDaily = false
-    vm.isWeekly = true
-    vm.isMonthly = false    
+
+  private changeDailyBtnColor(type: any) {
+    return type.isDaily ? 'filter-btn-active' : 'filter-btn'
   }
-  checkMonthly() {
-    const vm = this
-    vm.isDaily = false
-    vm.isWeekly = false
-    vm.isMonthly = true  
+
+  private changeWeeklyBtnColor(type: any) {
+    return type.isWeekly ? 'filter-btn-active' : 'filter-btn'
+  }
+
+  private changeMonthlyBtnColor(type: any) {
+    return type.isMonthly ? 'filter-btn-active' : 'filter-btn'
+  }
+
+  checkDaily(type: any) {
+    this.$nextTick(() => {
+      Vue.set(type, 'isDaily', true)
+      Vue.set(type, 'isWeekly', false)
+      Vue.set(type, 'isMonthly', false)
+    })
+  }
+  checkWeekly(type: any) {
+    this.$nextTick(() => {
+      Vue.set(type, 'isDaily', false)
+      Vue.set(type, 'isWeekly', true)
+      Vue.set(type, 'isMonthly', false)
+    })
+  }
+  checkMonthly(type: any) {
+    this.$nextTick(() => {
+      Vue.set(type, 'isDaily', false)
+      Vue.set(type, 'isWeekly', false)
+      Vue.set(type, 'isMonthly', true)
+    })
   }
 }
 </script>
@@ -64,8 +126,8 @@ export default class HotBar extends Vue {
   padding: 20px 10px;
   margin-bottom: 100px;
   .section {
-    padding: 20px 10px;
-    border-bottom: 3px solid #DDDDDD;
+    padding: 20px 7px;
+    border-bottom: 3px solid #dddddd;
     .hotlist {
       display: flex;
       align-items: center;
@@ -75,13 +137,13 @@ export default class HotBar extends Vue {
         .most-type {
           font-size: 20px;
           font-weight: bold;
-          color: #A42D00;
+          color: #a42d00;
           margin-left: 3px;
         }
       }
       .filter {
         .filter-btn-active {
-          background-color: #FF0088;
+          background-color: #ff0088;
           color: #fff;
           font-size: 20px;
           border-radius: 20px;
@@ -89,7 +151,7 @@ export default class HotBar extends Vue {
           margin: 0 5px;
         }
         .filter-btn {
-          background-color: #AAAAAA;
+          background-color: #aaaaaa;
           color: #fff;
           font-size: 16px;
           border-radius: 20px;

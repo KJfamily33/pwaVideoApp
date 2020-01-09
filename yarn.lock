@@ -8835,6 +8835,11 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.0.tgz#bd76d6a23323e2ca8ffa12028dc04559c75f9019"
   integrity sha512-iq+S7vZJE60yejDYM0ek6zg308+UZsdtPExWP9VZoCFCz1zkJoXFnAX7aZfd/ZwrkidzdUZL0C/ryW+JwAiIGw==
 
+vue-bus-ts@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/vue-bus-ts/-/vue-bus-ts-1.0.8.tgz#f68a257d3350ddecffd443c1a45c05312ccdab2d"
+  integrity sha512-gG+M1uVEBYpmWwzIW5egPDVWIMO69m0UX7hszDkXVlso5o6RiIofICM7rPxdW5BucFB5TAI0x7Q9l7EiPpEORw==
+
 vue-class-component@^7.0.1, vue-class-component@^7.0.2:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-7.1.0.tgz#b33efcb10e17236d684f70b1e96f1946ec793e87"

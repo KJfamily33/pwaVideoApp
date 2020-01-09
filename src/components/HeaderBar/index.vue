@@ -52,13 +52,23 @@
         </div>
       </div>
     </div>
-    <div class="nav-bar"></div>
+    <div class="nav-bar" v-if="headerNavBarVisible">
+      <div
+        class="nav-item"
+        v-for="(obj, i) in headerNavBar"
+        :key="i"
+        @click="clickCategoryBtn(obj)"
+      >
+        {{ obj.name }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { debounce, throttle } from '@/utils/commons'
+import { FooBarModule, ICategoryList } from '@/store/modules/footer-bar'
 
 @Component({
   components: {},
@@ -70,6 +80,32 @@ export default class HeaderBar extends Vue {
   private showQuestionBtn = false
   private showPromotionBtn = false
   private headerVisible = true
+  private headerNavBarVisible = false
+
+  private headerNavBar: ICategoryList[] = []
+
+  created() {
+    const _this = this
+    const path = location.pathname
+    if (path === '/videoList') {
+      this.headerNavBarVisible = true
+      const list = FooBarModule.videoCategoryList
+      if (list.length < 1) {
+        this.$bus.$on('setCategoryList', function() {
+          Vue.set(_this, 'headerNavBar', FooBarModule.videoCategoryList)
+        })
+      } else {
+        Vue.set(_this, 'headerNavBar', FooBarModule.videoCategoryList)
+      }
+    } else {
+      this.headerNavBarVisible = false
+    }
+  }
+
+  beforeDestroy() {
+    const _this = this
+    this.$bus.$off('setCategoryList', 0)
+  }
 
   mounted() {
     const _this = this
@@ -85,6 +121,10 @@ export default class HeaderBar extends Vue {
     // })
 
     this.wetherScroll()
+  }
+
+  private clickCategoryBtn(categoryObj: { name: string; type: string }) {
+    this.$bus.$emit('changeVideoPage', categoryObj)
   }
 
   private wetherScroll() {
@@ -108,12 +148,14 @@ export default class HeaderBar extends Vue {
       endY = touch.pageY
       // console.log('endX:' + endX + ',' + 'endY:' + endY)
 
+      let dX = endX - startX
       let dY = endY - startY
-      if ((_this.headerVisible === false && dY > 3) || window.scrollY < 54) {
-        console.log('顯示')
+      if (_this.headerVisible === false && dY > 5) {
+        console.log('显示')
         _this.showCtrlBar()
-      } else if (_this.headerVisible === true && dY < -3) {
-        console.log('隱藏')
+      } else if (_this.headerVisible === true && dY < -25) {
+        console.log('隐藏')
+
         _this.hideCtrlBar()
       }
     })
@@ -171,8 +213,6 @@ export default class HeaderBar extends Vue {
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.24), 0 0 8px 0 rgba(0, 0, 0, 0.12);
   background-color: rgb(255, 0, 118);
   opacity: 0.9;
-  min-height: 3.25rem;
-  max-height: 4.5rem;
 
   z-index: 100;
   position: fixed;
@@ -181,11 +221,13 @@ export default class HeaderBar extends Vue {
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
 
   .header-control-bar {
     width: 100%;
-    flex: 1 1;
+    min-height: 45px;
+    background-color: #ff0076;
 
     display: flex;
     flex-direction: row;
@@ -238,6 +280,29 @@ export default class HeaderBar extends Vue {
   }
 
   .nav-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    background-color: #ff0076;
+    overflow-x: scroll;
+    min-height: 35px;
+    height: 35px;
+    z-index: 200;
+    width: 100vw;
+
+    .nav-item {
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 27vw;
+      height: 100%;
+    }
+  }
+
+  .nav-bar::-webkit-scrollbar {
+    display: none;
   }
 }
 
