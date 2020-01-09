@@ -48,9 +48,7 @@ export default class VideoPanelCard extends Vue {
 
   isPlay = false
 
-  mounted() {
-
-  }
+  mounted() {}
 
   getTime() {
     let pad = function(num: string | number, size: number) {

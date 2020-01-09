@@ -16,7 +16,6 @@ import DPlayer from 'dplayer'
 })
 export default class DPlayerTest extends Vue {
   mounted() {
-    console.log('hello?')
     const dp = new DPlayer({
       container: document.getElementById('dplayer'),
       video: {

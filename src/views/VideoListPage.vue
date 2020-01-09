@@ -2,16 +2,18 @@
 <template>
   <div class="video-list">
     <header-bar></header-bar>
-    <div class="list-item" v-for="(e, i) in resObj" :key="i">
-      <a href v-if="i > 0 && i % 3 === 0">
-        <ad-banner></ad-banner>
-      </a>
-      <video-card
-        ref="item"
-        :videoInfoObj="resObj[i]"
-        v-on:startVideo="startVideo"
-      ></video-card>
-    </div>
+    <transition-group name="slide-fade">
+      <div class="list-item" v-for="(e, i) in resObj" :key="i">
+        <a href v-if="i > 0 && i % 3 === 0">
+          <ad-banner></ad-banner>
+        </a>
+        <video-card
+          ref="item"
+          :videoInfoObj="resObj[i]"
+          v-on:startVideo="startVideo"
+        ></video-card>
+      </div>
+    </transition-group>
   </div>
 </template>
 
@@ -46,17 +48,36 @@ export default class VideoListPage extends Vue {
   }
 
   created() {
+    const _this = this
     this.getList()
+
+    this.$bus.$on('changeVideoPage', function(categoryObj: {
+      name: string
+      type: string
+    }) {
+      _this.reqParam.type = categoryObj.type
+      _this.getList()
+    })
+  }
+
+  beforeDestroy() {
+    this.$bus.$off('changeVideoPage', 0)
   }
 
   getList() {
-    videoList(this.reqParam).then(res => {
-      this.resObj = res.data.data.video
-      this.resObj.forEach((el, index) => {
-        el.itemIndex = index
+    videoList(this.reqParam)
+      .then(res => {
+        this.resObj.splice(0, this.resObj.length)
+        return res
       })
-      this.allCount = res.data.data.totalColumns
-    })
+      .then(res => {
+        this.resObj = res.data.data.video
+
+        this.resObj.forEach((el, index) => {
+          el.itemIndex = index
+        })
+        this.allCount = res.data.data.totalColumns
+      })
   }
 
   loadMore() {
@@ -121,11 +142,31 @@ export default class VideoListPage extends Vue {
 }
 
 .video-list {
-  padding-top: 40px;
+  padding-top: 80px;
   width: 100vw;
   padding-left: 15px;
   padding-right: 15px;
 
   /*overflow-y: auto;*/
+}
+</style>
+<style scoped>
+.slide-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.slide-fade-enter-active {
+  transition: all 0.7s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.6s cubic-bezier(2, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  left: 0;
+  right: 0;
+  transform: translate(-30px, 0);
+  opacity: 0;
 }
 </style>
