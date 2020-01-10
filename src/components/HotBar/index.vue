@@ -146,16 +146,16 @@ export default class HotBar extends Vue {
           background-color: #ff0088;
           color: #fff;
           font-size: 20px;
-          border-radius: 20px;
-          padding: 5px;
+          border-radius: 16px;
+          padding: 5px 7px;
           margin: 0 5px;
         }
         .filter-btn {
           background-color: #aaaaaa;
           color: #fff;
           font-size: 16px;
-          border-radius: 20px;
-          padding: 6px;
+          border-radius: 14px;
+          padding: 6px 6px;
           margin: 0 5px;
         }
       }

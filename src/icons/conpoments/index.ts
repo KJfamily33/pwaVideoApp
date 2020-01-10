@@ -1,4 +1,5 @@
 /* tslint:disable */
+import './film'
 import './group-5'
 import './ic-aboutv-2'
 import './ic-acount'
@@ -67,5 +68,6 @@ import './ic-website'
 import './ic-wechat'
 import './ic-weibo'
 import './question-circle-o'
+import './th-large'
 import './trophy-2'
 import './trophy'

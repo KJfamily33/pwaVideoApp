@@ -25,10 +25,16 @@ class LeaderBoard extends VuexModule implements ILeaderBoardState {
 
   @Action({ rawError: true })
   public async DoGetLeaderBoard() {
-    let res = await getLeaderBoard()
-    if (res.status === 200) {
-      this.SET_LEADER_BOARD_LIST(res.data.data.leaderboard)
-    }
+    await getLeaderBoard()
+      .then(res => {
+        if (res.status === 200) {
+          this.SET_LEADER_BOARD_LIST(res.data.data.leaderboard)
+        }
+      })
+      .catch(error => {
+        console.log(error)
+        this.DoGetLeaderBoard()
+      })
   }
 
   @Action({ rawError: true })

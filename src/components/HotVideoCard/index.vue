@@ -1,18 +1,20 @@
 <template>
-  <div class="video-list">
-    <div class="video-card" v-for="(hot, indx) in hotList" :key="indx">
-      <a class="video-item" href="" @click.prevent="test(hot)">
-        <img :src="imgUrl" alt="" />
-      </a>
-      <div class="watch-item">
-        <div class="watch">
-          <span class="watch-text">观看</span>
-          <span>{{ hot.playCount }}</span>
+  <div>
+    <transition-group name="fade" class="video-list">
+      <div class="video-card" v-for="(hot, indx) in hotList" :key="indx">
+        <a class="video-item" href="" @click.prevent="test(hot)">
+          <img :src="imgUrl" alt="" />
+        </a>
+        <div class="watch-item">
+          <div class="watch">
+            <span class="watch-text">观看</span>
+            <span>{{ hot.playCount }}</span>
+          </div>
+          <span class="length">片长{{ hot.duration | formatSecond }}</span>
         </div>
-        <span class="length">片长{{ hot.duration | formatSecond }}</span>
+        <span class="title">{{ hot.title }}</span>
       </div>
-      <span class="title">{{ hot.title }}</span>
-    </div>
+    </transition-group>
   </div>
 </template>
 <script lang="ts">
@@ -69,10 +71,18 @@ export default class HotVideoCard extends Vue {
     padding-right: 15px;
     width: 70vw;
     min-width: 70vw;
+
     .video-item {
       img {
         width: 100%;
         border-radius: 0.8rem;
+
+        -webkit-box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+        box-shadow: 0 2px 6px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+        -webkit-transition: -webkit-box-shadow 0.1s ease,
+          -webkit-transform 0.1s ease;
+        transition: -webkit-box-shadow 0.1s ease, -webkit-transform 0.1s ease;
+        transition: box-shadow 0.1s ease, transform 0.1s ease;
       }
     }
     .watch-item {
@@ -105,5 +115,15 @@ export default class HotVideoCard extends Vue {
       margin-top: 5px;
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>

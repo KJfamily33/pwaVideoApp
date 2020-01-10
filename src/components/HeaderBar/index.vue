@@ -50,6 +50,14 @@
             color="#FFF"
           ></svg-icon>
         </div>
+        <div class="smallMode">
+          <svg-icon
+            name="th-large.svg"
+            width="24"
+            height="24"
+            color="#FFF"
+          ></svg-icon>
+        </div>
       </div>
     </div>
     <div class="nav-bar" v-if="headerNavBarVisible">

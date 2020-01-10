@@ -358,6 +358,18 @@ button {
   flex-direction: column;
 }
 
+.smallMode {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  border-radius: 0.3125rem;
+  background-color: #ffffff;
+  display: none;
+  flex-direction: column;
+}
+
 .line {
   height: 0.0625rem;
   background-color: #f3806f;

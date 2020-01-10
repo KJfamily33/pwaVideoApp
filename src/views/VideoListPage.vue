@@ -14,18 +14,35 @@
         ></video-card>
       </div>
     </transition-group>
+
+    <!--    <div class="list-item-wrap">-->
+    <!--      <div v-for="(e, i) in resObj" :key="i">-->
+    <!--        <div class="row" v-if="i > 0 && (i + 1) % 2 === 0">-->
+    <!--          <VideoSmallCard-->
+    <!--            :videoInfoObj="resObj[i - 1]"-->
+    <!--            class="item"-->
+    <!--          ></VideoSmallCard>-->
+    <!--          <VideoSmallCard-->
+    <!--            :videoInfoObj="resObj[i]"-->
+    <!--            class="item"-->
+    <!--          ></VideoSmallCard>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import VideoCard from '@/components/VideoPanelCard/index.vue'
+import VideoSmallCard from '@/components/VideoSmallPanelCard/index.vue'
 import AdBanner from '@/components/AdBanner/index.vue'
 import { videoList } from '@/api/videoList'
 import HeaderBar from '@/components/HeaderBar/index.vue'
 
 @Component({
   components: {
+    VideoSmallCard,
     VideoCard,
     AdBanner,
     HeaderBar,
@@ -34,6 +51,7 @@ import HeaderBar from '@/components/HeaderBar/index.vue'
 export default class VideoListPage extends Vue {
   private five = [1, 2, 3, 4, 5, 6, 7]
 
+  private isSmallPanelMode = false
   private doSomethingAction() {}
   resObj = []
   isLoading = false
@@ -94,19 +112,38 @@ export default class VideoListPage extends Vue {
 
   mounted() {
     //添加滚动事件
-
+    const _this = this
     window.onscroll = () => {
-      // 判断滑动位置
-      let card = document.getElementsByClassName('list-item')
-      let visibleBottom = window.scrollY + document.documentElement.clientHeight
-      let visibleTop = window.scrollY
+      if (_this.isSmallPanelMode) {
+        // 判断滑动位置
+        let smallCard = document.getElementsByClassName('list-item-wrap')
+        let smallVisibleBottom =
+          window.scrollY + document.documentElement.clientHeight
+        let smallVisibleTop = window.scrollY
 
-      for (let i = 0; i < card.length; i++) {
-        let centerY = card[i].offsetTop + card[i].offsetHeight / 2
-        if (centerY > visibleTop && centerY < visibleBottom) {
-          // 加载更多
-          if (i == this.resObj.length - 3) {
-            this.isLoadMore()
+        for (let i = 0; i < smallCard.length / 2; i++) {
+          let centerY = smallCard[i].offsetTop + smallCard[i].offsetHeight / 2
+          if (centerY > smallVisibleTop && centerY < smallVisibleBottom) {
+            // 加载更多
+            if (i == this.resObj.length - 3) {
+              this.isLoadMore()
+            }
+          }
+        }
+      } else {
+        // 判断滑动位置
+        let card = document.getElementsByClassName('list-item')
+        let visibleBottom =
+          window.scrollY + document.documentElement.clientHeight
+        let visibleTop = window.scrollY
+
+        for (let i = 0; i < card.length; i++) {
+          let centerY = card[i].offsetTop + card[i].offsetHeight / 2
+          if (centerY > visibleTop && centerY < visibleBottom) {
+            // 加载更多
+            if (i == this.resObj.length - 3) {
+              this.isLoadMore()
+            }
           }
         }
       }
@@ -139,6 +176,29 @@ export default class VideoListPage extends Vue {
 <style lang="scss" scoped>
 .list-item > * {
   margin: 15px 0px;
+}
+
+.list-item-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px -10px;
+  .row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    height: 120px;
+    width: 100%;
+    min-width: 100vw;
+    max-width: 100vw;
+    margin: 5px;
+    .item {
+      height: 100%;
+      width: 45% !important;
+    }
+  }
 }
 
 .video-list {
