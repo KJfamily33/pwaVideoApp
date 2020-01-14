@@ -3,7 +3,7 @@
     <div class="row flex-center margin-bottom-10" style="height:100%">
       <div class="column">
         <div class="app-size">
-          <img src="holder.js/100px100py?auto=yes&text=1:1" alt="">
+          <img :src="appList.image" alt="">
         </div>
       </div>
       <div class="column" style="flex:2">
@@ -21,21 +21,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import Holder from 'holderjs'
 
 @Component({
   components: {}
 })
 export default class Example extends Vue {
   @Prop() private appList!: any
-  mounted() {
-    const img = (document.querySelectorAll(
-      '.app-size img'
-    ) as unknown) as HTMLElement
-    Holder.run({
-      images: img,
-    })
-  }  
 }
 </script>
 <style lang="scss" scoped>
