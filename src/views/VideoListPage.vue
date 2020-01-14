@@ -226,7 +226,7 @@ export default class VideoListPage extends Vue {
 .slide-fade-leave-to {
   left: 0;
   right: 0;
-  transform: translate(-30px, 0);
+  transform: translate(0px, 8px);
   opacity: 0;
 }
 </style>

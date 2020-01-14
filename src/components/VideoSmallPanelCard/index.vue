@@ -117,7 +117,7 @@ export default class VideoSmallPanelCard extends Vue {
   background: #fff;
   padding: 0;
   border: none;
-  border-radius: 0.8rem;
+  border-radius: 0.5rem;
   -webkit-box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
   box-shadow: 0 2px 6px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
   -webkit-transition: -webkit-box-shadow 0.1s ease, -webkit-transform 0.1s ease;
@@ -144,8 +144,8 @@ export default class VideoSmallPanelCard extends Vue {
           height: 100%;
           width: 100%;
 
-          border-top-left-radius: 0.8rem;
-          border-top-right-radius: 0.8rem;
+          border-top-left-radius: 0.5rem;
+          border-top-right-radius: 0.5rem;
         }
 
         video {

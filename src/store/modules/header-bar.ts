@@ -23,15 +23,27 @@ class HeaderBar extends VuexModule implements IHeaderBarState {
   private showPromotionBtn = false
 
   private videoCategoryList: ICategoryList[] = []
+    public categoryIndex: number = 0
+
 
   @Mutation
   private SET_CATEGORY_LIST(categoryList: ICategoryList[]) {
     this.videoCategoryList = categoryList
   }
 
+  @Mutation
+  private SET_CATEGORY_INDEX(index: number) {
+    this.categoryIndex = index
+  }
+
   @Action
   public setCategoryList(categoryList: ICategoryList[]) {
     this.SET_CATEGORY_LIST(categoryList)
+  }
+
+  @Action
+  public setSelectedTabIndex(index: number) {
+    this.SET_CATEGORY_INDEX(index)
   }
 
   @Action
