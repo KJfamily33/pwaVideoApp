@@ -3,7 +3,7 @@
     <transition-group name="fade" class="video-list">
       <div class="video-card" v-for="(hot, indx) in hotList" :key="indx">
         <a class="video-item" href="" @click.prevent="test(hot)">
-          <img :src="imgUrl" alt="" />
+          <img :src="hot.originHref" alt="" />
         </a>
         <div class="watch-item">
           <div class="watch">
@@ -44,7 +44,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 })
 export default class HotVideoCard extends Vue {
   @Prop() private hotList!: any
-  private imgUrl = require('@/assets/test/1.jpg')
 
   private test(data) {
     // console.log(data)
