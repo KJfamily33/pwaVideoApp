@@ -1,7 +1,7 @@
 <template>
   <div class="appicon-size margin-bottom-10 margin-left-right-175">
     <a :href="appList.iosUrl" class="app-size">
-      <img src="holder.js/100px100py?auto=yes&text=1:1" alt="">
+      <img :src="appList.image" alt="">
     </a>
     <div class="text text-color-6a6a6a">{{ appList.name }}</div>
   </div>
@@ -9,21 +9,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import Holder from 'holderjs'
 
 @Component({
   components: {}
 })
 export default class StoreApp extends Vue {
   @Prop() private appList!: any
-  mounted() {
-    const img = (document.querySelectorAll(
-      '.app-size img'
-    ) as unknown) as HTMLElement
-    Holder.run({
-      images: img,
-    })
-  }
 }
 </script>
 
