@@ -6,7 +6,7 @@ import {
   getModule,
 } from 'vuex-module-decorators'
 import store from '@/store'
-import { getLeaderBoard } from '@/api/leaderBoard'
+import { getLeaderBoard } from '@/api/leaderboard'
 import { Vue } from 'vue-property-decorator'
 
 export interface ILeaderBoardState {
