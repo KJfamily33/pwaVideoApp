@@ -55,7 +55,7 @@ export default class Store extends Vue {
     const _this = this
     getGetall().then(res => {
       _this.appList = res.data.data.apps
-      // console.log(_this.appList)
+      console.log(_this.appList)
     }).catch(e=>{
       console.log(e)
     })
