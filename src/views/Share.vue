@@ -12,14 +12,16 @@
       </div>
       <!--QrCode-->
       <div class="qrcode margin-top-56">
-        <div class="qrcodeContent"></div>
+        <div class="qrcodeContent">
+          <img src="@/assets/test/app.gif" alt="">
+        </div>
       </div>
       <!--按鈕-->
       <div class="row margin-top-43">
         <div class="column">
           <button
             class="text text-color-ffffff text-20-500"
-            @click="shareAlert(1)"
+            @click.prevent="shareAlert(1)"
           >
             分享推广连结
           </button>
@@ -126,6 +128,7 @@
           <div class="text text-20-500 text-color-f3806f">确定</div>
         </div>
       </div>
+      <input type="text" readonly="value" id="copyLink" v-model="copyLink" style="position: absolute; top: -10%;">
     </div>
   </div>
 </template>
@@ -137,6 +140,7 @@ import { Component, Vue } from 'vue-property-decorator'
   components: {},
 })
 export default class Share extends Vue {
+  private copyLink = 123456789
   // 分享選項
   shareSelected(index: number) {
     // 0: 取消 1: QQ 2: 微信 3: 騰訊微博 4: 新浪微博 5: 網易 6: 非秋
@@ -158,6 +162,9 @@ export default class Share extends Vue {
     if (index === 1) {
       share.style.display = 'flex'
     } else {
+      let Url = document.getElementById("copyLink") as HTMLInputElement
+      Url.select()
+      document.execCommand("Copy") // 執行瀏覽器複製命令
       copy.style.display = 'flex'
     }
   }
@@ -299,6 +306,9 @@ export default class Share extends Vue {
   width: 12.125rem;
   height: 12.125rem;
   background-color: red;
+  img {
+    width: 100%;
+  }
 }
 
 // 排版
