@@ -57,6 +57,7 @@ export default class StoreApp extends Vue {
     min-width: 48px;
     min-height: 48px;
     width: 100%;
+    margin-bottom: 5px;
   }
 }
 

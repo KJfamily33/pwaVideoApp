@@ -7,12 +7,14 @@
         </div>
       </div>
       <div class="column" style="flex:2">
-        <div class="width-100pa text-start"> {{ appList.name }} </div>
-        <div class="width-100pa text-start">{{ appList.introduction }}</div>
+        <div class="width-100pa text-start text"> {{ appList.name }} </div>
+        <div class="width-100pa text-start text">{{ appList.introduction }}</div>
       </div>
-      <a :href="appList.iosUrl" class="column">
-        <button class="buttom">下载</button>
-      </a>
+      <div class="column">
+        <a :href="appList.iosUrl" class="a-btn">
+          下載
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -69,6 +71,14 @@ export default class Example extends Vue {
   color: #ffffff;
   outline: none;
   border: 0;
+}
+
+.a-btn {
+  background-image: linear-gradient(148deg, #f3806f 21%, #f8758d 84%);
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 4px;
 }
 
 // 文字
