@@ -23,8 +23,8 @@
     <div class="line margin-top-7 margin-bottom-10 margin-left-right-20"></div>
     <!--AppIcon-->
     <div class="row width-89pa">
-      <div v-for="(e, i) in 8" :key="i">
-        <StroeApp></StroeApp>
+      <div v-for="(e, i) in appList" :key="i">
+        <StroeApp v-if="e.position == 0" :appList="e"></StroeApp>
       </div>
     </div>
     <!--ADBanner-->
@@ -38,8 +38,8 @@
     <div class="line margin-top-7 margin-bottom-10 margin-left-right-20"></div>
     <!--AppIcon-->
     <div class="column width-89pa">
-      <div class="width-100pa" v-for="(e, i) in 8" :key="i">
-        <StroeApplication></StroeApplication>
+      <div class="width-100pa" v-for="(e, i) in appList" :key="i">
+        <StroeApplication v-if="e.position == 1" :appList="e"></StroeApplication>
       </div>
     </div>
   </div>
@@ -49,6 +49,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import StroeApp from '@/components/StoreApp/index.vue'
 import StroeApplication from '@/components/StoreApplication/index.vue'
+import { getGetall } from '@/api/apps'
 
 @Component({
   components: {
@@ -56,7 +57,22 @@ import StroeApplication from '@/components/StoreApplication/index.vue'
     StroeApplication,
   },
 })
-export default class Store extends Vue {}
+export default class Store extends Vue {
+  private appList: any = []
+  mounted() {
+    const _this = this
+    _this.getAppList()
+  }
+  getAppList() {
+    const _this = this
+    getGetall().then(res => {
+      _this.appList = res.data.data.apps
+      // console.log(_this.appList)
+    }).catch(e=>{
+      console.log(e)
+    })
+  }    
+}
 </script>
 
 <style lang="scss" scoped>
@@ -139,6 +155,7 @@ export default class Store extends Vue {}
   flex: 1;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
 }
 
 //page

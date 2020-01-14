@@ -47,7 +47,7 @@ export default class HotVideoCard extends Vue {
   private imgUrl = require('@/assets/test/1.jpg')
 
   private test(data) {
-    console.log(data)
+    // console.log(data)
     const videoIdEncrypt =
       data.isTranscoded === 0 ? data.idEncrypt : data.transcodeEncrypt
     this.$router.push({

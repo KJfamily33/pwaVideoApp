@@ -2,26 +2,39 @@
   <div class="applicationItem">
     <div class="row flex-center margin-bottom-10" style="height:100%">
       <div class="column">
-        <div class="app-size"></div>
+        <div class="app-size">
+          <img src="holder.js/100px100py?auto=yes&text=1:1" alt="">
+        </div>
       </div>
       <div class="column" style="flex:2">
-        <div class="width-100pa text-start">App</div>
-        <div class="width-100pa text-start">Content</div>
+        <div class="width-100pa text-start"> {{ appList.name }} </div>
+        <div class="width-100pa text-start">{{ appList.introduction }}</div>
       </div>
-      <div class="column">
-        <button class="buttom ">下载</button>
-      </div>
+      <a :href="appList.iosUrl" class="column">
+        <button class="buttom">下载</button>
+      </a>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Holder from 'holderjs'
 
 @Component({
   components: {}
 })
-export default class Example extends Vue {}
+export default class Example extends Vue {
+  @Prop() private appList!: any
+  mounted() {
+    const img = (document.querySelectorAll(
+      '.app-size img'
+    ) as unknown) as HTMLElement
+    Holder.run({
+      images: img,
+    })
+  }  
+}
 </script>
 <style lang="scss" scoped>
 // application
@@ -31,9 +44,13 @@ export default class Example extends Vue {}
 }
 
 .app-size {
-  height: 3rem;
-  width: 3rem;
-  background-color: red;
+  width: 48px;
+  height: 48px;
+  img {
+    min-width: 48px;
+    height: 48px;
+    width: 100%;
+  }
 }
 
 .buttom {

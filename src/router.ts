@@ -21,6 +21,7 @@ import vHistory from './views/VHistory.vue'
 import Search from './views/Search.vue'
 import VideoList from './views/VideoListPage.vue'
 import LeaderBoard from './views/LeaderBoard.vue'
+import TagPage from './views/TagPage.vue'
 
 Vue.use(Router)
 
@@ -199,5 +200,13 @@ export default new Router({
         footer: FooterBar,
       },
     },
+    {
+      path: '/tagPage',
+      name: 'tagPage',
+      components: {
+        default: TagPage,
+        footer: FooterBar,
+      },
+    },    
   ],
 })

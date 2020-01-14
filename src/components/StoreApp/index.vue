@@ -1,17 +1,30 @@
 <template>
   <div class="appicon-size margin-bottom-10 margin-left-right-175">
-    <div class="app-size"></div>
-    <div class="text text-color-6a6a6a">APP</div>
+    <a :href="appList.iosUrl" class="app-size">
+      <img src="holder.js/100px100py?auto=yes&text=1:1" alt="">
+    </a>
+    <div class="text text-color-6a6a6a">{{ appList.name }}</div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
+import Holder from 'holderjs'
 
 @Component({
   components: {}
 })
-export default class StoreApp extends Vue {}
+export default class StoreApp extends Vue {
+  @Prop() private appList!: any
+  mounted() {
+    const img = (document.querySelectorAll(
+      '.app-size img'
+    ) as unknown) as HTMLElement
+    Holder.run({
+      images: img,
+    })
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -38,9 +51,13 @@ export default class StoreApp extends Vue {}
 }
 
 .app-size {
-  height: 3rem;
-  width: 3rem;
-  background-color: black;
+  width: 48px;
+  height: 48px;
+  img {
+    min-width: 48px;
+    min-height: 48px;
+    width: 100%;
+  }
 }
 
 // 排版
