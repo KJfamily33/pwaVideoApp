@@ -6,14 +6,14 @@
       <div class="text text-color-f3806f text-30-500 margin-top-56">
         轻松赚取V币
       </div>
-      <div class="text text-color-ffffff text-20-500 margin-top-20">
+      <!-- <div class="text text-color-ffffff text-20-500 margin-top-20">
         已推广人数：
         <span class="text-color-f3806f">1</span>
-      </div>
+      </div> -->
       <!--QrCode-->
       <div class="qrcode margin-top-56">
         <div class="qrcodeContent">
-          <img src="@/assets/test/app.gif" alt="">
+          <vue-qr :text="qrcode" :size="200"></vue-qr>
         </div>
       </div>
       <!--按鈕-->
@@ -28,7 +28,7 @@
         </div>
         <div class="column">
           <button
-            class="text text-color-ffffff text-20-500 alpha"
+            class="text text-color-ffffff text-20-500"
             @click="getLink()"
           >
             复制推广码
@@ -137,9 +137,12 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { getDomain } from '@/api/qrcode'
 import { UserModule } from '@/store/modules/user'
+import VueQr from 'vue-qr'
 
 @Component({
-  components: {},
+  components: {
+    VueQr
+  },
 })
 export default class Share extends Vue {
   private qrcode = ''
@@ -331,7 +334,6 @@ export default class Share extends Vue {
 .qrcodeContent {
   width: 12.125rem;
   height: 12.125rem;
-  background-color: red;
   img {
     width: 100%;
   }
@@ -363,11 +365,6 @@ button {
   background-image: linear-gradient(139deg, #f3806f 27%, #f8758d 80%);
   border: 0;
   outline: none;
-}
-
-// 透明度
-.alpha {
-  opacity: 0.7;
 }
 
 // 提示窗遮罩
