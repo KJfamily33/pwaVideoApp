@@ -6,28 +6,30 @@
       <div class="text text-color-f3806f text-30-500 margin-top-56">
         轻松赚取V币
       </div>
-      <div class="text text-color-ffffff text-20-500 margin-top-20">
+      <!-- <div class="text text-color-ffffff text-20-500 margin-top-20">
         已推广人数：
         <span class="text-color-f3806f">1</span>
-      </div>
+      </div> -->
       <!--QrCode-->
       <div class="qrcode margin-top-56">
-        <div class="qrcodeContent"></div>
+        <div class="qrcodeContent">
+          <vue-qr :text="qrcode" :size="200"></vue-qr>
+        </div>
       </div>
       <!--按鈕-->
       <div class="row margin-top-43">
         <div class="column">
           <button
             class="text text-color-ffffff text-20-500"
-            @click="shareAlert(1)"
+            @click.prevent="shareAlert(1)"
           >
             分享推广连结
           </button>
         </div>
         <div class="column">
           <button
-            class="text text-color-ffffff text-20-500 alpha"
-            @click="shareAlert(2)"
+            class="text text-color-ffffff text-20-500"
+            @click="getLink()"
           >
             复制推广码
           </button>
@@ -126,17 +128,31 @@
           <div class="text text-20-500 text-color-f3806f">确定</div>
         </div>
       </div>
+      <input type="text" readonly="value" id="copyLink" v-model="copyLink" style="position: absolute; top: -10%;">
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { getDomain } from '@/api/qrcode'
+import { UserModule } from '@/store/modules/user'
+import VueQr from 'vue-qr'
 
 @Component({
-  components: {},
+  components: {
+    VueQr
+  },
 })
 export default class Share extends Vue {
+  private qrcode = ''
+  private copyLink = ''
+
+  mounted() {
+    const _this = this
+    _this.getQrcode()
+  }  
+
   // 分享選項
   shareSelected(index: number) {
     // 0: 取消 1: QQ 2: 微信 3: 騰訊微博 4: 新浪微博 5: 網易 6: 非秋
@@ -147,7 +163,6 @@ export default class Share extends Vue {
     share.style.display = 'none'
     copy.style.display = 'none'
   }
-
   // 分享連結
   shareAlert(index: number) {
     // 1: share 2: copy
@@ -160,6 +175,27 @@ export default class Share extends Vue {
     } else {
       copy.style.display = 'flex'
     }
+  }
+
+  getQrcode() {
+    const _this = this
+    let params = {
+      userId: UserModule.userId,
+    }
+    getDomain(params).then(res => {
+      _this.qrcode = res.data.data.url
+      _this.copyLink = res.data.data.url
+    }).catch(e=>{
+      console.log(e)
+    })
+  }
+
+  getLink() {
+    let copy = document.getElementById('copy') as HTMLDivElement
+    let Url = document.getElementById("copyLink") as HTMLInputElement
+    Url.select()
+    document.execCommand("Copy")
+    copy.style.display = 'flex'
   }
 }
 </script>
@@ -298,7 +334,9 @@ export default class Share extends Vue {
 .qrcodeContent {
   width: 12.125rem;
   height: 12.125rem;
-  background-color: red;
+  img {
+    width: 100%;
+  }
 }
 
 // 排版
@@ -327,11 +365,6 @@ button {
   background-image: linear-gradient(139deg, #f3806f 27%, #f8758d 80%);
   border: 0;
   outline: none;
-}
-
-// 透明度
-.alpha {
-  opacity: 0.7;
 }
 
 // 提示窗遮罩
