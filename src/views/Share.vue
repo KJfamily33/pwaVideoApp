@@ -29,7 +29,7 @@
         <div class="column">
           <button
             class="text text-color-ffffff text-20-500 alpha"
-            @click="shareAlert(2)"
+            @click="getLink()"
           >
             复制推广码
           </button>
@@ -135,12 +135,21 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { getDomain } from '@/api/qrcode'
+import { UserModule } from '@/store/modules/user'
 
 @Component({
   components: {},
 })
 export default class Share extends Vue {
-  private copyLink = 123456789
+  private qrcode = ''
+  private copyLink = ''
+
+  mounted() {
+    const _this = this
+    _this.getQrcode()
+  }  
+
   // 分享選項
   shareSelected(index: number) {
     // 0: 取消 1: QQ 2: 微信 3: 騰訊微博 4: 新浪微博 5: 網易 6: 非秋
@@ -151,7 +160,6 @@ export default class Share extends Vue {
     share.style.display = 'none'
     copy.style.display = 'none'
   }
-
   // 分享連結
   shareAlert(index: number) {
     // 1: share 2: copy
@@ -162,11 +170,29 @@ export default class Share extends Vue {
     if (index === 1) {
       share.style.display = 'flex'
     } else {
-      let Url = document.getElementById("copyLink") as HTMLInputElement
-      Url.select()
-      document.execCommand("Copy") // 執行瀏覽器複製命令
       copy.style.display = 'flex'
     }
+  }
+
+  getQrcode() {
+    const _this = this
+    let params = {
+      userId: UserModule.userId,
+    }
+    getDomain(params).then(res => {
+      _this.qrcode = res.data.data.url
+      _this.copyLink = res.data.data.url
+    }).catch(e=>{
+      console.log(e)
+    })
+  }
+
+  getLink() {
+    let copy = document.getElementById('copy') as HTMLDivElement
+    let Url = document.getElementById("copyLink") as HTMLInputElement
+    Url.select()
+    document.execCommand("Copy")
+    copy.style.display = 'flex'
   }
 }
 </script>
