@@ -33,7 +33,7 @@
     </div>
     <!-- 列表 -->
     <div v-for="(e, i) in 9" :key="i">
-      <ProfileRow :ProfileInfoObj="objs[i]"></ProfileRow>
+      <ProfileRow :ProfileInfoObj="objs[i]" :webLink="webLink" :token="token"></ProfileRow>
     </div>
   </div>
 </template>
@@ -43,6 +43,8 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 import ProfileRow from '@/components/ProfileRow/index.vue'
 import HeaderBar from '../components/HeaderBar/index.vue'
 import { IProfileInfoObj } from '@/types/profile'
+import { getPayCenter } from '@/api/webview'
+import { UserModule } from '@/store/modules/user'
 
 @Component({
   components: {
@@ -115,6 +117,25 @@ export default class Profile extends Vue {
       link: '' /** 需要轉跳的頁面 */,
     },
   ]
+  private webLink = ''
+  private token = UserModule.token
+
+  mounted() {
+    const _this = this
+    _this.getWebView()
+  }
+
+  getWebView() {
+    const _this = this
+    let requestInfo = {
+      type: 0
+    }
+    getPayCenter(requestInfo).then(res =>{
+      _this.webLink = res.data.data.url
+    }).catch(e =>{
+      console.log(e)
+    })
+  }
 }
 </script>
 

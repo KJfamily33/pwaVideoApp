@@ -7,7 +7,9 @@
         <span class="margin-left-5">精品推荐</span>
       </div>
       <!--線-->
-      <div class="line"></div>
+      <div class="line">
+        <AdBanner :adTitle="adTitle"></AdBanner>
+      </div>
       <!--AppIcon-->
       <div class="app-icon">
         <div v-for="(e, i) in appList" :key="i">
@@ -37,16 +39,19 @@
 import { Component, Vue } from 'vue-property-decorator'
 import StroeApp from '@/components/StoreApp/index.vue'
 import StroeApplication from '@/components/StoreApplication/index.vue'
+import AdBanner from '@/components/AdBanner/index.vue'
 import { getGetall } from '@/api/apps'
 
 @Component({
   components: {
     StroeApp,
     StroeApplication,
+    AdBanner
   },
 })
 export default class Store extends Vue {
   private appList: any = []
+  private adTitle = 'applicationAppCenterTop'
   mounted() {
     const _this = this
     _this.getAppList()
