@@ -28,6 +28,16 @@
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import { AdvModule } from '@/store/modules/adv'
+
+const list =  AdvModule.advList
+if (list.length === 0) {
+  AdvModule.DoGetAdvList()
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei',

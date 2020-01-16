@@ -1,26 +1,36 @@
 <template>
-  <div class="ad-banner">
-    <div class="aspect__spacer"></div>
-    <div class="ad-panel">
-      <img src="holder.js/100px100py?auto=yes&text=5:1" alt="" />
+  <div>
+    <div class="ad-banner">
+      <div class="aspect__spacer"></div>
+      <a :href="adBannerList[0].url" class="ad-panel">
+        <img :src="adBannerList[0].imgPath" alt="">
+      </a>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import Holder from 'holderjs'
+import { Component, Prop, Vue } from 'vue-property-decorator'
+import { AdvModule } from '@/store/modules/adv'
 
 @Component({
   components: {},
 })
 export default class AdBanner extends Vue {
+  @Prop() private adTitle!: string;
+  private adList = AdvModule.advList
+  private adBannerList = []
+  
   mounted() {
-    const img = (document.querySelectorAll(
-      '.ad-panel img'
-    ) as unknown) as HTMLElement
-    Holder.run({
-      images: img,
+    this.$nextTick(() => {
+      console.log('innnnnn2222',this.adTitle)
+      Vue.set(this, 'adBannerList', this.adList[this.adTitle].advsData)
+    })
+  }
+
+  getAdList() {
+    this.$nextTick(() => {
+      this.adBannerList = this.adList[this.adTitle].advsData
     })
   }
 }
@@ -44,7 +54,6 @@ export default class AdBanner extends Vue {
     img {
       height: 100%;
       width: 100%;
-
     }
   }
 }
