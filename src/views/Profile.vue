@@ -33,7 +33,7 @@
     </div>
     <!-- 列表 -->
     <div v-for="(e, i) in 9" :key="i">
-      <ProfileRow :ProfileInfoObj="objs[i]" :webLink="webLink" :token="token"></ProfileRow>
+      <ProfileRow :ProfileInfoObj="objs[i]" :webLink="webLink" :token="token" :uid="uid"></ProfileRow>
     </div>
   </div>
 </template>
@@ -119,6 +119,7 @@ export default class Profile extends Vue {
   ]
   private webLink = ''
   private token = UserModule.token
+  private uid = UserModule.userId
 
   mounted() {
     const _this = this

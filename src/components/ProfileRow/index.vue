@@ -1,6 +1,6 @@
 <template>
   <div class="size">
-    <a v-if="ProfileInfoObj.title == '充值'" :href="webLink + '?tk=' + token" class="column">
+    <a v-if="ProfileInfoObj.title == '充值'" :href="webLink + '?tk=' + token + '&uid=' + uid" class="column">
       <!-- <svg-icon name="ic-acount" width="22" height="22" class="icon"></svg-icon> -->
       <img :src="ProfileInfoObj.preImg">
       <div class="text" style="margin-left:15px">{{ ProfileInfoObj.title }}</div>
@@ -29,6 +29,7 @@ export default class ProfileRow extends Vue {
   @Prop() private ProfileInfoObj!: IProfileInfoObj;
   @Prop() private webLink!: string;
   @Prop() private token!: string;
+  @Prop() private uid!: string;
 }
 </script>
 <style scoped lang="scss">
