@@ -362,7 +362,7 @@ export default class VideoInfo extends Vue {
             name: e.name,
             url: e.href,
             type: 'customHls',
-            streamToken: e.streamToken
+            streamToken: e.streamToken,
           }
         })
 
@@ -376,14 +376,7 @@ export default class VideoInfo extends Vue {
               customHls: function(video: any, player: any) {
                 const hls = new Hls()
                 hls.config.xhrSetup = function(xhr, url) {
-                  xhr.setRequestHeader(
-                    'Content-Type',
-                    'application/json; charset=utf-8'
-                  )
-                  xhr.setRequestHeader(
-                    'StreamToken',
-                    mapList[0].streamToken
-                  )
+                  xhr.setRequestHeader('StreamToken', mapList[0].streamToken)
                 }
                 hls.loadSource(video.src)
                 hls.attachMedia(video)

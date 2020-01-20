@@ -28,16 +28,40 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+<script>
+import { createSocket } from '@/utils/websocket'
+import { WebSocketModule } from '@/store/modules/webScoket'
+import { UserModule } from '@/store/modules/user'
 import { AdvModule } from '@/store/modules/adv'
 
-const list =  AdvModule.advList
+const list = AdvModule.advList
 if (list.length === 0) {
   AdvModule.DoGetAdvList()
 }
-</script>
 
+let ws = createSocket()
+WebSocketModule.setWebSocket(ws)
+ws.binaryType = 'blob'
+ws.onopen = function() {
+  const requestInfo = {
+    type: 'authPWA',
+    data: {
+      key: 'PWA-KEY',
+      authToken: UserModule.token,
+    },
+  }
+  ws.send(JSON.stringify(requestInfo))
+
+  sendPing()
+}
+
+function sendPing() {
+  ws.send('ping')
+  setInterval(() => {
+    ws.send('ping')
+  }, 5000)
+}
+</script>
 <style lang="scss">
 #app {
   font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', 'Microsoft YaHei',
@@ -72,7 +96,6 @@ if (list.length === 0) {
     }
   }
 }
-
 body {
   margin: 0;
   overflow-x: hidden;

@@ -63,7 +63,7 @@ import { Component, Vue } from 'vue-property-decorator'
 @Component({
   components: {},
 })
-export default class Example extends Vue {}
+export default class TagCard extends Vue {}
 </script>
 
 <style lang="scss" scoped>

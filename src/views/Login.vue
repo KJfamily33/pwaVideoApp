@@ -66,6 +66,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { UserModule } from '@/store/modules/user'
+import { WebSocketModule } from '@/store/modules/webScoket'
 
 @Component({
   components: {},
@@ -79,6 +80,7 @@ export default class User extends Vue {
     switch (index) {
       case 1: {
         this.doLoginAction()
+
         break
       }
 
@@ -118,7 +120,7 @@ export default class User extends Vue {
     }
   }
 
-  private doLoginAction(){
+  private doLoginAction() {
     UserModule.Login({
       username: this.userAccount,
       password: this.userPassword,
@@ -132,6 +134,16 @@ export default class User extends Vue {
           cover[i].style.display = 'block'
         }
       } else {
+        WebSocketModule.setUserId(data.userId)
+        const ws = WebSocketModule.webSocket
+        const requestInfo = {
+          type: 'signIn',
+          data: {
+            key: 'PWA-KEY',
+            user_id: data.userId,
+          },
+        }
+        ws.send(JSON.stringify(requestInfo))
         this.$router.push({ name: 'videoList' })
       }
     })

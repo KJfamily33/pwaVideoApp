@@ -2,9 +2,9 @@
   <div>
     <div class="ad-banner">
       <div class="aspect__spacer"></div>
-      <a :href="adBannerList[0].url" class="ad-panel">
-        <img :src="adBannerList[0].imgPath" alt="">
-      </a>
+      <!--      <a :href="adBannerList[0].url" class="ad-panel">-->
+      <!--        <img :src="adBannerList[0].imgPath" alt="" />-->
+      <!--      </a>-->
     </div>
   </div>
 </template>
@@ -17,14 +17,14 @@ import { AdvModule } from '@/store/modules/adv'
   components: {},
 })
 export default class AdBanner extends Vue {
-  @Prop() private adTitle!: string;
+  @Prop() private adTitle!: string
   private adList = AdvModule.advList
   private adBannerList = []
-  
+
   mounted() {
     this.$nextTick(() => {
-      console.log('innnnnn2222',this.adTitle)
-      Vue.set(this, 'adBannerList', this.adList[this.adTitle].advsData)
+      // console.log('innnnnn2222',this.adTitle)
+      // Vue.set(this, 'adBannerList', this.adList[this.adTitle].advsData)
     })
   }
 

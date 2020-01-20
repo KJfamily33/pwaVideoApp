@@ -74,7 +74,7 @@ export default class HotVideoCard extends Vue {
     .video-item {
       img {
         width: 100%;
-        border-radius: 0.8rem;
+        border-radius: 0.5rem;
 
         -webkit-box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
         box-shadow: 0 2px 6px 0 #d4d4d5, 0 0 0 1px #d4d4d5;

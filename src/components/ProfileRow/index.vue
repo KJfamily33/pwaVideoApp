@@ -8,7 +8,7 @@
       <a href v-if="ProfileInfoObj.icon == true">
         <svg-icon name="ic-forward" width="6" height="10" class="ic_forward"></svg-icon>
       </a>
-    </a>    
+    </a>
     <a v-else :href="ProfileInfoObj.link" class="column">
       <!-- <svg-icon name="ic-acount" width="22" height="22" class="icon"></svg-icon> -->
       <img :src="ProfileInfoObj.preImg">
@@ -35,10 +35,10 @@ export default class ProfileRow extends Vue {
 <style scoped lang="scss">
 .size {
   width: 100%;
-  height: 35px;
+  height: 45px;
   background-color: #ffffff;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 .column {

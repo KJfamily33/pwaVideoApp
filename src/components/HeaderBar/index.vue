@@ -61,13 +61,22 @@
       </div>
     </div>
     <div class="nav-bar" v-if="headerNavBarVisible">
-      <div
-        class="nav-item"
-        v-for="(obj, i) in headerNavBar"
-        :key="i"
-        @click="clickCategoryBtn(obj)"
-      >
-        {{ obj.name }}
+      <div style="display: flex; flex-direction: column; height: 100%">
+        <div style="display: flex; flex: 1 1 auto">
+          <div
+            class="nav-item"
+            v-for="(obj, i) in headerNavBar"
+            :key="i"
+            @click="clickCategoryBtn(obj)"
+          >
+            {{ obj.name }}
+          </div>
+        </div>
+        <div class="slider-bar">
+          <div class="slider-tabs">
+            <div class="slider-active"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -77,6 +86,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { debounce, throttle } from '@/utils/commons'
 import { FooBarModule, ICategoryList } from '@/store/modules/footer-bar'
+import { HeaderModule } from '@/store/modules/header-bar'
 
 @Component({
   components: {},
@@ -132,7 +142,30 @@ export default class HeaderBar extends Vue {
   }
 
   private clickCategoryBtn(categoryObj: { name: string; type: string }) {
+    const headerObj = this.headerNavBar
+    const lastIndex = HeaderModule.categoryIndex
+
+    const index = headerObj.indexOf(categoryObj)
+    HeaderModule.setSelectedTabIndex(index)
+    lastIndex < index
+      ? turnRightForHeaderSlider(index)
+      : turnLeftForHeaderSlider(index)
+
     this.$bus.$emit('changeVideoPage', categoryObj)
+
+    function turnRightForHeaderSlider(index: number) {
+      console.log('向右翻')
+      const vmValue = index * 27
+      const sliderBar = document.getElementsByClassName('slider-tabs')[0]
+      sliderBar.setAttribute('style', `left:${vmValue}vw;`)
+    }
+
+    function turnLeftForHeaderSlider(index: number) {
+      console.log('向左翻', index)
+      const vmValue = index === 0 ? 0 : index * 27
+      const sliderBar = document.getElementsByClassName('slider-tabs')[0]
+      sliderBar.setAttribute('style', `left:${vmValue}vw;`)
+    }
   }
 
   private wetherScroll() {
@@ -161,10 +194,11 @@ export default class HeaderBar extends Vue {
       if (_this.headerVisible === false && dY > 5) {
         console.log('显示')
         _this.showCtrlBar()
-      } else if (_this.headerVisible === true && dY < -25) {
+      } else if (_this.headerVisible === true && dY < -35) {
         console.log('隐藏')
-
-        _this.hideCtrlBar()
+        if (window.scrollY !== 0) {
+          _this.hideCtrlBar()
+        }
       }
     })
     body.addEventListener('touchend', function(event) {
@@ -307,6 +341,36 @@ export default class HeaderBar extends Vue {
       align-items: center;
       min-width: 27vw;
       height: 100%;
+    }
+
+    .slider-bar {
+      position: relative;
+      display: flex;
+      height: 2px;
+      -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+      transition: -webkit-transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+      transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+      transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1),
+        -webkit-transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+
+      .slider-tabs {
+        position: absolute;
+        width: 27vw;
+        height: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 0vw;
+        transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+        -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+        .slider-active {
+          width: 80%;
+          height: 100%;
+          background-color: rgb(31, 253, 250);
+          border-color: rgb(31, 253, 250);
+        }
+      }
     }
   }
 

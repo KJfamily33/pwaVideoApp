@@ -14,7 +14,7 @@ import TagCard from '@/components/TagCard/index.vue'
     TagCard
   },
 })
-export default class Example extends Vue {}
+export default class TagPage extends Vue {}
 </script>
 
 <style lang="scss" scoped>

@@ -8,9 +8,11 @@
             <div class="preview-card-panel">
               <video
                 v-if="isPlay && videoInfoObj.randomVideoHref != ''"
+                class="non-control"
                 autoplay
                 loop="loop"
                 muted
+                playsinline
                 :src="videoInfoObj.randomVideoHref"
               ></video>
               <img :src="videoInfoObj.originHref" alt />
@@ -127,7 +129,7 @@ export default class VideoPanelCard extends Vue {
   background: #fff;
   padding: 0;
   border: none;
-  border-radius: 0.8rem;
+  border-radius: 0.5rem;
   -webkit-box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
   box-shadow: 0 2px 6px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
   -webkit-transition: -webkit-box-shadow 0.1s ease, -webkit-transform 0.1s ease;
@@ -154,8 +156,8 @@ export default class VideoPanelCard extends Vue {
           height: 100%;
           width: 100%;
 
-          border-top-left-radius: 0.8rem;
-          border-top-right-radius: 0.8rem;
+          border-top-left-radius: 0.5rem;
+          border-top-right-radius: 0.5rem;
         }
 
         video {
@@ -164,6 +166,9 @@ export default class VideoPanelCard extends Vue {
           left: 0;
           width: 100%;
           height: 100%;
+
+          border-top-left-radius: 0.5rem;
+          border-top-right-radius: 0.5rem;
         }
       }
     }
@@ -213,7 +218,7 @@ export default class VideoPanelCard extends Vue {
     box-shadow: none;
     font-size: 0.95rem;
     border-radius: 0;
-    height: 3.25rem;
+    height: 3.5rem;
     font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑',
       Arial, sans-serif;
     display: flex;
@@ -250,6 +255,10 @@ export default class VideoPanelCard extends Vue {
         }
       }
     }
+  }
+
+  video::-webkit-media-controls {
+    display: none !important;
   }
 }
 </style>

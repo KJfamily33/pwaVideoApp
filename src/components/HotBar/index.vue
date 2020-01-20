@@ -122,12 +122,15 @@ export default class HotBar extends Vue {
 
 <style lang="scss" scoped>
 .hotbar {
-  background-color: #fff;
-  padding: 20px 10px;
+  padding: 20px 0px;
   margin-bottom: 100px;
+  background-color: #e8eaeb;
+
   .section {
-    padding: 20px 7px;
+    padding: 20px 18px;
     border-bottom: 3px solid #dddddd;
+    background-color: white;
+
     .hotlist {
       display: flex;
       align-items: center;
@@ -145,7 +148,7 @@ export default class HotBar extends Vue {
         .filter-btn-active {
           background-color: #ff0088;
           color: #fff;
-          font-size: 20px;
+          font-size: 18px;
           border-radius: 16px;
           padding: 5px 7px;
           margin: 0 5px;
@@ -155,7 +158,7 @@ export default class HotBar extends Vue {
           color: #fff;
           font-size: 16px;
           border-radius: 14px;
-          padding: 6px 6px;
+          padding: 5px 7px;
           margin: 0 5px;
         }
       }
