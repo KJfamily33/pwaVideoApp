@@ -5,7 +5,7 @@
     <transition-group name="slide-fade">
       <div class="list-item" v-for="(e, i) in resObj" :key="i">
         <a href v-if="i > 0 && i % 3 === 0">
-          <ad-banner></ad-banner>
+          <ad-banner :adBanner="adBanner" :isFork="true"></ad-banner>
         </a>
         <video-card
           ref="item"
@@ -53,6 +53,8 @@ export default class VideoListPage extends Vue {
 
   private isSmallPanelMode = false
   private doSomethingAction() {}
+  private adBanner = 'homeApp'
+  private isFork = Boolean
   resObj = []
   isLoading = false
   allCount = 0

@@ -1,23 +1,21 @@
 <template>
   <div class="body">
-    <div></div>
+    <AdBanner :adBanner="adTitle" :isFork="true"></AdBanner>
     <div class="section">
       <div class="recommend">
         <svg-icon name="ic-like" width="20" height="20"></svg-icon>
         <span class="margin-left-5">精品推荐</span>
       </div>
       <!--線-->
-      <div class="line">
-        <AdBanner :adTitle="adTitle"></AdBanner>
-      </div>
+      <div class="line"></div>
       <!--AppIcon-->
       <div class="app-icon">
         <div v-for="(e, i) in appList" :key="i">
           <StroeApp v-if="e.position == 0" :appList="e"></StroeApp>
-        </div>                                               
+        </div>
       </div>
     </div>
-    <div></div>
+    <AdBanner :adBanner="adTitleBottom" :isFork="true"></AdBanner>    
     <div class="section">
       <div class="all">
         <svg-icon name="ic-app" width="20" height="20"></svg-icon>
@@ -52,6 +50,9 @@ import { getGetall } from '@/api/apps'
 export default class Store extends Vue {
   private appList: any = []
   private adTitle = 'applicationAppCenterTop'
+  private adTitleBottom = 'applicationAppCenterMiddle'
+  private adbottom = 'bottomSuspension'
+  private isFork = Boolean
   mounted() {
     const _this = this
     _this.getAppList()
@@ -74,8 +75,11 @@ export default class Store extends Vue {
 }
 
 .section {
-  margin: 0 3%;
+  margin-right: 3%;
+  margin-left: 3%;
+  margin-top: 10px;
 }
+
 .recommend {
   display: flex;
   align-items: center;

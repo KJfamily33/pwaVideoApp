@@ -1,4 +1,6 @@
 <template>
+<div>
+  <AdBanner :adBanner="adbottom" :isFork="false"></AdBanner>
   <div class="footer" id="footer">
     <div class="aspect__spacer"></div>
     <div class="control-bar">
@@ -74,16 +76,23 @@
       </router-link>
     </div>
   </div>
+</div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { FooBarModule } from '@/store/modules/footer-bar'
+import AdBanner from '@/components/AdBanner/index.vue'
+import { AdvModule } from '@/store/modules/adv'
 
 @Component({
-  components: {},
+  components: {
+    AdBanner
+  },
 })
 export default class FooterControlBar extends Vue {
+  private adbottom = 'bottomSuspension'
+  private isFork = Boolean
   mounted() {
     const urlPath = location.pathname
 
