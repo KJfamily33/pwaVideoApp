@@ -1,8 +1,9 @@
 <template>
   <div class="body column">
-    <div
-      class="adBanner margin-top-10 margin-bottom-12 margin-left-6 margin-right-6"
-    ></div>
+    <div class="adBanner margin-top-10" @click="goToShare">
+      <img src="@/assets/test/task-banner.jpg" alt="">
+    </div>
+      <ad-banner :adBanner="adBanner" :isFork="true"></ad-banner>
     <!--每日任務-->
     <div v-for="(e, i) in promote" :key="i">
       <TaskCell :taskCellObj="e"></TaskCell>
@@ -16,15 +17,19 @@ import IconTextWithLine from '@/components/IconTextWithLine/index.vue'
 import TaskCell from '@/components/TaskCell/index.vue'
 import { WebSocketModule } from '@/store/modules/webScoket'
 import { getUserId } from '@/utils/cookies'
+import AdBanner from '@/components/AdBanner/index.vue'
 
 @Component({
   components: {
     IconTextWithLine,
     TaskCell,
+    AdBanner
   },
 })
 export default class CurrentTask extends Vue {
   private promote: [] = []
+  private adBanner = 'mobileAppPromote'
+  private isFork = Boolean
 
   mounted() {
     console.log('進')
@@ -51,19 +56,24 @@ export default class CurrentTask extends Vue {
       }
     }
   }
-}
+  goToShare() {
+    this.$router.push("/share");
+  }  
 </script>
 
 <style lang="scss" scoped>
 .body {
   width: 100%;
   background-color: #f9f9f9;
+  padding-bottom: 100px;
 }
 
 .adBanner {
   height: 3.625rem;
   border-radius: 0.25rem;
-  background-color: red;
+  img {
+    width: 100%;
+  }
 }
 
 .row {
@@ -208,6 +218,10 @@ export default class CurrentTask extends Vue {
 
 .text-weight-300 {
   font-weight: 300;
+}
+
+.mb-12 {
+  margin-bottom: 12%;
 }
 
 // 線
