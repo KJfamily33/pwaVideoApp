@@ -58,7 +58,8 @@ export default class CurrentTask extends Vue {
   }
   goToShare() {
     this.$router.push("/share");
-  }  
+  }
+}
 </script>
 
 <style lang="scss" scoped>
