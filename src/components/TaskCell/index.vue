@@ -2,107 +2,114 @@
   <!--每日任務Cell-->
   <div class="taskCell row flex-center-center margin-bottom-5">
     <!--icon-->
-    <div class="column flex-1 flex-align-end">
+    <div class="column flex-align-end">
       <svg-icon name="ic-tasklist" width="28" height="33"></svg-icon>
     </div>
     <!--任務文字與內容-->
-    <div class="column flex-4 flex-align-start margin-left-10 margin-top-10 margin-bottom-10">
+    <div
+      class="column flex-4 flex-align-start margin-left-10 margin-top-10 margin-bottom-10"
+    >
       <div class="column text-word-break">
         <div
           class="text text-size-13 text-weight-500 text-color-000000 text-align-left text-overflow-ellipsis"
-        >123123123123123123123123123123123123123123</div>
+        >
+          {{ taskCellObj.name }}
+        </div>
         <div
           class="text text-size-11 text-weight-300 text-color-555550 text-align-left text-overflow-ellipsis"
-        >123123123123123123123123123123123123123123</div>
-        <div class="text text-size-10 text-weight-300 text-color-555550 text-align-left">
+        >
+          {{ taskCellObj.introduction }}
+        </div>
+        <div
+          class="text text-size-10 text-weight-300 text-color-555550 text-align-left"
+        >
           獎勵
-          <span class="text-color-ff821c text-weight-500">30</span> V币
+          <span class="text-color-ff821c text-weight-500">{{
+            taskCellObj.reward
+          }}</span>
+          V币
         </div>
       </div>
     </div>
     <!--任務提示-->
-    <div v-if="showThird" class="column flex-2 flex-center-center">
+    <div v-if="showThird" class="column flex-1 flex-center-center">
       <div class="column text-word-break">
         <!--第一行-->
         <div
-          v-if="(showThird || showThirdOneRow) && !showThirdTwoRow"
           class="text text-size-11 text-weight-300 text-color-555550 text-align-left"
         >
-          可領
-          <span class="text-color-ff821c">1</span> 次
+          完成
+          <span class="text-color-ff821c"
+            >{{ taskCellObj.task_count }}/{{ taskCellObj.finish_rule }}</span
+          >
         </div>
-        <!--第二行-->
-        <div
-          v-if="showThird && !showThirdOneRow"
-          class="text text-size-11 text-weight-300 text-color-555550 text-align-left"
-        >
-          已領
-          <span class="text-color-ff821c">1</span> 次
-        </div>
-        <!--領取獎勵-->
-        <div v-if="showThirdTwoRow" class="column flex-2 flex-center-center">
-          <button
-            id="button"
-            class="taskThirdButtom text text-color-ffffff text-size-11 text-weight-300"
-          >领取奖励</button>
-        </div>
+
         <!--第三行-->
         <div
-          v-if="showThird && !showThirdOneRow && !showThirdTwoRow"
+          v-if="
+            showThird &&
+              !showThirdOneRow &&
+              !showThirdTwoRow &&
+              taskCellObj.task_type === 4
+          "
           class="text text-size-11 text-weight-300 text-color-555550 text-align-left"
         >
           总累计
-          <span class="text-color-ff821c">100000</span>
+          <span class="text-color-ff821c">{{ taskCellObj.total }}</span>
         </div>
       </div>
     </div>
     <!--按鈕-->
-    <div class="column flex-2 flex-center-center">
-      <button
-        v-if="showCountBotton"
-        class="taskButtom text text-color-ffffff text-size-13 text-weight-300"
-        style="height:auto"
-      >
-        <span id="buttonCount" class="text text-size-9 text-weight-normal">
-          5/5
-          <br />
-        </span>领取奖励
-      </button>
-      <button
-        v-if="!showCountBotton"
+    <div class="column flex-center-center">
+      <router-link
+        to="/share"
         id="button"
-        class="taskButtom text text-color-ffffff text-size-13 text-weight-300"
-      >领取奖励</button>
+        class="taskButton text text-color-ffffff text-size-13 text-weight-300"
+      >
+        来去推广
+      </router-link>
     </div>
+    <!--    <div class="column flex-2 flex-center-center">-->
+    <!--      <button-->
+    <!--        id="button"-->
+    <!--        class="taskButton text text-color-ffffff text-size-13 text-weight-300"-->
+    <!--      >-->
+    <!--        领取奖励-->
+    <!--      </button>-->
+    <!--    </div>-->
 
     <!--完成任務-->
     <div v-if="isFinish" class="coverView"></div>
-    <div v-if="isFinish" class="coverConetnt text text-size-16 text-weight-500 text-color-ffffff">
+    <div
+      v-if="isFinish"
+      class="coverConetnt text text-size-16 text-weight-500 text-color-ffffff"
+    >
       <svg-icon name="group-5" width="112" height="50"></svg-icon>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
-  components: {}
+  components: {},
 })
 export default class TaskCell extends Vue {
+  @Prop() private taskCellObj: any
+
   // 呈現第三列 & 三行不含按鈕
-  private showThird = true;
+  private showThird = true
   // 有計數的按鈕
-  private showCountBotton = false;
+  private showCountBotton = false
   // 呈現第三列一行
-  private showThirdOneRow = false;
+  private showThirdOneRow = false
   // 呈現第三列兩行含按鈕
-  private showThirdTwoRow = false;
+  private showThirdTwoRow = false
   // 完成任務
-  private isFinish = false;
+  private isFinish = false
 }
 </script>
-
 
 <style lang="scss" scoped>
 .row {
@@ -267,15 +274,15 @@ export default class TaskCell extends Vue {
 .taskCell {
   height: 4.0625rem;
   background-color: #ffffff;
+  padding: 0px 7px;
 }
 
-.taskButtom {
-  width: 4.375rem;
-  height: 2.1875rem;
+.taskButton {
   border-radius: 17.03125rem;
-  background-color: #d8d8d8;
+  background-color: #ff0076;
   outline: none;
   border: 0px;
+  padding: 7px 4px;
 }
 
 .taskThirdButtom {
@@ -300,6 +307,6 @@ export default class TaskCell extends Vue {
 
 .coverConetnt {
   position: absolute;
-  width: 100%
+  width: 100%;
 }
 </style>

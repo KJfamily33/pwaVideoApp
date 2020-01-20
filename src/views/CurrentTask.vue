@@ -4,19 +4,8 @@
       class="adBanner margin-top-10 margin-bottom-12 margin-left-6 margin-right-6"
     ></div>
     <!--每日任務-->
-    <IconTextWithLine></IconTextWithLine>
-    <div v-for="(e, i) in 3" :key="i">
-      <TaskCell></TaskCell>
-    </div>
-    <!--每週任務-->
-    <IconTextWithLine></IconTextWithLine>
-    <div v-for="(e, i) in 1" :key="i">
-      <TaskCell></TaskCell>
-    </div>
-    <!--每月任務-->
-    <IconTextWithLine></IconTextWithLine>
-    <div v-for="(e, i) in 1" :key="i">
-      <TaskCell></TaskCell>
+    <div v-for="(e, i) in promote" :key="i">
+      <TaskCell :taskCellObj="e"></TaskCell>
     </div>
   </div>
 </template>
@@ -25,6 +14,8 @@
 import { Component, Vue } from 'vue-property-decorator'
 import IconTextWithLine from '@/components/IconTextWithLine/index.vue'
 import TaskCell from '@/components/TaskCell/index.vue'
+import { WebSocketModule } from '@/store/modules/webScoket'
+import { getUserId } from '@/utils/cookies'
 
 @Component({
   components: {
@@ -32,7 +23,35 @@ import TaskCell from '@/components/TaskCell/index.vue'
     TaskCell,
   },
 })
-export default class CurrentTask extends Vue {}
+export default class CurrentTask extends Vue {
+  private promote: [] = []
+
+  mounted() {
+    console.log('進')
+
+    const _this = this
+    const userId = Number.parseInt(getUserId() || '0')
+    const ws = WebSocketModule.webSocket
+    const requestInfo = {
+      type: 'getTaskList',
+      data: {
+        key: 'PWA-KEY',
+        user_id: userId,
+      },
+    }
+    ws.send(JSON.stringify(requestInfo))
+    ws.onmessage = function(res: any) {
+      const resJson = JSON.parse(res.data)
+      if (resJson.status) {
+        const status = resJson.status
+        const data = resJson.data
+
+        _this.$set(_this, 'promote', data.category.promote)
+        console.log(data.category.promote)
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -58,7 +77,7 @@ export default class CurrentTask extends Vue {}
 }
 
 .flex-center-center {
-  flex-direction: center;
+  justify-content: center;
   align-items: center;
 }
 
