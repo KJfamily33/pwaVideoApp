@@ -1,6 +1,8 @@
 <template>
   <div class="body">
-    <AdBanner :adBanner="adTitle" :isFork="true"></AdBanner>
+    <div>
+      <AdBanner :adBanner="adTitle" :height="200" :isFork="true"></AdBanner>
+    </div>
     <div class="section">
       <div class="recommend">
         <svg-icon name="ic-like" width="20" height="20"></svg-icon>
@@ -15,7 +17,7 @@
         </div>
       </div>
     </div>
-    <AdBanner :adBanner="adTitleBottom" :isFork="true"></AdBanner>    
+    <AdBanner :adBanner="adTitleBottom" :height="200" :isFork="true"></AdBanner>    
     <div class="section">
       <div class="all">
         <svg-icon name="ic-app" width="20" height="20"></svg-icon>

@@ -32,5 +32,6 @@ export default class LeaderBoard extends Vue {
 <style lang="scss" scoped>
 .leaderBoard {
   padding-top: 34px;
+  overflow-x: hidden
 }
 </style>

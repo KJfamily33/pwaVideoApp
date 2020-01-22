@@ -5,7 +5,7 @@
         <img src="@/assets/test/ic-close.png" alt="">
       </div>
       <a :href="adBannerList[0].url" class="ad-panel">
-        <img :src="adBannerList[0].imgPath" alt="">
+        <img :src="adBannerList[0].imgPath" :height="height" width="100%">
       </a>
     </div>
   </div>
@@ -20,24 +20,25 @@ import { AdvModule } from '@/store/modules/adv'
 })
 export default class AdBanner extends Vue {
   @Prop() private adBanner!: string;
+  @Prop() private height!: string
   @Prop() private isFork!: boolean
   private adList = AdvModule.advList
   private adBannerList = []
   private isHidden = false
   
   mounted() {
-    this.$nextTick(() => {
-      console.log('innnnnn2222',this.adBanner)
-      Vue.set(this, 'adBannerList', this.adList[this.adBanner].advsData)
-    })
+    const _this = this
+    _this.getAdList()
   }
 
   getAdList() {
-    this.adBannerList = this.adList[this.adBanner].advsData
+    const _this = this
+    _this.adBannerList = _this.adList[_this.adBanner].advsData
   }
 
   getHidden() {
-    this.isHidden = true
+    const _this = this
+    _this.isHidden = true
   }
 }
 </script>
@@ -45,8 +46,6 @@ export default class AdBanner extends Vue {
 <style lang="scss" scoped>
 .ad-banner {
   position: relative;
-  border-radius: 0.28571429rem;
-
   .aspect__spacer {
     position: absolute;
     top: 2%;
@@ -57,11 +56,9 @@ export default class AdBanner extends Vue {
     left: 0;
     height: 100%;
     width: 100%;
-
-    img {
-      max-height: 200px;
-      width: 100%;
-    }
+    // img {
+    //   width: 100%;
+    // }
   }
 }
 .none {

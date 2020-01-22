@@ -60,13 +60,13 @@ export default class Profile extends Vue {
       icon: false,
       link: '' /** 需要轉跳的頁面 */,
     },
-    {
-      preImg: require('@/icons/svg/ic-exchang.svg'),
-      title: '兑换码',
-      subtitle: '',
-      icon: true,
-      link: 'ChangeCode' /** 需要轉跳的頁面 */,
-    },
+    // {
+    //   preImg: require('@/icons/svg/ic-exchang.svg'),
+    //   title: '兑换码',
+    //   subtitle: '',
+    //   icon: true,
+    //   link: 'ChangeCode' /** 需要轉跳的頁面 */,
+    // },
     {
       preImg: require('@/icons/svg/ic-card.svg'),
       title: '充值',

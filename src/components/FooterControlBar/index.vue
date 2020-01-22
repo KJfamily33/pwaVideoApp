@@ -1,6 +1,19 @@
 <template>
 <div>
-  <AdBanner :adBanner="adbottom" :isFork="false"></AdBanner>
+  <div v-show="isShow" class="full-image" :class="{'safari': isSafari}" @touchmove.prevent>
+    <a>
+      <div class="full-img">
+        <AdBanner :adBanner="adFull" :height="800" :isFork="true"></AdBanner>
+      </div>
+    </a>
+    <a href="" @click.prevent="getClose" class="full-btn">关闭</a>
+  </div>
+  <div @touchmove.prevent>
+    <AlertBanner :adBanner="adWindow" :height="400" :isFork="false"></AlertBanner>
+  </div>
+  <div class="mb-50">
+    <AdBanner :adBanner="adbottom" :isFork="false"></AdBanner>
+  </div>
   <div class="footer" id="footer">
     <div class="aspect__spacer"></div>
     <div class="control-bar">
@@ -81,19 +94,33 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import { getStartId, setSartId } from '@/utils/cookies'
 import { FooBarModule } from '@/store/modules/footer-bar'
 import AdBanner from '@/components/AdBanner/index.vue'
+import AlertBanner from '@/components/AlertBanner/index.vue'
 import { AdvModule } from '@/store/modules/adv'
 
 @Component({
   components: {
-    AdBanner
+    AdBanner,
+    AlertBanner
   },
 })
 export default class FooterControlBar extends Vue {
   private adbottom = 'bottomSuspension'
+  private adFull = 'startupApp'
+  private adWindow = 'mobileAppVCoinLog'
   private isFork = Boolean
+  private isShow = true
+  private isSafari = false
+
   mounted() {
+    const _this = this
+    //判斷是否顯示進來頁面
+    _this.checkStartBanner()
+    //判斷是否用Safari
+    _this.checkSafari()
+
     const urlPath = location.pathname
 
     if (urlPath.indexOf('video') > 0) {
@@ -171,15 +198,77 @@ export default class FooterControlBar extends Vue {
   private setActive(str: string) {
     FooBarModule.SetActiveState(str)
   }
+
+  getClose() {
+    const _this = this
+    _this.isShow = false
+  }
+
+  checkSafari() {
+    const _this = this
+    let issafariBrowser = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)
+    if(issafariBrowser == true) {
+      _this.isSafari = true
+    }
+  }
+
+  checkStartBanner() {
+    const _this = this
+    const isStart = getStartId()
+    if (isStart == undefined) {
+      _this.isShow = true
+      setSartId('start')
+    } else {
+      _this.isShow = false
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
+.full-image {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  z-index: 300;
+  width: 100vw;
+  height: 100vh;
+  .full-img {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+  }
+  .full-btn {
+    background-color: #aaaaaa;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 14px;
+    padding: 5px 20px;
+    margin: 20px 5px 10px 5px;
+    position: fixed;
+    z-index: 300;
+    right: 0;
+  }
+}
+
+.safari {
+  height: calc(100vh - 52px - 48px)!important; // 假設 header高度52px，footer 高度48px
+}
+
+.close {
+  display: none;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
 .footer {
   bottom: 0;
   left: 0;
   position: fixed;
   width: 100vw;
+  z-index: 200;
 
   -webkit-backdrop-filter: blur(9.6px);
   backdrop-filter: blur(9.6px);

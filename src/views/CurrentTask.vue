@@ -3,7 +3,7 @@
     <div class="adBanner margin-top-10" @click="goToShare">
       <img src="@/assets/test/task-banner.jpg" alt="">
     </div>
-      <ad-banner :adBanner="adBanner" :isFork="true"></ad-banner>
+    <ad-banner :adBanner="adBanner" :height="200" :isFork="true"></ad-banner>
     <!--每日任務-->
     <div v-for="(e, i) in promote" :key="i">
       <TaskCell :taskCellObj="e"></TaskCell>
@@ -57,7 +57,8 @@ export default class CurrentTask extends Vue {
     }
   }
   goToShare() {
-    this.$router.push("/share");
+    const _this = this
+    _this.$router.push("/share");
   }
 }
 </script>
@@ -70,8 +71,6 @@ export default class CurrentTask extends Vue {
 }
 
 .adBanner {
-  height: 3.625rem;
-  border-radius: 0.25rem;
   img {
     width: 100%;
   }
