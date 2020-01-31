@@ -7,25 +7,32 @@
         <div class="row">
           <div class="column">
             <div class="pictrueWithName">
-              <div class="picture"></div>
-              <div class="text" style="color:#ffffff">9487</div>
+              <div class="picture">
+                <img :src="profile.headFile" alt="">
+              </div>
+              <div class="text" style="color:#ffffff">{{ profile.name }}</div>
             </div>
           </div>
           <div class="column" style="flex-grow:2">
-            <div class="text" style="text-align: left;">
-              <svg-icon name="ic-vcoin" width="15" height="15"></svg-icon>
-              999,999,999
+            <div class="v-coin text">
+              <div class="v-flex">
+                <svg-icon name="ic-vcoin" width="15" height="15"></svg-icon>
+                <span class="margin-left-5">{{ profile.v2Coin }}</span>
+              </div>
               <div class="icon">
-                <svg-icon name="ic-refresh" width="15" height="15"></svg-icon>
+                <svg-icon name="ic-refresh" width="15" height="15" @click="getRefresh"></svg-icon>
               </div>
             </div>
-            <div class="text" style="text-align: left;">
+            <div class="v-flex text">
               <svg-icon name="ic-vvip" width="15" height="15"></svg-icon>
-              999,999,999
-            </div>
-            <div class="text" style="text-align: left;">
-              <span style="color:#ffffff;">会员到期时间</span>
-              2099年12年25日
+              <span v-if="profile.vip === 0" class="margin-left-5">一般会员</span>
+              <span v-if="profile.vip === 1" class="margin-left-5">VIP会员</span>
+            </div>          
+            <div v-if="profile.endTime !== ''" class="text" style="text-align: left;">
+              <span style="color:#ffffff;">会员到期时间:</span>
+              <div>
+                <span>{{ profile.endTime }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -33,7 +40,7 @@
     </div>
     <!-- 列表 -->
     <div v-for="(e, i) in 9" :key="i">
-      <ProfileRow :ProfileInfoObj="objs[i]" :webLink="webLink" :token="token" :uid="uid"></ProfileRow>
+      <ProfileRow :ProfileInfoObj="objs[i]" :profileMail="profileMail" :webLink="webLink" :token="token" :uid="uid"></ProfileRow>
     </div>
   </div>
 </template>
@@ -44,6 +51,7 @@ import ProfileRow from '@/components/ProfileRow/index.vue'
 import HeaderBar from '../components/HeaderBar/index.vue'
 import { IProfileInfoObj } from '@/types/profile'
 import { getPayCenter } from '@/api/webview'
+import { getMember } from '@/api/profile'
 import { UserModule } from '@/store/modules/user'
 
 @Component({
@@ -56,7 +64,7 @@ export default class Profile extends Vue {
     {
       preImg: require('@/icons/svg/ic-acount.svg'),
       title: '帐户',
-      subtitle: '9487@gmail.com',
+      subtitle: '',
       icon: false,
       link: '' /** 需要轉跳的頁面 */,
     },
@@ -117,13 +125,29 @@ export default class Profile extends Vue {
       link: '' /** 需要轉跳的頁面 */,
     },
   ]
+  private profile = ''
+  private profileMail = ''
   private webLink = ''
   private token = UserModule.token
   private uid = UserModule.userId
 
   mounted() {
     const _this = this
+    _this.getMemberProfile()
     _this.getWebView()
+  }
+
+  getMemberProfile() {
+    const _this = this
+    let params = {
+      userId: UserModule.userId,
+    }
+    getMember(params).then(res => {
+      _this.profile = res.data.data.user
+      _this.profileMail = res.data.data.user.email
+    }).catch(e=>{
+      console.log(e)
+    })    
   }
 
   getWebView() {
@@ -136,6 +160,10 @@ export default class Profile extends Vue {
     }).catch(e =>{
       console.log(e)
     })
+  }
+
+  getRefresh() {
+    window.location.reload()
   }
 }
 </script>
@@ -182,6 +210,21 @@ export default class Profile extends Vue {
   float: right;
   margin-right: 12px;
 }
+
+.v-coin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.v-flex {
+  display: flex;
+  align-items: center;
+}
+
+.margin-left-5 {
+  margin-left: 5px;
+}
 // 個人資料 照片與名稱
 .pictrueWithName {
   width: 3.75rem;
@@ -192,9 +235,13 @@ export default class Profile extends Vue {
 .picture {
   width: 3.75rem;
   height: 3.75rem;
-  background-color: red;
-  border-radius: 50%;
+  // background-color: red;
+  // border-radius: 50%;
   text-align: center;
+  img {
+    width: 100%;
+    border-radius: 50%;
+  }
 }
 
 .text-align-left {

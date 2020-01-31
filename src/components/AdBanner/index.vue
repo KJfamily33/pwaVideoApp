@@ -25,6 +25,10 @@ export default class AdBanner extends Vue {
   private adList = AdvModule.advList
   private adBannerList = []
   private isHidden = false
+  // get myComputedProp() {
+  //   const _this = this
+  //   return AdvModule.advList[_this.adBanner].advsData
+  // }
   
   mounted() {
     const _this = this

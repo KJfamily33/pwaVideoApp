@@ -11,6 +11,8 @@ import './registerServiceWorker'
 import { getToken } from '@/utils/cookies'
 import EventBus from 'vue-bus-ts'
 
+import { AdvModule } from '@/store/modules/adv'
+
 import '@/styles/animate.css'
 import '@/styles/index.scss'
 Vue.config.productionTip = false
@@ -31,6 +33,10 @@ router.beforeEach((to, from, next) => {
     if (to.path !== '/login') next('/login')
     else next()
   }
+  // const list = AdvModule.advList
+  // if (list.length === 0) {
+  //   next("/videoList")
+  // }
 })
 
 new Vue({

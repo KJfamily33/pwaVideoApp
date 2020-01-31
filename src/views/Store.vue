@@ -41,6 +41,7 @@ import StroeApp from '@/components/StoreApp/index.vue'
 import StroeApplication from '@/components/StoreApplication/index.vue'
 import AdBanner from '@/components/AdBanner/index.vue'
 import { getGetall } from '@/api/apps'
+import { AdvModule } from '@/store/modules/adv'
 
 @Component({
   components: {
