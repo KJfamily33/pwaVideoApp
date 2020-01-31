@@ -8,6 +8,7 @@
     "serve-uat": "vue-cli-service serve --mode uat_staging",
     "build": "vue-cli-service build",
     "build-uat": "vue-cli-service build",
+    "build-qa": "vue-cli-service build --mode qa",
     "lint": "vue-cli-service lint",
     "svg": "vsvg -s ./src/icons/svg -t ./src/icons/conpoments --ext ts --es6"
   },
