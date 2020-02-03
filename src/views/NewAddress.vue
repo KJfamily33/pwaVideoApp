@@ -6,13 +6,8 @@
           用户最新地址
         </p>
         <div class="row">
-          <div class="colum">
-            <NewAddressBtn></NewAddressBtn>
-            <NewAddressBtn></NewAddressBtn>
-            <NewAddressBtn></NewAddressBtn>
-            <NewAddressBtn></NewAddressBtn>
-            <NewAddressBtn></NewAddressBtn>
-            <NewAddressBtn></NewAddressBtn>
+          <div class="colum" v-for="(address, indx) in addressList" :key="indx">
+            <NewAddressBtn :address="address" :indx="indx"></NewAddressBtn>
           </div>
         </div>
         <div class="isandroid">
@@ -95,6 +90,7 @@ export default class NewAddress extends Vue {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: center;
 }
 
 .column {

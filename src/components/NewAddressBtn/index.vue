@@ -1,12 +1,24 @@
 <template>
-  <div class="button">
-    <div class="buttoninfo">
+  <div class="button" >
+    <a class="buttoninfo" :href="address">
       <svg-icon name="ic-web" width="15" height="15"></svg-icon>
-      <span class="text" style="font-size: 13px;">01</span>
-    </div>
+      <span class="text" style="font-size: 13px;">0{{ indx + 1 }}</span>
+    </a>
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator'
+
+@Component({
+  components: {}
+})
+export default class NewAddressBtn extends Vue {
+  @Prop() private address!: any
+  @Prop() private indx!: any
+}
+
+</script>
 <style scoped lang="scss">
 .button {
   width: 9.375rem;
