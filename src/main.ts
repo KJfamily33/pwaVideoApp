@@ -33,10 +33,10 @@ router.beforeEach((to, from, next) => {
     if (to.path !== '/login') next('/login')
     else next()
   }
-  // const list = AdvModule.advList
-  // if (list.length === 0) {
-  //   next("/videoList")
-  // }
+  const list = AdvModule.advList
+  if (list.length === 0 && (to.path === '/store' || to.path === '/currentTask')) {
+    next("/videoList")
+  }
 })
 
 new Vue({
