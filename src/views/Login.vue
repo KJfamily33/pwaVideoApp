@@ -29,7 +29,12 @@
         </div>
       </div>
       <!--按鈕 登入-->
-      <button id="login" class="login" @click="buttonAction(1)">
+      <button
+        id="login"
+        class="login"
+        @click="buttonAction(1)"
+        disabled="disabled"
+      >
         登入
       </button>
       <button

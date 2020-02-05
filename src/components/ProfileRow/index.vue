@@ -8,7 +8,7 @@
       <a href v-if="ProfileInfoObj.icon == true">
         <svg-icon name="ic-forward" width="6" height="10" class="ic_forward"></svg-icon>
       </a>
-    </a>    
+    </a>
     <a v-else-if="ProfileInfoObj.title == '充值'" :href="webLink + '?tk=' + token + '&uid=' + uid" class="column">
       <!-- <svg-icon name="ic-acount" width="22" height="22" class="icon"></svg-icon> -->
       <img :src="ProfileInfoObj.preImg">

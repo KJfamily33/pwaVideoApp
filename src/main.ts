@@ -30,12 +30,15 @@ router.beforeEach((to, from, next) => {
   if (isLogin) {
     next()
   } else {
-    if (to.path !== '/login') next('/login')
+    if (to.path !== '/login' && to.path !== '/register') next('/login')
     else next()
   }
   const list = AdvModule.advList
-  if (list.length === 0 && (to.path === '/store' || to.path === '/currentTask')) {
-    next("/videoList")
+  if (
+    list.length === 0 &&
+    (to.path === '/store' || to.path === '/currentTask')
+  ) {
+    next('/videoList')
   }
 })
 

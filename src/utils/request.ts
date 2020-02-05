@@ -31,24 +31,19 @@ service.interceptors.response.use(
     const res = response.data
     if (res.status !== 200) {
       if (res.status === 103) {
+        alert(res.message)
         return response
-      }
-      else if (res.status === 126) {
+      } else if (res.status === 126) {
         return response
-      }
-      else if (res.status === 127) {
+      } else if (res.status === 127) {
         return response
-      }
-      else if (res.status === 128) {
+      } else if (res.status === 128) {
         return response
-      }
-      else if (res.status === 129) {
+      } else if (res.status === 129) {
         return response
-      } 
-      else if (res.status === 130) {
+      } else if (res.status === 130) {
         return response
-      }
-      else {
+      } else {
         return Promise.reject(new Error(res.message || 'Error'))
       }
     } else {

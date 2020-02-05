@@ -1,12 +1,15 @@
 <template>
-  <div class="body column">
-    <div class="adBanner margin-top-10" @click="goToShare">
-      <img src="@/assets/test/task-banner.jpg" alt="">
-    </div>
-    <ad-banner :adBanner="adBanner" :height="200" :isFork="true"></ad-banner>
-    <!--每日任務-->
-    <div v-for="(e, i) in promote" :key="i">
-      <TaskCell :taskCellObj="e"></TaskCell>
+  <div>
+    <header-bar></header-bar>
+    <div class="body column">
+      <div class="adBanner margin-top-10" @click="goToShare">
+        <img src="@/assets/test/task-banner.jpg" alt="">
+      </div>
+      <ad-banner :adBanner="adBanner" :height="200" :isFork="true"></ad-banner>
+      <!--每日任務-->
+      <div v-for="(e, i) in promote" :key="i">
+        <TaskCell :taskCellObj="e"></TaskCell>
+      </div>
     </div>
   </div>
 </template>
