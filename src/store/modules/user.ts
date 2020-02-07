@@ -6,8 +6,15 @@ import {
   getModule,
 } from 'vuex-module-decorators'
 import store from '@/store'
-import { getToken, setToken, getUserId, setUserId } from '@/utils/cookies'
-import { login } from '@/api/login'
+import {
+  getToken,
+  setToken,
+  getUserId,
+  setUserId,
+  removeToken,
+  removeUserId,
+} from '@/utils/cookies'
+import { fastLogin, login } from '@/api/login'
 import { register } from '@/api/register'
 
 export interface IUserState {
@@ -28,6 +35,13 @@ class User extends VuexModule implements IUserState {
   @Mutation
   private SET_TOKEN(token: string) {
     this.token = token
+  }
+
+  @Action({ rawError: true })
+  public async Logout() {
+    removeToken()
+    removeUserId()
+    this.$router.push('/fast-login')
   }
 
   @Action({ rawError: true })
@@ -53,6 +67,15 @@ class User extends VuexModule implements IUserState {
     setUserId(userId)
     this.SET_USER_ID(userId)
     return res
+  }
+
+  @Action({ rawError: true })
+  public async FastLogin() {
+    const res = await fastLogin({ registerFrom: 3, parentId: 0 })
+    const username = res.data.data.name
+    const password = res.data.data.password
+
+    return { username, password }
   }
 
   @Action({ rawError: true })

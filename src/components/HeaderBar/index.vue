@@ -10,54 +10,60 @@
             color="#FFF"
           ></svg-icon>
         </div>
+        <a :href="webLink + '?tk=' + token + '&uid=' + uid">
+          <img src="@/assets/ic_vip_not_get.png" alt="" style="height: 24px;" />
+        </a>
       </div>
       <div class="center">
         <div v-if="!showVideoTitle" class="logo">
-          <svg-icon
-            name="ic-v-2-logo"
-            width="80"
-            height="18"
-            color="#FFF"
-          ></svg-icon>
+          <!--          <svg-icon-->
+          <!--            name="ic-v-2-logo"-->
+          <!--            width="80"-->
+          <!--            height="18"-->
+          <!--            color="#FFF"-->
+          <!--          ></svg-icon>-->
         </div>
-        <div v-if="!showVideoTitle" class="path-name">影片列表</div>
+        <router-link to="/TagPage" class="search-icon">
+          <div class="">
+            <svg-icon name="ic-search" height="24" class="icon"></svg-icon>
+            <div style="font-size: 14px;">视频热搜</div>
+          </div>
+        </router-link>
+
+        <div v-if="!showVideoTitle" class="path-name"></div>
         <div v-if="showVideoTitle" class="title">
           文字測試文字測試文字測試文字測試文字測試
         </div>
       </div>
       <div class="pull-right">
-        <div v-if="showQuestionBtn" class="question">
-          <svg-icon
-            name="question-circle-o"
-            width="24"
-            height="24"
-            color="#FFF"
-          ></svg-icon>
-        </div>
-        <div v-if="showPromotionBtn" class="promotion">
-          <svg-icon
-            name="ic-promotion"
-            width="24"
-            height="24"
-            color="#FFF"
-          ></svg-icon>
-        </div>
-        <div v-if="showShareBtn" class="share">
-          <svg-icon
-            name="ic-share"
-            width="24"
-            height="24"
-            color="#FFF"
-          ></svg-icon>
-        </div>
-        <div class="smallMode">
-          <svg-icon
-            name="th-large.svg"
-            width="24"
-            height="24"
-            color="#FFF"
-          ></svg-icon>
-        </div>
+        <!--        <div class="question">-->
+        <!--          <svg-icon-->
+        <!--            name="question-circle-o"-->
+        <!--            width="24"-->
+        <!--            height="24"-->
+        <!--            color="#FFF"-->
+        <!--          ></svg-icon>-->
+        <!--        </div>-->
+
+        <router-link to="/share" class="item">
+          <div class="promotion">
+            <svg-icon
+              name="ic-promotion"
+              width="24"
+              height="24"
+              color="#FFF"
+            ></svg-icon>
+          </div>
+        </router-link>
+
+        <!--        <div class="smallMode">-->
+        <!--          <svg-icon-->
+        <!--            name="th-large.svg"-->
+        <!--            width="24"-->
+        <!--            height="24"-->
+        <!--            color="#FFF"-->
+        <!--          ></svg-icon>-->
+        <!--        </div>-->
       </div>
     </div>
     <div class="nav-bar" v-if="headerNavBarVisible">
@@ -87,6 +93,8 @@ import { Component, Vue } from 'vue-property-decorator'
 import { debounce, throttle } from '@/utils/commons'
 import { FooBarModule, ICategoryList } from '@/store/modules/footer-bar'
 import { HeaderModule } from '@/store/modules/header-bar'
+import { getPayCenter } from '@/api/webview'
+import { UserModule } from '@/store/modules/user'
 
 @Component({
   components: {},
@@ -99,8 +107,10 @@ export default class HeaderBar extends Vue {
   private showPromotionBtn = false
   private headerVisible = true
   private headerNavBarVisible = false
-
   private headerNavBar: ICategoryList[] = []
+  private webLink = ''
+  private token = UserModule.token
+  private uid = UserModule.userId
 
   created() {
     const _this = this
@@ -139,6 +149,7 @@ export default class HeaderBar extends Vue {
     // })
 
     this.wetherScroll()
+    this.getWebView()
   }
 
   private clickCategoryBtn(categoryObj: { name: string; type: string }) {
@@ -246,6 +257,20 @@ export default class HeaderBar extends Vue {
     }
 
     this.headerVisible = true
+  }
+
+  private getWebView() {
+    const _this = this
+    let requestInfo = {
+      type: 0,
+    }
+    getPayCenter(requestInfo)
+      .then(res => {
+        _this.webLink = res.data.data.url
+      })
+      .catch(e => {
+        console.log(e)
+      })
   }
 }
 </script>
@@ -399,5 +424,24 @@ export default class HeaderBar extends Vue {
   -webkit-animation-duration: 0.3s !important; //动画持续时间
   -webkit-animation-delay: 0s !important; //动画延迟时间
   -webkit-animation-iteration-count: 1 !important; //动画执行次数
+}
+
+.search-icon {
+  background-color: white;
+  border-radius: 15px;
+  flex: 1 1 auto;
+  height: 24px;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    position: absolute;
+    text-align: center;
+    left: 15px;
+    top: 0px;
+    height: 25px;
+  }
 }
 </style>

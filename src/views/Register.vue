@@ -152,8 +152,8 @@ export default class Register extends Vue {
     let acText = acInput.value
     let psText = psInput.value
     let repsText = repsInput.value
-    // 帳號有輸入並且密碼>7位
-    if (acText.length > 0 && psText.length > 7 && repsText.length > 7) {
+    // 帳號有輸入並且密碼>5位
+    if (acText.length > 0 && psText.length > 5 && repsText.length > 5) {
       button.disabled = false
       button.classList.remove('login')
       button.classList.add('isLogin')

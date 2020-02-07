@@ -22,6 +22,7 @@ import Search from './views/Search.vue'
 import VideoList from './views/VideoListPage.vue'
 import LeaderBoard from './views/LeaderBoard.vue'
 import TagPage from './views/TagPage.vue'
+import FastLogin from "@/views/FastLogin.vue"
 
 Vue.use(Router)
 
@@ -153,6 +154,13 @@ export default new Router({
       },
     },
     {
+      path: '/fast-login',
+      name: 'fast-login',
+      components: {
+        default: FastLogin,
+      },
+    },
+    {
       path: '/video-info/:videoIdEncrypt',
       name: '/video-info',
       components: {
@@ -205,8 +213,7 @@ export default new Router({
       name: 'tagPage',
       components: {
         default: TagPage,
-        footer: FooterBar,
       },
-    },    
+    },
   ],
 })

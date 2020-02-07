@@ -140,7 +140,7 @@ export default class Profile extends Vue {
       title: '退出',
       subtitle: '',
       icon: true,
-      link: '' /** 需要轉跳的頁面 */,
+      link: 'fast-login' /** 需要轉跳的頁面 */,
     },
   ]
   private profile = ''

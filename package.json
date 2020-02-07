@@ -21,6 +21,7 @@
     "dplayer": "^1.25.0",
     "hls.js": "^0.13.0",
     "register-service-worker": "^1.6.2",
+    "v-autocomplete": "^1.8.2",
     "vue": "^2.6.10",
     "vue-bus-ts": "^1.0.8",
     "vue-class-component": "^7.0.2",

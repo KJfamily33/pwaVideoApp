@@ -11,9 +11,34 @@ interface IVideoAccess {
   idEncrypt: string
 }
 
+interface ISearchRequest {
+  search: string
+  columnsPerPage?: number
+  page?: number
+}
+
+interface IAutoComplete {
+  search: string
+  count: number
+}
+
 export const getGuessYouLikeList = (data: IGuessYouLike) =>
   request({
     url: '/solr/guess-you-like',
+    method: 'post',
+    data,
+  })
+
+export const getAutoCompleteList = (data: IAutoComplete) =>
+  request({
+    url: '/solr/auto-complete',
+    method: 'post',
+    data,
+  })
+
+export const getSearchList = (data: ISearchRequest) =>
+  request({
+    url: '/solr/search',
     method: 'post',
     data,
   })

@@ -81,7 +81,7 @@ export default class VHistory extends Vue {
   private obj: VHistoryInfoObj = {
     iconName: '每日',
     taskTitle: '每日登陸',
-    taskContent: '每日登陆 2019-08-30',
+    taskContent: '每日登录 2019-08-30',
     timeText: '2019-08-30 01:03',
     money: '30',
     cost: '+',

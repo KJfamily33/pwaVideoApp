@@ -17,6 +17,11 @@ import '@/styles/animate.css'
 import '@/styles/index.scss'
 Vue.config.productionTip = false
 
+import Autocomplete from 'v-autocomplete'
+import 'v-autocomplete/dist/v-autocomplete.css'
+
+Vue.use(Autocomplete)
+
 Vue.use(EventBus)
 var bus = new EventBus.Bus()
 
