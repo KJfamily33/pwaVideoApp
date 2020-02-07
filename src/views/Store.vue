@@ -1,35 +1,46 @@
 <template>
-  <div class="body">
-    <div>
-      <AdBanner :adBanner="adTitle" :height="200" :isFork="true"></AdBanner>
-    </div>
-    <div class="section">
-      <div class="recommend">
-        <svg-icon name="ic-like" width="20" height="20"></svg-icon>
-        <span class="margin-left-5">精品推荐</span>
+  <div>
+    <header-bar></header-bar>
+
+    <div class="body">
+      <div>
+        <AdBanner :adBanner="adTitle" :height="200" :isFork="true"></AdBanner>
       </div>
-      <!--線-->
-      <div class="line"></div>
-      <!--AppIcon-->
-      <div class="app-icon">
-        <div v-for="(e, i) in appList" :key="i">
-          <StroeApp v-if="e.position == 0" :appList="e"></StroeApp>
+      <div class="section">
+        <div class="recommend">
+          <svg-icon name="ic-like" width="20" height="20"></svg-icon>
+          <span class="margin-left-5">精品推荐</span>
+        </div>
+        <!--線-->
+        <div class="line"></div>
+        <!--AppIcon-->
+        <div class="app-icon">
+          <div v-for="(e, i) in appList" :key="i">
+            <StroeApp v-if="e.position == 0" :appList="e"></StroeApp>
+          </div>
         </div>
       </div>
-    </div>
-    <AdBanner :adBanner="adTitleBottom" :height="200" :isFork="true"></AdBanner>    
-    <div class="section">
-      <div class="all">
-        <svg-icon name="ic-app" width="20" height="20"></svg-icon>
-        <span class="margin-left-5">全部应用</span>
-      </div>
-      <!--線-->
-      <div class="line"></div>
-      <!--AppIcon-->
-      <div>
-        <div v-for="(e, i) in appList" :key="i">
-          <StroeApplication v-if="e.position == 1" :appList="e"></StroeApplication>
-        </div>                            
+      <AdBanner
+        :adBanner="adTitleBottom"
+        :height="200"
+        :isFork="true"
+      ></AdBanner>
+      <div class="section">
+        <div class="all">
+          <svg-icon name="ic-app" width="20" height="20"></svg-icon>
+          <span class="margin-left-5">全部应用</span>
+        </div>
+        <!--線-->
+        <div class="line"></div>
+        <!--AppIcon-->
+        <div>
+          <div v-for="(e, i) in appList" :key="i">
+            <StroeApplication
+              v-if="e.position == 1"
+              :appList="e"
+            ></StroeApplication>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -42,12 +53,14 @@ import StroeApplication from '@/components/StoreApplication/index.vue'
 import AdBanner from '@/components/AdBanner/index.vue'
 import { getGetall } from '@/api/apps'
 import { AdvModule } from '@/store/modules/adv'
+import HeaderBar from '@/components/HeaderBar/index.vue'
 
 @Component({
   components: {
     StroeApp,
     StroeApplication,
-    AdBanner
+    AdBanner,
+    HeaderBar,
   },
 })
 export default class Store extends Vue {
@@ -62,19 +75,22 @@ export default class Store extends Vue {
   }
   getAppList() {
     const _this = this
-    getGetall().then(res => {
-      _this.appList = res.data.data.apps
-      console.log(_this.appList)
-    }).catch(e=>{
-      console.log(e)
-    })
-  }    
+    getGetall()
+      .then(res => {
+        _this.appList = res.data.data.apps
+        console.log(_this.appList)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .body {
   padding-bottom: 100px;
+  padding-top: 45px;
 }
 
 .section {
@@ -99,7 +115,7 @@ export default class Store extends Vue {
 .all {
   display: flex;
   align-items: center;
-  padding-bottom: 7px; 
+  padding-bottom: 7px;
   color: #f3806f;
 }
 

@@ -3,7 +3,7 @@
     <header-bar></header-bar>
     <div class="body column">
       <div class="adBanner margin-top-10" @click="goToShare">
-        <img src="@/assets/test/task-banner.jpg" alt="">
+        <img src="@/assets/test/task-banner.jpg" alt="" />
       </div>
       <ad-banner :adBanner="adBanner" :height="200" :isFork="true"></ad-banner>
       <!--每日任務-->
@@ -21,12 +21,14 @@ import TaskCell from '@/components/TaskCell/index.vue'
 import { WebSocketModule } from '@/store/modules/webScoket'
 import { getUserId } from '@/utils/cookies'
 import AdBanner from '@/components/AdBanner/index.vue'
+import HeaderBar from '@/components/HeaderBar/index.vue'
 
 @Component({
   components: {
     IconTextWithLine,
     TaskCell,
-    AdBanner
+    AdBanner,
+    HeaderBar,
   },
 })
 export default class CurrentTask extends Vue {
@@ -61,7 +63,7 @@ export default class CurrentTask extends Vue {
   }
   goToShare() {
     const _this = this
-    _this.$router.push("/share");
+    _this.$router.push('/share')
   }
 }
 </script>
@@ -71,6 +73,7 @@ export default class CurrentTask extends Vue {
   width: 100%;
   background-color: #f9f9f9;
   padding-bottom: 100px;
+  padding-top: 45px;
 }
 
 .adBanner {
