@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
-    <defs>
-        <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#FB6F9D"/>
-            <stop offset="100%" stop-color="#F3806F"/>
-        </linearGradient>
-        <linearGradient id="b" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#FA709B"/>
-            <stop offset="100%" stop-color="#F38070"/>
-        </linearGradient>
-    </defs>
-    <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-        <circle cx="10" cy="10" r="10" stroke="url(#a)"/>
-        <path fill="url(#b)" d="M10 15.09A5.06 5.06 0 0 1 4.91 10 5.06 5.06 0 0 1 10 4.91 5.06 5.06 0 0 1 15.09 10 5.06 5.06 0 0 1 10 15.09zm6.473-5.817c-.364-3.055-2.764-5.455-5.746-5.746V2H9.273v1.527a6.364 6.364 0 0 0-5.746 5.746H2v1.454h1.527c.364 3.055 2.764 5.455 5.746 5.746V18h1.454v-1.527c3.055-.364 5.455-2.764 5.746-5.746H18V9.273h-1.527zM10 7.09C8.4 7.09 7.09 8.4 7.09 10c0 1.6 1.31 2.91 2.91 2.91s2.91-1.31 2.91-2.91S11.6 7.09 10 7.09z"/>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"><defs><linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FB6F9D"/><stop offset="100%" stop-color="#F3806F"/></linearGradient><linearGradient id="b" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FA709B"/><stop offset="100%" stop-color="#F38070"/></linearGradient></defs><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="10" cy="10" r="10" stroke="url(#a)"/><path fill="url(#b)" d="M10 15.09A5.06 5.06 0 0 1 4.91 10 5.06 5.06 0 0 1 10 4.91 5.06 5.06 0 0 1 15.09 10 5.06 5.06 0 0 1 10 15.09zm6.473-5.817c-.364-3.055-2.764-5.455-5.746-5.746V2H9.273v1.527a6.364 6.364 0 0 0-5.746 5.746H2v1.454h1.527c.364 3.055 2.764 5.455 5.746 5.746V18h1.454v-1.527c3.055-.364 5.455-2.764 5.746-5.746H18V9.273h-1.527zM10 7.09C8.4 7.09 7.09 8.4 7.09 10c0 1.6 1.31 2.91 2.91 2.91s2.91-1.31 2.91-2.91S11.6 7.09 10 7.09z"/></g></svg>

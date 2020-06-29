@@ -1,18 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
-    <defs>
-        <linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%">
-            <stop offset="0%" stop-color="#FB6F9D"/>
-            <stop offset="100%" stop-color="#F38070"/>
-        </linearGradient>
-        <path id="b" d="M0 0h24.981v27.707H.001z"/>
-    </defs>
-    <g fill="none" fill-rule="evenodd">
-        <circle cx="30" cy="30" r="30" fill="#000" fill-opacity=".4" stroke="url(#a)" stroke-width="2.769" transform="translate(2 2)"/>
-        <g transform="translate(20 18)">
-            <mask id="c" fill="#fff">
-                <use xlink:href="#b"/>
-            </mask>
-            <path fill="#FFF" d="M0 2.58C0 .282 1.651-.659 3.67.49l19.798 11.274c2.018 1.15 2.018 3.03 0 4.18L3.669 27.216C1.651 28.367 0 27.426 0 25.127V2.58z" mask="url(#c)"/>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64"><defs><linearGradient id="a" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FB6F9D"/><stop offset="100%" stop-color="#F38070"/></linearGradient><path id="b" d="M0 0h24.981v27.707H.001z"/></defs><g fill="none" fill-rule="evenodd"><circle cx="30" cy="30" r="30" fill="#000" fill-opacity=".4" stroke="url(#a)" stroke-width="2.769" transform="translate(2 2)"/><g transform="translate(20 18)"><mask id="c" fill="#fff"><use xlink:href="#b"/></mask><path fill="#FFF" d="M0 2.58C0 .282 1.651-.659 3.67.49l19.798 11.274c2.018 1.15 2.018 3.03 0 4.18L3.669 27.216C1.651 28.367 0 27.426 0 25.127V2.58z" mask="url(#c)"/></g></g></svg>
